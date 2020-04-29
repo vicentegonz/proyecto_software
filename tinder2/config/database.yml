@@ -12,10 +12,11 @@ default: &default
 development:
   <<: *default
   encoding: unicode
-  database: tinder2
+  database: postgres
   poll: 5
-  username: postgres
-  password: vicho.1998
+  username: tinder2
+  password: tinder2
+ 
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -23,11 +24,13 @@ development:
 test:
   <<: *default
   database: db/test.sqlite3
+  username: postgres
 
 production:
   <<: *default
   encoding: unicode
-  database: tinder2
+  database: postgres
   poll: 5
-  username: postgres
-  password: vicho.1998
+  username: tinder2
+  password: tinder2
+ 
