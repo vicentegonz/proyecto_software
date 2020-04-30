@@ -16,6 +16,15 @@
             border-radius: 20px;
             background-color: burlywood;
         }
+        body {
+            padding: 0;
+            margin: 0;
+            background-image: url("<%= asset_path('edit.jpg') %>");
+            background-attachment: fixed;
+            background-size: cover;
+            font-family: 'Lato', sans-serif;
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -27,7 +36,9 @@
           <ul class="nav navbar-nav">
             <li><a href="/restaurants">Restaurant</a></li>
             <li><a href="/comunas">Comunas</a></li>
-            <li><a href="#">Comentarios</a></li>
+            <li><a href="/comentarios">Comentarios</a></li>
+            <li><a href="/gustos">Gustos</a></li>
+            <li><a href="/meetings">Citas</a></li>
             <li><a href="#">Mi cuenta</a></li>
           </ul>
         </div>

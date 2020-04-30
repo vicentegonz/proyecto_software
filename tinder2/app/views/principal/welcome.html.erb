@@ -78,7 +78,9 @@
       <ul class="nav navbar-nav">
         <li><a href="restaurants">Restaurant</a></li>
         <li><a href="comunas">Comunas</a></li>
-        <li><a href="#">Comentarios</a></li>
+        <li><a href="comentarios">Comentarios</a></li>
+        <li><a href="gustos">Gustos</a></li>
+        <li><a href="meetings">Citas</a></li>
         <li><a href="#">Mi cuenta</a></li>
       </ul>
     </div>
@@ -145,7 +147,10 @@
         <div class="photo" style="text-align: center;">
         <%= image_tag("comentarios.png", :size => "260x180")%>
     </div>
-    <h2>Comentarios</h2>
+    <br><br>
+    <div style="text-align: center;">
+    <%= button_to "Comentarios", comentarios_path, :method => :get, :class => "button" %>
+    </div>
 
     </div>
   </div>

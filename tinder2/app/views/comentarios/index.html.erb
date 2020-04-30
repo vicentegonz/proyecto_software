@@ -1,9 +1,52 @@
-
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>   
+  <style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 50%;
+    }
+    
+    td, th {
+      border: 3px solid black;
+      text-align: left;
+      padding: 8px;
+    }
+    
+    tr{
+    border: black;
+      background-color: #dddddd;
+    }
+    body{
+        background-color: rgb(139, 3, 3);
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Inicio</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li><a href="/restaurants">Restaurant</a></li>
+          <li><a href="/comunas">Comunas</a></li>
+          <li><a href="/comentarios">Comentarios</a></li>
+          <li><a href="/gustos">Gustos</a></li>
+          <li><a href="/meetings">Citas</a></li>
+          <li><a href="#">Mi cuenta</a></li>
+        </ul>
+      </div>
+    </nav>
 <p id="notice"><%= notice %></p>
-
+<div style="text-align: center;">
 <h1>Comentarios</h1>
 
-<table>
+<table style="border:1px solid black;margin-left:auto;margin-right:auto;">
   <thead>
     <tr>
       <th>Contenido</th>
@@ -24,3 +67,5 @@
 <br>
 
 <%= link_to 'Crear Comentarios', comentarios_new_path %>
+</div>
+</body>

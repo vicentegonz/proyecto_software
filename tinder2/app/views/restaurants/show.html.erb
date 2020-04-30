@@ -34,52 +34,75 @@
         font-family: 'Lato', sans-serif;
         display: block;
     }
+    .boton{
+      text-align: center;
+          border-radius: 5px;
+          background-color: #f2f2f2;
+          padding: 10px;
+          width: 100px;
+          margin-left: auto;
+          margin-right: auto;
+          border-radius: 20px;
+          background-color: black;
+          display: inline-block;
+
+      
+    }
+    
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <a class="navbar-brand" href="/welcome">Inicio</a>
-          </div>
-          <ul class="nav navbar-nav">
-            <li><a href="/restaurants">Restaurant</a></li>
-            <li><a href="/comunas">Comunas</a></li>
-            <li><a href="#">Comentarios</a></li>
-            <li><a href="#">Mi cuenta</a></li>
-          </ul>
-        </div>
-      </nav>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/welcome">Inicio</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li><a href="/restaurants">Restaurant</a></li>
+        <li><a href="/comunas">Comunas</a></li>
+        <li><a href="/comentarios">Comentarios</a></li>
+        <li><a href="/gustos">Gustos</a></li>
+        <li><a href="/meetings">Citas</a></li>
+        <li><a href="#">Mi cuenta</a></li>
+      </ul>
+    </div>
+  </nav>
     
 
 <p id="notice"><%= notice %></p>
 
 <div style="text-align: center;">
-<h2 style="color: white;"><strong>Restaurants</strong></h2>
-<table style="border:1px solid black;margin-left:auto;margin-right:auto;">
-  <thead>
-      <tr>
-          <th style="text-align: center;">Nombre</th>
-          <th style="text-align: center;">Valoracion</th>
-          <th style="text-align: center;">Comentarios</th>
-          <th style="text-align: center;">Descripcion</th>
-      </tr>
-  </thead>
+  <h2 style="color: white;"><strong>Restaurant</strong></h2>
+  <table style="border:1px solid black;margin-left:auto;margin-right:auto;">
+    <thead>
+        <tr>
+            <th style="text-align: center;">Nombre</th>
+            <th style="text-align: center;">Valoracion</th>
+            <th style="text-align: center;">Comentarios</th>
+            <th style="text-align: center;">Descripcion</th>
+        </tr>
+    </thead>
 
-<tbody>
-  <tr>
-      <td style="text-align: center;"><%= @restaurant.nombre%></td>
-      <td style="text-align: center;"><%= @restaurant.valoracion%></td>
-      <td style="text-align: center;"><%= @restaurant.comentarios%></td>
-      <td style="text-align: center;"><%= @restaurant.descripcion%></td>
-  </tr>
-</tbody>
-</table>
+  <tbody>
+    <tr>
+        <td style="text-align: center;"><%= @restaurant.nombre%></td>
+        <td style="text-align: center;"><%= @restaurant.valoracion%></td>
+        <td style="text-align: center;"><%= @restaurant.comentarios%></td>
+        <td style="text-align: center;"><%= @restaurant.descripcion%></td>
+    </tr>
+  </tbody>
+  </table>
 
-<br>
-<%= link_to 'Listado de restaurants', restaurants_path%>
-<%= link_to 'Editar restaurant', restaurants_edit_path(@restaurant.id)%>
-<%= link_to 'Eliminar restaurant', restaurant_path(@restaurant.id), method: :delete, data: {confirm: 'Estas seguro?'}%>
+  <br>
+  <div class="boton">
+    <%= link_to 'Listado de restaurants', restaurants_path%>
+  </div>
+    <div class="boton">
+    <%= link_to 'Editar restaurant', restaurants_edit_path(@restaurant.id)%>
+  </div>
+    <div class="boton">
+    <%= link_to 'Eliminar restaurant', restaurant_path(@restaurant.id), method: :delete, data: {confirm: 'Estas seguro?'}%>
+  </div>
 </div>
 
 </body>

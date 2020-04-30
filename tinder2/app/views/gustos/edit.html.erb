@@ -1,4 +1,40 @@
 
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+      form{
+          text-align: center;
+          border-radius: 5px;
+          background-color: #f2f2f2;
+          padding: 20px;
+          width: 330px;
+          margin-left: auto;
+          margin-right: auto;
+          border-radius: 20px;
+          background-color: burlywood;
+      }
+  </style>
+</head>
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="/welcome">Inicio</a>
+          </div>
+          <ul class="nav navbar-nav">
+            <li><a href="/restaurants">Restaurant</a></li>
+            <li><a href="/comunas">Comunas</a></li>
+            <li><a href="/comentarios">Comentarios</a></li>
+            <li><a href="/gustos">Gustos</a></li>
+            <li><a href="/meetings">Citas</a></li>
+            <li><a href="#">Mi cuenta</a></li>
+          </ul>
+        </div>
+      </nav>
 <p id="notice"><%= notice %></p>
 
 <h1>Editar Gustos</h1>
@@ -22,5 +58,5 @@
 <% end %>
 
 <%= link_to 'Listado de gustos', gustos_path%>
-
+</body>
 
