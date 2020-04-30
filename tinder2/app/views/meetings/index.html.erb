@@ -1,0 +1,28 @@
+
+<p id="notice"><%= notice %></p>
+
+<h1>Citas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Usuario1</th>
+      <th>Ususario2</th>
+      <th colspan="2"> Acciones </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @meetings.each do |meeting| %>
+      <tr>
+        <td><%= meeting.usuario1 %></td>
+        <td><%= meeting.usuario2 %></td>
+        <td> <%= link_to 'Ver detalles', meeting_path(meeting.id)%></p>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Crear Citas', meetings_new_path %>

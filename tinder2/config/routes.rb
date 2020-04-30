@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   #create
   get 'principal/welcome'
   get 'users/create', to: 'userscontroller#create'
@@ -15,6 +16,9 @@ Rails.application.routes.draw do
   get 'comentarios/new', to: 'comentarios#new'
   post 'comentarios', to: 'comentarios#create'
 
+  get 'meetings/new', to: 'meetings#new'
+  post 'meetings', to: 'meetings#create'
+
   #Read
   get 'comunas', to: 'comunas#index'
   get 'comunas/:id', to: 'comunas#show', as: 'comuna'
@@ -24,6 +28,10 @@ Rails.application.routes.draw do
 
   get 'comentarios', to: 'comentarios#index'
   get 'comentarios/:id', to: 'comentarios#show', as: 'comentario'
+
+  get 'meetings', to: 'meetings#index'
+  get 'meetings/:id', to: 'meetings#show', as: 'meeting'
+
   #update
   get 'comunas/:id/edit', to: 'comunas#edit', as: :comunas_edit
   patch 'comunas/:id', to: 'comunas#update'
@@ -34,12 +42,18 @@ Rails.application.routes.draw do
   get 'comentarios/:id/edit', to: 'comentarios#edit', as: :comentarios_edit
   patch 'comentarios/:id', to: 'comentarios#update'
 
+  get 'meetings/:id/edit', to: 'meetings#edit', as: :meetings_edit
+  patch 'meetings/:id', to: 'meetings#update'
+
+
   #delete
   delete 'comunas/:id', to: 'comunas#destroy'
 
   delete 'gustos/:id', to: 'gustos#destroy'
 
   delete 'comentarios/:id', to: 'comentarios#destroy'
+
+  delete 'meetings/:id', to: 'meetings#destroy'
   #pagina inicio
   get 'welcome', to: 'principal#welcome'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

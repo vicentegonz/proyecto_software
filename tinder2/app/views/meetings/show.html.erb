@@ -1,0 +1,16 @@
+ 
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Usuario 1:</strong>
+  <%= @meeting.usuario1 %>
+</p>
+
+<p>
+  <strong>Usuario2:</strong>
+  <%= @meeting.usuario2 %>
+</p>
+
+<%= link_to 'Listado de citas', meetings_path %>
+<%= link_to 'Editar cita', meetings_edit_path(@meeting.id) %>
+<%= link_to 'Eliminar gusto', meeting_path(@meeting.id), method: :delete, data: { confirm: 'Está seguro que desea borrar la cita?'  }  %>

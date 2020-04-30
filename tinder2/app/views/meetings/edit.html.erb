@@ -1,0 +1,25 @@
+
+<p id="notice"><%= notice %></p>
+
+<h1>Editar Citas</h1>
+
+<%= form_with(model: @meeting, method: :patch) do |form|%>
+
+    <div class = 'field'>
+        <%= form.label :usuario1 %>
+        <%= form.text_field :usuario1 %>
+    </div>
+
+    <div class = 'field'>
+        <%= form.label :usuario2 %>
+        <%= form.text_field :usuario2 %>
+    </div>
+
+    <div class='actions'>
+        <%= form.submit %>
+    </div>
+
+<% end %>
+
+<%= link_to 'Listado de citas', meetings_path%>
+

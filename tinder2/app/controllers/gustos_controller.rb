@@ -16,10 +16,10 @@ class GustosController < ApplicationController
     @gusto = Gusto.create(gusto_params)
 
     if @gusto.save
-      redirect_to gustos_new_path, notice: 'Comentario creado exitosamente.'
+      redirect_to gustos_new_path, notice: 'Gusto creado exitosamente.'
 
     else
-      redirect_to gustos_new_path, notice: 'No se pudo crear el comentario.'
+      redirect_to gustos_new_path, notice: 'No se pudo crear el gusto.'
     
     end
   end
