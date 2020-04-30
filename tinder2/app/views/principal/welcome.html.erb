@@ -39,6 +39,29 @@
     header{
         height: 200px;
     }
+    button {
+        background-color:black;
+        color: black;
+        border: none;
+        padding: 16px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        border-radius: 5px;
+        font-size: 25px;
+        margin: 4px 2px;
+        transition-duration: 0.8s;
+        border: 2px solid #4CAF50;
+    }
+    button:hover{
+        background-color: #4CAF50;
+        color: white;
+    }
+    .li:last-child {
+      text-align: right; 
+    
+  }
+    
     
     </style>
 </head>
@@ -53,7 +76,7 @@
         <a class="navbar-brand" href="#">Inicio</a>
       </div>
       <ul class="nav navbar-nav">
-        <li><a href="#">Restaurant</a></li>
+        <li><a href="restaurants">Restaurant</a></li>
         <li><a href="comunas">Comunas</a></li>
         <li><a href="#">Comentarios</a></li>
         <li><a href="#">Mi cuenta</a></li>
@@ -102,7 +125,11 @@
         <div class="photo" style="text-align: center;">
         <%= image_tag("restaurant.jpg", :size => "260x180")%>
         </div>
-    <h2>Restourant</h2>
+        <br><br>
+        <div style="text-align: center;">
+          <%= button_to "Restaurants", restaurants_path, :method => :get %>
+          
+      </div>
       <p></p>
     </div>
     <div class="column" style="background-color:#bbb;">
@@ -111,7 +138,7 @@
     </div>
     <br><br>
     <div style="text-align: center;">
-        <%= button_to "Comunas", comunas_path, :method => :get %>
+        <%= button_to "Comunas", comunas_path, :method => :get, :class => "button" %>
     </div>
     </div>
     <div class="column" style="background-color:#ccc;">
