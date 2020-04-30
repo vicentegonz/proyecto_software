@@ -1,0 +1,37 @@
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="/welcome">Inicio</a>
+          </div>
+          <ul class="nav navbar-nav">
+            <li><a href="#">Restaurant</a></li>
+            <li><a href="/comunas">Comunas</a></li>
+            <li><a href="#">Comentarios</a></li>
+            <li><a href="#">Mi cuenta</a></li>
+          </ul>
+        </div>
+      </nav>
+    <p id="notice"><%= notice %></p>    
+
+<div class="parte1" style="text-align: center;">
+<h1>Editar Comunas</h1>
+<%= form_with(model: @comuna, method: :patch) do |form|%>
+    <div class="field">
+        <%= form.label :nombre%>
+        <%= form.text_field :nombre%>
+    </div>
+    <div class='actions'>
+        <%= form.submit%>
+    </div>
+<% end %>
+<%= link_to 'Listado de Comunas', comuna_path%>
+</div>
+</body>
