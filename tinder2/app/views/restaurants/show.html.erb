@@ -1,0 +1,85 @@
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+      table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 50%;
+        margin-left:auto; 
+    margin-right:auto;
+        
+      }
+      
+      
+      td, th {
+        border: 3px solid black;
+        text-align: left;
+        padding: 8px;
+      }
+      
+      tr{
+      border: black;
+        background-color: #dddddd;
+      }
+      body {
+        padding: 0;
+        margin: 0;
+        background-image: url("<%= asset_path('resta2.jpg') %>");
+        background-attachment: fixed;
+        background-size: cover;
+        font-family: 'Lato', sans-serif;
+        display: block;
+    }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="/welcome">Inicio</a>
+          </div>
+          <ul class="nav navbar-nav">
+            <li><a href="/restaurants">Restaurant</a></li>
+            <li><a href="/comunas">Comunas</a></li>
+            <li><a href="#">Comentarios</a></li>
+            <li><a href="#">Mi cuenta</a></li>
+          </ul>
+        </div>
+      </nav>
+    
+
+<p id="notice"><%= notice %></p>
+
+<div style="text-align: center;">
+<h2 style="color: white;"><strong>Restaurants</strong></h2>
+<table style="border:1px solid black;margin-left:auto;margin-right:auto;">
+  <thead>
+      <tr>
+          <th style="text-align: center;">Nombre</th>
+          <th style="text-align: center;">Valoracion</th>
+          <th style="text-align: center;">Comentarios</th>
+          <th style="text-align: center;">Descripcion</th>
+      </tr>
+  </thead>
+
+<tbody>
+  <tr>
+      <td style="text-align: center;"><%= @restaurant.nombre%></td>
+      <td style="text-align: center;"><%= @restaurant.valoracion%></td>
+      <td style="text-align: center;"><%= @restaurant.comentarios%></td>
+      <td style="text-align: center;"><%= @restaurant.descripcion%></td>
+  </tr>
+</tbody>
+</table>
+
+<br>
+<%= link_to 'Listado de restaurants', restaurants_path%>
+<%= link_to 'Editar restaurant', restaurants_edit_path(@restaurant.id)%>
+<%= link_to 'Eliminar restaurant', restaurant_path(@restaurant.id), method: :delete, data: {confirm: 'Estas seguro?'}%>
+</div>
+
+</body>

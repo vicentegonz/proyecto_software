@@ -43,4 +43,15 @@ Rails.application.routes.draw do
   #pagina inicio
   get 'welcome', to: 'principal#welcome'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  ###Restaurants
+  get 'restaurants/new', to: 'restaurants#new'
+  post 'restaurants', to: 'restaurants#create'
+  #Read
+  get 'restaurants', to: 'restaurants#index'
+  get 'restaurants/:id', to: 'restaurants#show', as: 'restaurant'
+  #update
+  get 'restaurants/:id/edit', to: 'restaurants#edit', as: :restaurants_edit
+  patch 'restaurants/:id', to: 'restaurants#update'
+  #delete
+  delete 'restaurants/:id', to: 'restaurants#destroy'
 end

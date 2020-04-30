@@ -35,7 +35,7 @@
             <a class="navbar-brand" href="/welcome">Inicio</a>
           </div>
           <ul class="nav navbar-nav">
-            <li><a href="/restaurants">Restaurant</a></li>
+            <li><a href="#">Restaurant</a></li>
             <li><a href="/comunas">Comunas</a></li>
             <li><a href="#">Comentarios</a></li>
             <li><a href="#">Mi cuenta</a></li>
@@ -45,27 +45,33 @@
     
 <p id="notice"><%= notice %></p>
 <div class="parte1" style="text-align: center;">
-    <h1>Comunas</h1>
+    <h1>Restaurant</h1>
     <table style="border:1px solid black;margin-left:auto;margin-right:auto;">
         <thead>
             <tr>
                 <th style="text-align: center;">Nombre</th>
-                <th style="text-align: center;">Acciones</th>
+                <th style="text-align: center;">Valoracion</th>
+                <th style="text-align: center;">Comentarios</th>
+                <th style="text-align: center;">Descripcion</th>
+                <th style="text-align: center;">Accion</th>
             </tr>
         </thead>
 
     <tbody>
-        <% @comunas.each do |comuna|%>
+        <% @restaurants.each do |restaurant|%>
         <tr>
-            <td style="text-align: center;"><%= comuna.nombre%></td>
-            <td style="text-align: center;"><%= link_to 'Ver detalles', comuna_path(comuna.id)%></td>
+            <td style="text-align: center;"><%= restaurant.nombre%></td>
+            <td style="text-align: center;"><%= restaurant.valoracion%></td>
+            <td style="text-align: center;"><%= restaurant.comentarios%></td>
+            <td style="text-align: center;"><%= restaurant.descripcion%></td>
+            <td style="text-align: center;"><%= link_to 'Ver detalles', restaurant_path(restaurant.id)%></td>
         </tr>
         <%end%>
     </tbody>
     </table>
     <br>
     
-    <%= button_to "Agregar comuna", comunas_new_path, :method => :get %>
+    <%= button_to "Agregar restaurant", restaurants_new_path, :method => :get %>
 </div>
 
 </body>>
