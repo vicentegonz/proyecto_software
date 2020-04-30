@@ -1,0 +1,16 @@
+ 
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @gusto.nombre %>
+</p>
+
+<p>
+  <strong>Descripcion:</strong>
+  <%= @gusto.descripcion %>
+</p>
+
+<%= link_to 'Listado de gustos', gustos_path %>
+<%= link_to 'Editar gusto', gustos_edit_path(@gusto.id) %>
+<%= link_to 'Eliminar gusto', gusto_path(@gusto.id), method: :delete, data: { confirm: 'Está seguro que desea borrar el gusto?'  }  %>

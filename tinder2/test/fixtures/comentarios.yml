@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  rid: 1
+  fecha: 2020-04-30
+  hora: MyString
+  uid: 1
+  contenido: MyString
+
+two:
+  rid: 1
+  fecha: 2020-04-30
+  hora: MyString
+  uid: 1
+  contenido: MyString

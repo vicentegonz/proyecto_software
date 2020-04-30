@@ -1,0 +1,26 @@
+
+<p id="notice"><%= notice %></p>
+
+<h1>Comentarios</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Contenido</th>
+      <th colspan="1"> Acciones </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @comentarios.each do |comentario| %>
+      <tr>
+        <td><%= comentario.contenido %></td>
+        <td> <%= link_to 'Ver detalles', comentario_path(comentario.id)%></p>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Crear Comentarios', comentarios_new_path %>

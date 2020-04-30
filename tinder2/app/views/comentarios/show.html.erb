@@ -1,0 +1,11 @@
+ 
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @comentario.contenido %>
+</p>
+
+<%= link_to 'Listado de comentarios', comentarios_path %>
+<%= link_to 'Editar comentario', comentarios_edit_path(@comentario.id) %>
+<%= link_to 'Eliminar comentario', comentario_path(@comentario.id), method: :delete, data: { confirm: 'Está seguro que desea borrar el gusto?'  }  %>

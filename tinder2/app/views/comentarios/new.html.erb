@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Comentarios</h1>
+
+<%= form_with(model: @comentario, method: :post) do |form| %>
+
+    <div class = 'field'>
+        <%= form.label :contenido %>
+        <%= form.text_field :contenido %>
+    </div>
+
+    <div class='actions'>
+        <%= form.submit %>
+    </div>
+
+<% end %>
+
