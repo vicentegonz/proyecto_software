@@ -5,16 +5,52 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <style>
-    form{
-        text-align: center;
-        border-radius: 5px;
-        background-color: #f2f2f2;
-        padding: 20px;
-        width: 330px;
-        margin-left: auto;
-        margin-right: auto;
-        border-radius: 20px;
-        background-color: burlywood;
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 50%;
+        margin-left:auto; 
+    margin-right:auto;
+        
+      }
+      
+      
+      td, th {
+        border: 3px solid black;
+        text-align: left;
+        padding: 8px;
+      }
+      
+      tr{
+      border: black;
+        background-color: #dddddd;
+      }
+      body {
+        padding: 0;
+        margin: 0;
+        background-image: url("<%= asset_path('resta2.jpg') %>");
+        background-attachment: fixed;
+        background-size: cover;
+        font-family: 'Lato', sans-serif;
+        display: block;
+    }
+    .button {
+      background-color: white;
+      color: black;
+      border: none;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      border-radius: 5px;
+      font-size: 15px;
+      margin: 4px 2px;
+      transition-duration: 0.8s;
+      border: 2px solid black;
+  }
+    .button:hover{
+        background-color: rgb(110, 42, 3);
+        color: white;
     }
 </style>
 </head>
@@ -34,19 +70,30 @@
         </ul>
       </div>
     </nav>
+
 <p id="notice"><%= notice %></p>
+<div style="text-align: center;">
+  <h2 style="color: white;"><strong>Citas</strong></h2>
+  <table style="border:1px solid black;margin-left:auto;margin-right:auto;">
+    <thead>
+      <tr>
+            <th style="text-align: center;">Usuario1</th>
+            <th style="text-align: center;">Usuario2</th>
+      </tr>
+    </thead>
 
-<p>
-  <strong>Usuario 1:</strong>
-  <%= @meeting.usuario1 %>
-</p>
+  <tbody>
+    <tr>
+        <td style="text-align: center;"><%= @meeting.usuario1%></td>
+        <td style="text-align: center;"><%= @meeting.usuario2%></td>
+    </tr>
+  </tbody>
+  </table>
+  <br>
 
-<p>
-  <strong>Usuario2:</strong>
-  <%= @meeting.usuario2 %>
-</p>
+    <%= link_to 'Listado de citas', meetings_path %>
+    <%= link_to 'Editar cita', meetings_edit_path(@meeting.id) %>
+    <%= link_to 'Eliminar gusto', meeting_path(@meeting.id), method: :delete, data: { confirm: 'Está seguro que desea borrar la cita?'  }  %>
 
-<%= link_to 'Listado de citas', meetings_path %>
-<%= link_to 'Editar cita', meetings_edit_path(@meeting.id) %>
-<%= link_to 'Eliminar gusto', meeting_path(@meeting.id), method: :delete, data: { confirm: 'Está seguro que desea borrar la cita?'  }  %>
+</div>
 </body>
