@@ -61,6 +61,37 @@
       text-align: right; 
     
   }
+  
+  .button {
+    background-color: white;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 5px;
+    font-size: 15px;
+    margin: 4px 2px;
+    transition-duration: 0.8s;
+    border: 2px solid black;
+}
+  .button:hover{
+      background-color: rgb(76, 152, 175);
+      color: white;
+  }
+  
+  nav ul li:hover {
+    background-color: #cb5f59;
+}
+.container-fluid{
+  background-color: #333333;
+  
+}
+.account {
+  text-align: right;
+  }
+
     
     
     </style>
@@ -72,16 +103,15 @@
 </div>
 <nav class="navbar navbar-default">
     <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="#">Inicio</a>
-      </div>
+      
       <ul class="nav navbar-nav">
-        <li><a href="restaurants">Restaurant</a></li>
-        <li><a href="comunas">Comunas</a></li>
-        <li><a href="comentarios">Comentarios</a></li>
-        <li><a href="gustos">Gustos</a></li>
-        <li><a href="meetings">Citas</a></li>
-        <li><a href="#">Mi cuenta</a></li>
+        <li><a href="/welcome" style="color: white;">Inicio</a></li>
+        <li><a href="restaurants"style="color: white;">Restaurant</a></li>
+        <li><a href="comunas"style="color: white;">Comunas</a></li>
+        <li><a href="comentarios"style="color: white;">Comentarios</a></li>
+        <li><a href="gustos"style="color: white;">Gustos</a></li>
+        <li><a href="meetings"style="color: white;">Citas</a></li>
+        <li><a href="#"style="color: white" >Mi cuenta</a></li>
       </ul>
     </div>
   </nav>
@@ -129,7 +159,7 @@
         </div>
         <br><br>
         <div style="text-align: center;">
-          <%= button_to "Restaurants", restaurants_path, :method => :get %>
+          <%= button_to "Restaurants", restaurants_path, :method => :get, :class => "button" %>
           
       </div>
       <p></p>

@@ -1,2 +1,10 @@
 <h1>Hello</h1>
 <p>Hola world</p>
+<% if current_user %>
+    <p>hola <%= current_user.email%></p>
+    <%=link_to 'cerrar session', destroy_user_session_path, method: :delete%>
+<%else%>
+    <%=link_to 'registrarse', new_user_registration_path%></br>
+    <%=link_to 'iniciar session', new_user_session_path%>
+<%end%>
+
