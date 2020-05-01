@@ -37,7 +37,9 @@
       </nav>
 <p id="notice"><%= notice %></p>
 
+<div class="parte1" style="text-align: center;" >
 <h1>Editar Gustos</h1>
+<div>
 
 <%= form_with(model: @gusto, method: :patch) do |form|%>
 
@@ -56,7 +58,8 @@
     </div>
 
 <% end %>
-
+</div>
 <%= link_to 'Listado de gustos', gustos_path%>
+</div>
 </body>
 
