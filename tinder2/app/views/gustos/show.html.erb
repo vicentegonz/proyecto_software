@@ -71,21 +71,34 @@
       </div>
     </nav>
 <p id="notice"><%= notice %></p>
-<p>
+
+
+
 <div style="text-align: center;">
-<h2><strong> Gustos</strong></h2>
-<br>
-<strong>Nombre:</strong>
-<%= @gusto.nombre %>
-</p>
+  <h2 style="color: white;"><strong>Gustos</strong></h2>
+  <table style="border:1px solid black;margin-left:auto;margin-right:auto;">
+  <thead>
+    <tr>
+          <th style="text-align: center;">Nombre</th>
+          <th style="text-align: center;">Descripción</th>
+    </tr>
+  </thead>
 
-<p>
-  <strong>Descripcion:</strong>
-  <%= @gusto.descripcion %>
-</p>
+  <tbody>
+    <tr>
+          <td style="text-align: center;"><%= @gusto.nombre%></td>
+          <td style="text-align: center;"><%= @gusto.descripcion%></td>
+    </tr>
+  </tbody>
+  </table>
 
-<%= link_to 'Listado de gustos', gustos_path %>
-<%= link_to 'Editar gusto', gustos_edit_path(@gusto.id) %>
-<%= link_to 'Eliminar gusto', gusto_path(@gusto.id), method: :delete, data: { confirm: 'Está seguro que desea borrar el gusto?'  }  %>
+  <br>
+  
+    <%= link_to 'Listado de gustos', gustos_path %>
+
+    <%= link_to 'Editar gusto', gustos_edit_path(@gusto.id) %>
+
+    <%= link_to 'Eliminar gusto', gusto_path(@gusto.id), method: :delete, data: { confirm: 'Está seguro que desea borrar el gusto?'  }  %>
+    
 </div>
 </body>
