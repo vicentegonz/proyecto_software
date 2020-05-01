@@ -36,29 +36,33 @@
     </nav>
 <p id="notice"><%= notice %></p>
 
-<h1>Gustos</h1>
+<div class="parte1" style="text-align: center;">
 
-<table>
-  <thead>
-    <tr>
-      <th>Nombre</th>
-      <th>Descripcion</th>
-      <th colspan="2"> Acciones </th>
-    </tr>
-  </thead>
+    <h1>Gustos</h1>
+    <table style="border:1px solid black;margin-left:auto;margin-right:auto;">
+      <thead>
+        <tr>
+          <th style="text-align: center;">Nombre</th>
+          <th style="text-align: center;">Descripcion</th>
+          <th style="text-align: center;">Acciones </th>
+        </tr>
+      </thead>
 
-  <tbody>
-    <% @gustos.each do |gusto| %>
-      <tr>
-        <td><%= gusto.nombre %></td>
-        <td><%= gusto.descripcion %></td>
-        <td> <%= link_to 'Ver detalles', gusto_path(gusto.id)%></p>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <tbody>
+        <% @gustos.each do |gusto| %>
+          <tr>
+            <td style="text-align: center;"><%= gusto.nombre %></td>
+            <td style="text-align: center;"><%= gusto.descripcion %></td>
+            <td style="text-align: center;"><%= link_to 'Ver detalles', gusto_path(gusto.id)%></p>w
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
 
-<br>
+    <br>
 
-<%= link_to 'Crear Gustos', gustos_new_path %>
+    <%= link_to 'Crear Gustos', gustos_new_path %>
+
+</div>
+
 </body>
