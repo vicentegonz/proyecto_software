@@ -35,10 +35,11 @@
       </div>
     </nav>
 <p id="notice"><%= notice %></p>
-
 <p>
-  <strong>Nombre:</strong>
-  <%= @gusto.nombre %>
+<div style="text-align: center;">
+<h2><strong> Gustos</strong></h2>
+<br>
+<%= @gusto.nombre %>
 </p>
 
 <p>
@@ -49,4 +50,5 @@
 <%= link_to 'Listado de gustos', gustos_path %>
 <%= link_to 'Editar gusto', gustos_edit_path(@gusto.id) %>
 <%= link_to 'Eliminar gusto', gusto_path(@gusto.id), method: :delete, data: { confirm: 'Está seguro que desea borrar el gusto?'  }  %>
+</div>
 </body>
