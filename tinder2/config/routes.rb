@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
 
 
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    registrations: 'users/registrations'
+  }
+  root to: 'hello#hola'
   #create
   get 'principal/welcome'
-  get 'users/create', to: 'userscontroller#create'
-  post 'users/create', to: 'userscontroller#new_user'
-  get 'users/list', to: 'userscontroller#list'
-  get 'salu2', to: 'hello#hola'
   get 'comunas/new', to: 'comunas#new'
   post 'comunas', to: 'comunas#create'
 
