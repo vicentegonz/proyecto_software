@@ -35,7 +35,7 @@
         display: block;
     }
     .button {
-      background-color: white;
+      background-color: red;
       color: black;
       border: none;
       padding: 10px 20px;
@@ -94,7 +94,7 @@
 
   <br>
   
-    <h3 style="color: white;"><%= link_to 'Listado de gustos', gustos_path %></h3>
+    <%= link_to 'Listado de gustos', gustos_path %>
 
     <%= link_to 'Editar gusto', gustos_edit_path(@gusto.id) %>
 
