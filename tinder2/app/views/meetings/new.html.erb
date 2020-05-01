@@ -15,7 +15,39 @@
           margin-right: auto;
           border-radius: 20px;
           background-color: burlywood;
+        
       }
+        body {
+          padding: 0;
+          margin: 0;
+          background-image: url("<%= asset_path('resta.jpg') %>");
+          background-attachment: fixed;
+          background-size: cover;
+          font-family: 'Lato', sans-serif;
+          display: block;
+      }
+    header{
+        background-color: white;
+    }
+    .button {
+      background-color: white;
+      color: black;
+      border: none;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      border-radius: 5px;
+      font-size: 12px;
+      margin: 4px 2px;
+      transition-duration: 0.8s;
+      border: 2px solid black;
+  }
+    .button:hover{
+        background-color: rgb(3, 110, 65);
+        color: white;
+    }
+      
   </style>
 </head>
 <body>
@@ -34,25 +66,30 @@
           </ul>
         </div>
       </nav>
-<p id="notice"><%= notice %></p>
 
-<h1>Citas</h1>
+<div class="parte1" style="text-align: center;">
+<p id="notice"><%= notice %></p>
+<div class="header">
+<h1 style="color: white;"><strong>Nueva Cita</strong></h1>
+</div>
 
 <%= form_with(model: @meeting, method: :post) do |form|%>
 
-    <div class = 'field'>
+    <div class = 'field' style="text-align: center;">
         <%= form.label :usuario1 %>
         <%= form.text_field :usuario1 %>
     </div>
-
-    <div class = 'field'>
+    <br>
+    <div class = 'field' style="text-align: center;">
         <%= form.label :usuario2 %>
         <%= form.text_field :usuario2 %>
     </div>
-
-    <div class='actions'>
+    <br>
+    <div class='actions' style="text-align: center;">
         <%= form.submit %>
     </div>
+    <br>
+    <%= link_to 'Listado de Citas', meetings_path, :method => :get, :class => "button" %>
 
 <% end %>
 </body>
