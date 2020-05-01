@@ -28,7 +28,7 @@
       body {
         padding: 0;
         margin: 0;
-        background-image: url("<%= asset_path('resta2.jpg') %>");
+        background-image: url("<%= asset_path('vino1_opt.jpg') %>");
         background-attachment: fixed;
         background-size: cover;
         font-family: 'Lato', sans-serif;
@@ -99,6 +99,6 @@
     <%= link_to 'Editar gusto', gustos_edit_path(@gusto.id) %>
 
     <%= link_to 'Eliminar gusto', gusto_path(@gusto.id), method: :delete, data: { confirm: 'Está seguro que desea borrar el gusto?'  }  %>
-    
+
 </div>
 </body>
