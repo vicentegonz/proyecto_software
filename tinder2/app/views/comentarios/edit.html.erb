@@ -50,10 +50,9 @@
 <body>
     <nav class="navbar navbar-default">
         <div class="container-fluid">
-          <div class="navbar-header">
-            <a class="navbar-brand" href="#">Inicio</a>
-          </div>
+          
           <ul class="nav navbar-nav">
+            <li><a href="/welcome">Inicio</a></li>
             <li><a href="/restaurants">Restaurant</a></li>
             <li><a href="/comunas">Comunas</a></li>
             <li><a href="/comentarios">Comentarios</a></li>
@@ -82,7 +81,7 @@
 
 <% end %>
 
-<%= link_to 'Listado de comentarios', comentarios_path%>
+<%= link_to 'Listado de comentarios', comentarios_path, :method => :get, :class => "button"%>
 
 </div>
 </div>

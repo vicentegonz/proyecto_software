@@ -34,19 +34,23 @@ margin-right:auto;
     font-family: 'Lato', sans-serif;
     display: block;
 }
-.boton{
+.button {
+  background-color: white;
+  color: black;
+  border: none;
+  padding: 10px 20px;
   text-align: center;
-      border-radius: 5px;
-      background-color: #f2f2f2;
-      padding: 10px;
-      width: 100px;
-      margin-left: auto;
-      margin-right: auto;
-      border-radius: 20px;
-      background-color: black;
-      display: inline-block;
-
-  
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 5px;
+  font-size: 12px;
+  margin: 4px 2px;
+  transition-duration: 0.8s;
+  border: 2px solid black;
+}
+.button:hover{
+    background-color: rgb(3, 110, 65);
+    color: white;
 }
 h2{
   color: black;
@@ -57,10 +61,9 @@ h2{
 <body>
   <nav class="navbar navbar-default">
       <div class="container-fluid">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="#">Inicio</a>
-        </div>
+        
         <ul class="nav navbar-nav">
+          <li><a href="/welcome">Inicio</a></li>
           <li><a href="/restaurants">Restaurant</a></li>
           <li><a href="/comunas">Comunas</a></li>
           <li><a href="/comentarios">Comentarios</a></li>
@@ -89,14 +92,11 @@ h2{
   </tr>
 </tbody>
 </table>
-<div class="boton">
-<%= link_to 'Listado de comentarios', comentarios_path %>
+
+<%= link_to 'Listado de comentarios', comentarios_path, :method => :get, :class => "button" %>
+
+<%= link_to 'Editar comentario', comentarios_edit_path(@comentario.id), :method => :get, :class => "button" %>
+
+<%= link_to 'Eliminar comentario', comentario_path(@comentario.id), method: :delete, data: { confirm: 'Está seguro que desea borrar el gusto?'  } , :class => "button" %>
 </div>
-<div class="boton">
-<%= link_to 'Editar comentario', comentarios_edit_path(@comentario.id) %>
-</div>
-<div class="boton">
-<%= link_to 'Eliminar comentario', comentario_path(@comentario.id), method: :delete, data: { confirm: 'Está seguro que desea borrar el gusto?'  }  %>
-</div>
-</div>>
 </body>
