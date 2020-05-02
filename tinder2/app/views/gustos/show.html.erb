@@ -112,11 +112,11 @@
 
   <br>
   
-    <%= link_to 'Listado de gustos', gustos_path %>
+    <%= link_to 'Listado de gustos', gustos_path, :method => :get, :class => "button" %>
 
-    <%= link_to 'Editar gusto', gustos_edit_path(@gusto.id) %>
+    <%= link_to 'Editar gusto', gustos_edit_path(@gusto.id), :method => :get, :class => "button" %>
 
-    <%= link_to 'Eliminar gusto', gusto_path(@gusto.id), method: :delete, data: { confirm: 'Está seguro que desea borrar el gusto?'  }  %>
+    <%= link_to 'Eliminar gusto', gusto_path(@gusto.id), method: :delete, data: { confirm: 'Está seguro que desea borrar el gusto?'  }, :method => :get, :class => "button"  %>
 
 </div>
 </body>
