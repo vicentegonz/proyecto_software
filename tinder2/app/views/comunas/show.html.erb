@@ -52,25 +52,43 @@
         background-color: rgb(110, 42, 3);
         color: white;
     }
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #333;
+    }
+    
+    li {
+      float: left;
+    }
+    
+    li a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+    
+    li a:hover {
+      background-color: #cb5f59;
+    }
+    .alignright { float: right; }
     
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <a class="navbar-brand" href="/welcome">Inicio</a>
-          </div>
-          <ul class="nav navbar-nav">
-            <li><a href="/restaurants">Restaurant</a></li>
-            <li><a href="/comunas">Comunas</a></li>
-            <li><a href="/comentarios">Comentarios</a></li>
-            <li><a href="/gustos">Gustos</a></li>
-            <li><a href="/meetings">Citas</a></li>
-            <li><a href="#">Mi cuenta</a></li>
-          </ul>
-        </div>
-      </nav>
+  <ul>
+    <li><a href="/welcome">Home</a></li>
+    <li><a href="/restaurants">Restaurants</a></li>
+    <li><a href="/comunas">Comunas</a></li>
+    <li><a href="/comentarios">Comentarios</a></li>
+    <li><a href="/gustos">Gustos</a></li>
+    <li><a href="/meetings">Citas</a></li>
+    <li class="alignright"><a href="#">Mi cuenta</a></li>
+  </ul>
     
 
 <p id="notice"><%= notice %></p>
