@@ -5,7 +5,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>   
 <style>
-<<<<<<< HEAD
+  h2{
+    text-align: center;
+  }
   ul {
     list-style-type: none;
     margin: 0;
@@ -42,54 +44,30 @@
     background-color: burlywood;
   
 }
-</style>
-=======
-        form{
-          text-align: center;
-          border-radius: 5px;
-          background-color: #f2f2f2;
-          padding: 20px;
-          width: 330px;
-          margin-left: auto;
-          margin-right: auto;
-          border-radius: 20px;
-          background-color: burlywood;
-        
-      }
-        body {
-          padding: 0;
-          margin: 0;
-          background-image: url("<%= asset_path('copas.jpg') %>");
-          background-attachment: fixed;
-          background-size: cover;
-          font-family: 'Lato', sans-serif;
-          display: block;
-      }
-    header{
-        background-color: white;
-    }
-    .button {
-      background-color: white;
-      color: black;
-      border: none;
-      padding: 10px 20px;
+.button {
+  background-color: white;
+  color: black;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 5px;
+  font-size: 12px;
+  margin: 4px 2px;
+  transition-duration: 0.8s;
+  border: 2px solid black;
+}
+.button:hover{
+    background-color: rgb(3, 110, 65);
+    color: white;}
+    .page{
       text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      border-radius: 5px;
-      font-size: 12px;
-      margin: 4px 2px;
-      transition-duration: 0.8s;
-      border: 2px solid black;
-  }
-    .button:hover{
-        background-color: blue rgb(3, 110, 65);
-        color: white;
     }
-      
-       
-      </style>
->>>>>>> 0960d2ab16b5906e9ee10e4a374e0ba519ae87b1
+    body{
+      background-image: url("<%= asset_path('comentario.jpg') %>");
+    }
+</style>
 </head>
 <body>
   <ul>
@@ -102,8 +80,8 @@
     <li class="alignright"><a href="#">Mi cuenta</a></li>
   </ul>
 <p id="notice"><%= notice %></p>
-
-<h1>Comentarios</h1>
+<div class="page" >
+<h2>Comentarios</h2>
 
 <%= form_with(model: @comentario, method: :post) do |form| %>
 
@@ -117,4 +95,6 @@
     </div>
 
 <% end %>
+<%= link_to 'Listado de comentarios', comentarios_path, :method => :get, :class => "button" %>
+</div>
 </body>
