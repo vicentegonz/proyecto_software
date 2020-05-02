@@ -30,6 +30,24 @@
             font-family: 'Lato', sans-serif;
             display: block;
         }
+        .button {
+          background-color: white;
+          color: black;
+          border: none;
+          padding: 10px 20px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          border-radius: 5px;
+          font-size: 15px;
+          margin: 4px 2px;
+          transition-duration: 0.8s;
+          border: 2px solid black;
+      }
+        .button:hover{
+            background-color: rgb(6, 105, 39);
+            color: white;
+        }
     
         </style>
 
@@ -73,7 +91,7 @@
     </table>
     <br>
     
-    <%= button_to "Agregar comuna", comunas_new_path, :method => :get %>
+    <%= button_to "Agregar comuna", comunas_new_path, :method => :get, :class => "button"%>
 </div>
 
 </body>>

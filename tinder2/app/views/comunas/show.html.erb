@@ -80,9 +80,9 @@
 <br>
 <%= @comuna.nombre%>
 </p>
-<%= link_to 'Listado de comunas', comunas_path%>
-<%= link_to 'Editar comuna', comunas_edit_path(@comuna.id)%>
-<%= link_to 'Eliminar comuna', comuna_path(@comuna.id), method: :delete, data: {confirm: 'Estas seguro?'}%>
+<%= link_to 'Listado de comunas', comunas_path, :method => :get, :class => "button"%>
+<%= link_to 'Editar comuna', comunas_edit_path(@comuna.id), :method => :get, :class => "button"%>
+<%= link_to 'Eliminar comuna', comuna_path(@comuna.id), method: :delete, data: {confirm: 'Estas seguro?'}, :method => :get, :class => "button"%>
 </div>
 
 </body>
