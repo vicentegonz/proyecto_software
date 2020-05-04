@@ -6,6 +6,11 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
   root to: 'hello#hola'
+  #cuenta
+  get 'cuenta', to: 'cuenta#show'
+  get 'confirmacion', to: 'cuenta#delete'
+  get 'eliminada', to: 'cuenta#done'
+
   #create
   get 'principal/welcome'
   get 'comunas/new', to: 'comunas#new'
