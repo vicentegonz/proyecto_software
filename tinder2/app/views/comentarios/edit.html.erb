@@ -69,6 +69,9 @@
             background-color: #cb5f59;
           }
           .alignright { float: right; }
+          h1{
+            color: whitesmoke;
+          }
     </style>
 </head>
 <body>
@@ -79,13 +82,13 @@
         <li><a href="/comentarios">Comentarios</a></li>
         <li><a href="/gustos">Gustos</a></li>
         <li><a href="/meetings">Citas</a></li>
-        <li class="alignright"><a href="#">Mi cuenta</a></li>
+        <li class="alignright"><a href="/cuenta">Mi cuenta</a></li>
       </ul>
     <p id="notice"><%= notice %></p>
 
 
 <div class="parte1" style="text-align: center;">
-<h1>Editar Comentarios</h1>
+<h1><strong>Editar Comentarios</strong></h1>
 <div class="form">
 <%= form_with(model: @comentario, method: :patch) do |form|%>
 

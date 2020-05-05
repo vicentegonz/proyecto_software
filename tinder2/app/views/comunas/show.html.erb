@@ -76,6 +76,23 @@
       background-color: #cb5f59;
     }
     .alignright { float: right; }
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 50%;
+    }
+    
+    td, th {
+      border: 3px solid black;
+      text-align: left;
+      padding: 7px;
+      width: 80%;
+    }
+    
+    tr{
+    border: black;
+      background-color: #dddddd;
+    }
     
     </style>
 </head>
@@ -87,7 +104,7 @@
     <li><a href="/comentarios">Comentarios</a></li>
     <li><a href="/gustos">Gustos</a></li>
     <li><a href="/meetings">Citas</a></li>
-    <li class="alignright"><a href="#">Mi cuenta</a></li>
+    <li class="alignright"><a href="/cuenta">Mi cuenta</a></li>
   </ul>
     
 
@@ -96,7 +113,22 @@
 <div style="text-align: center;">
 <h2><strong>Comunas</strong></h2>
 <br>
-<%= @comuna.nombre%>
+
+<table style="border:1px solid black;margin-left:auto;margin-right:auto;">
+  <thead>
+      <tr>
+          <th style="text-align: center;">Nombre</th>
+          
+      </tr>
+  </thead>
+
+<tbody>
+  <tr>
+      <td style="text-align: center;"><%= @comuna.nombre%></td>
+      
+  </tr>
+</tbody>
+</table>
 </p>
 <%= link_to 'Listado de comunas', comunas_path, :method => :get, :class => "button"%>
 <%= link_to 'Editar comuna', comunas_edit_path(@comuna.id), :method => :get, :class => "button"%>

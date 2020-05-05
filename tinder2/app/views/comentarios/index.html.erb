@@ -54,6 +54,25 @@
       background-color: #cb5f59;
     }
     .alignright { float: right; }
+    .button {
+      background-color: white;
+      color: black;
+      border: none;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      border-radius: 5px;
+      font-size: 15px;
+      margin: 4px 2px;
+      transition-duration: 0.8s;
+      border: 2px solid black;
+  }
+    .button:hover{
+        background-color: rgb(76, 152, 175);
+        color: white;
+    }
+    
   </style>
 </head>
 <body>
@@ -64,11 +83,11 @@
     <li><a href="/comentarios">Comentarios</a></li>
     <li><a href="/gustos">Gustos</a></li>
     <li><a href="/meetings">Citas</a></li>
-    <li class="alignright"><a href="#">Mi cuenta</a></li>
+    <li class="alignright"><a href="/cuenta">Mi cuenta</a></li>
   </ul>
 <p id="notice"><%= notice %></p>
 <div style="text-align: center;">
-<h1>Comentarios</h1>
+<h1><strong>Comentarios</strong></h1>
 
 <table style="border:1px solid black;margin-left:auto;margin-right:auto;">
   <thead>

@@ -1,14 +1,93 @@
-<h1>aqui va la lista de info</h1>
-<p>nombre completo: <%= current_user.nombre %> <%= current_user.apellidos %></p></br>
-<p>username: <%= current_user.username %></p></br>
-<p>email: <%= current_user.email %></p></br>
-<p>sexo: <%= current_user.sexo %></p></br>
-<p>tipo de usuario: <%= current_user.tipo %></p></br>
-
-<% if current_user %>
+<head>
+<style>
+    .info{
+        text-align: center;
+    }
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+      }
+      
+      li {
+        float: left;
+      }
+      
+      li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+      
+      li a:hover {
+        background-color: #cb5f59;
+      }
+      .alignright { float: right; }
+      .button {
+        background-color: white;
+        color: black;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        border-radius: 5px;
+        font-size: 15px;
+        margin: 4px 2px;
+        transition-duration: 0.8s;
+        border: 2px solid black;
+    }
+      .button:hover{
+          background-color: rgb(76, 152, 175);
+          color: white;
+      }
+      body{
+        padding: 0;
+        margin: 0;
+        background-image: url("<%= asset_path('usuario.jpg') %>");
+        background-attachment: fixed;
+        background-size: cover;
+        font-family: 'Lato', sans-serif;
+        display: block;
+      }
+      .info{
+        text-align: center;
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 20px;
+        width: 330px;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 20px;
+        background-color: rgba(255, 255, 255, 0.671);
+      }
+</style>
+</head>
+<body>
     <ul>
-        <li><a href="/welcome"> Menu</a></li>
-        <li><%=link_to 'cerrar session', destroy_user_session_path, method: :delete%></li>
-        <li><a href="/confirmacion"> eliminar cuenta</a></li>
-    </ul>
-<% end %>
+        <li><a href="/welcome">Home</a></li>
+        <li><a href="/restaurants">Restaurants</a></li>
+        <li><a href="/comunas">Comunas</a></li>
+        <li><a href="/comentarios">Comentarios</a></li>
+        <li><a href="/gustos">Gustos</a></li>
+        <li><a href="/meetings">Citas</a></li>
+        <li class="alignright"><a href="/cuenta">Mi cuenta</a>
+        </li>
+      </ul>
+      <br><br>
+<div class="info">
+<h1><strong>Mi cuenta</strong></h1>
+
+<p><strong>Nombre completo: </strong><%= current_user.nombre %> <%= current_user.apellidos %></p><br>
+<p><strong>Username:</strong> <%= current_user.username %></p><br>
+<p><strong>Email: </strong><%= current_user.email %></p><br>
+<p><strong>Sexo: </strong><%= current_user.sexo %></p><br>
+<p><strong>Tipo de usuario: </strong><%= current_user.tipo %></p><br>
+
+
+</div>
+</body>

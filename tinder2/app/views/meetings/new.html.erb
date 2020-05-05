@@ -82,7 +82,7 @@
     <li><a href="/comentarios">Comentarios</a></li>
     <li><a href="/gustos">Gustos</a></li>
     <li><a href="/meetings">Citas</a></li>
-    <li class="alignright"><a href="#">Mi cuenta</a></li>
+    <li class="alignright"><a href="/cuenta">Mi cuenta</a></li>
   </ul>
 
 <div class="parte1" style="text-align: center;">
@@ -91,7 +91,7 @@
 <h1 style="color: white;"><strong>Nueva Cita</strong></h1>
 </div>
 
-<%= form_with(model: @meeting, method: :post) do |form|%>
+<%= form_with(model: @meetings, method: :post) do |form|%>
 
     <div class = 'field' style="text-align: center;">
         <%= form.label :usuario1 %>
