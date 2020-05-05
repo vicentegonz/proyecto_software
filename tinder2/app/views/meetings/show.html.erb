@@ -111,7 +111,7 @@
 
     <%= link_to 'Listado de citas', meetings_path, :method => :get, :class => "button"%>
     <%= link_to 'Editar cita', meetings_edit_path(@meeting.id), :method => :get, :class => "button" %>
-    <%= link_to 'Eliminar gusto', meeting_path(@meeting.id), method: :delete, data: { confirm: 'Está seguro que desea borrar la cita?'  }, :method => :get, :class => "button"  %>
+    <%= link_to 'Eliminar cita', meeting_path(@meeting.id), method: :delete, data: { confirm: 'Está seguro que desea borrar la cita?'  }, :class => "button"  %>
 
 </div>
 </body>
