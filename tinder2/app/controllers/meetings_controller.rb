@@ -22,7 +22,7 @@ class MeetingsController < ApplicationController
   end
 
   def new
-    @meeting = Meeting.new
+    @meetings = Meeting.new
   end
 
   def edit
@@ -38,7 +38,7 @@ class MeetingsController < ApplicationController
       redirect_to meeting_path(@meeting.id), notice: 'Cita editada con éxito'
 
     else
-      redirecto_to meeting_path(@citum.id), notice: 'Ocurrió un error al editar la cita'
+      redirecto_to meeting_path(@meeting.id), notice: 'Ocurrió un error al editar la cita'
       
     end
   end
