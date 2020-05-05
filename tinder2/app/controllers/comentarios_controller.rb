@@ -29,11 +29,13 @@ class ComentariosController < ApplicationController
   end
 
   def update
-    comentario_params = params.require(:comentario).permit(:comentario)
+    comentario_params = params.require(:comentario).permit(:contenido)
     @comentario = Comentario.find(params[:id])
-
+    puts @comentario.contenido
+    
     if @comentario.update(comentario_params)
       redirect_to comentario_path(@comentario.id), notice: 'Comentario editado con éxito'
+      puts @comentario.contenido
 
     else
       redirecto_to comentario_path(@comentario.id), notice: 'Ocurrió un error al editar el comentario'

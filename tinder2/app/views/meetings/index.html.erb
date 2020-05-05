@@ -105,13 +105,13 @@
         </thead>
 
       <tbody>
-        <% @meetings.each do |meeting| %>
+          <% @meetings.each do |meeting| %>
           <tr>
             <td style="text-align: center;"><%= meeting.usuario1 %></td>
             <td style="text-align: center;"><%= meeting.usuario2 %></td>
             <td style="text-align: center;"> <%= link_to 'Ver detalles', meeting_path(meeting.id)%></p>
           </tr>
-        <% end %>
+          <% end %>
       </tbody>
     </table>
 

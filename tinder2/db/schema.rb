@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 2020_05_04_181732) do
 
   create_table "meetings", force: :cascade do |t|
     t.string "usuario1"
-    t.string "ususario2"
+    t.string "usuario2"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
