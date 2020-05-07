@@ -9,7 +9,7 @@ class MeetingsController < ApplicationController
   end
 
   def create
-    meeting_params = params.require(:meeting).permit(:usuario1, :usuario2)
+    meeting_params = params.require(:meeting).permit(:usuario1, :usuario2, :rid)
     @meeting = Meeting.create(meeting_params)
 
     if @meeting.save
