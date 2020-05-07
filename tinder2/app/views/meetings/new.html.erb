@@ -160,13 +160,18 @@
         <%= form.text_field :usuario2 %>
     </div>
     <br>
-    <div class='actions' style="text-align: center;">
-        <%= form.submit %>
+    <div class = 'field'>
+      <%= form.label :rid %>
+      <%= form.text_field :rid %>
     </div>
+    <br>
+    <div class='actions' style="text-align: center;">
+      <%= form.submit %>
+    </div>
+<%end%>
     <br>
     <%= link_to 'Listado de Citas', meetings_path, :method => :get, :class => "button" %>
 
-<%end%>
 </body>
 
 

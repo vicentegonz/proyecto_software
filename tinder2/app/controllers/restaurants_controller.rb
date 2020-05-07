@@ -16,7 +16,7 @@ class RestaurantsController < ApplicationController
   end
 
   def create
-    restaurant_params = params.require(:restaurant).permit(:nombre, :valoracion, :comentarios, :descripcion)
+    restaurant_params = params.require(:restaurant).permit(:nombre, :valoracion, :comentarios, :descripcion, :comuna, :did)
     @restaurant = Restaurant.create(restaurant_params)
 
     if @restaurant.save
@@ -27,7 +27,7 @@ class RestaurantsController < ApplicationController
   end
 
   def update
-    restaurant_params = params.require(:restaurant).permit(:nombre, :valoracion, :comentarios, :descripcion)
+    restaurant_params = params.require(:restaurant).permit(:nombre, :valoracion, :comentarios, :descripcion, :comuna, :did)
     @restaurant = Restaurant.find(params[:id])
 
     if @restaurant.update(restaurant_params)

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_04_181732) do
+ActiveRecord::Schema.define(version: 2020_05_07_174936) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "adminpack"
@@ -43,9 +43,10 @@ ActiveRecord::Schema.define(version: 2020_05_04_181732) do
 
   create_table "meetings", force: :cascade do |t|
     t.string "usuario1"
-    t.string "usuario2"
+    t.string "ususario2"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "rid"
   end
 
   create_table "restaurants", force: :cascade do |t|
@@ -55,6 +56,8 @@ ActiveRecord::Schema.define(version: 2020_05_04_181732) do
     t.string "descripcion"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "did"
+    t.string "comuna"
   end
 
   create_table "users", force: :cascade do |t|
@@ -68,6 +71,8 @@ ActiveRecord::Schema.define(version: 2020_05_04_181732) do
     t.string "sexo"
     t.string "nombre"
     t.string "apellidos"
+    t.string "contacto"
+    t.string "comuna"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true

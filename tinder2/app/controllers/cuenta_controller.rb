@@ -13,7 +13,7 @@ class CuentaController < ApplicationController
     def update
     puts "primeeer holaaaaaa"
     
-    cuenta_params = params.require(:user).permit(:nombre, :apellidos, :username, :email, :sexo, :tipo)
+    cuenta_params = params.require(:user).permit(:nombre, :apellidos, :username, :email, :sexo, :tipo, :contacto, :comuna)
     puts "segunso gollaaaaa"
     puts cuenta_params
     @user = User.find(current_user.id)

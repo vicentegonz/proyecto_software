@@ -159,6 +159,8 @@
                 <th style="text-align: center;">Comentarios</th>
                 <th style="text-align: center;">Descripcion</th>
                 <th style="text-align: center;">Accion</th>
+                <th style="text-align: center;">comuna</th>
+                <th style="text-align: center;">id dueño</th>
             </tr>
         </thead>
 
@@ -169,6 +171,8 @@
             <td style="text-align: center;"><%= restaurant.valoracion%></td>
             <td style="text-align: center;"><%= restaurant.comentarios%></td>
             <td style="text-align: center;"><%= restaurant.descripcion%></td>
+            <td style="text-align: center;"><%= restaurant.comuna%></td>
+            <td style="text-align: center;"><%= restaurant.did%></td>
             <td style="text-align: center;"><%= link_to 'Ver detalles', restaurant_path(restaurant.id)%></td>
         </tr>
         <%end%>
