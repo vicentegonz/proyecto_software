@@ -1,0 +1,187 @@
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        form{
+            text-align: center;
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 20px;
+            width: 330px;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 20px;
+            background-color: burlywood;
+        }
+        body {
+            padding: 0;
+            margin: 0;
+            background-image: url("<%= asset_path('restaurant_edit.jpg') %>");
+            background-attachment: fixed;
+            background-size: cover;
+            font-family: 'Lato', sans-serif;
+            display: block;
+        }
+        .button {
+            background-color: white;
+            color: black;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            border-radius: 5px;
+            font-size: 12px;
+            margin: 4px 2px;
+            transition-duration: 0.8s;
+            border: 2px solid black;
+        }
+          .button:hover{
+              background-color: rgb(3, 110, 65);
+              color: white;
+          }
+          ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+          }
+          
+          nav {
+            width: 100%;
+            height: 60px;
+            background-color: #333;
+          
+          }
+          nav ul {
+            float:left;
+          }
+          nav ul li{
+            float: left;
+            list-style: none;
+            position: relative;
+            text-decoration: none;
+          }
+          
+          nav ul li a{
+            display: block;
+            color: azure;
+            font-size: 14px;
+            padding: 22px 14px;
+            text-decoration: none;
+          }
+          nav ul li ul{
+            display: none;
+            position: absolute;
+            background-color: #ad8080f8;
+            width: 100px;
+            text-decoration: none;
+            padding: 0;
+          }
+          nav ul li:hover ul{
+            display: block;
+            position: absolute;
+            text-decoration: none;
+            color: whitesmoke;
+            background-color: #ad8080f8;
+            
+          }
+          nav ul li:hover a{
+            text-decoration: none;
+            color: whitesmoke;
+            text-decoration: none;
+            
+          }
+          nav ul li ul li a{
+            padding: 5px 5px;
+            float: left;
+            text-decoration: none;
+            background-color: #333;
+          
+          }
+          nav ul li ul li a:hover{
+            background-color: #ad8080f8;
+            color: whitesmoke;
+            
+          }
+          
+          .alignright{
+            position: absolute;
+            float:right;
+            right: 15px;
+          }
+          .alignright { float: right; }
+          h1{
+              color: white;
+          }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+          <li><a class="/welcome" href="/welcome">Home</a></li>
+          <li><a href="/restaurants">Restaurants</a></li>
+          <li><a href="/comunas">Comunas</a></li>
+          <li><a href="/comentarios">Comentarios</a></li>
+          <li><a href="/gustos">Gustos</a></li>
+          <li><a href="/meetings">Citas</a></li>
+          <li class="alignright"><a href="/cuenta">Mi cuenta</a>
+            <ul>
+              <li><a><%=link_to 'Cerrar session', destroy_user_session_path, method: :delete%>
+              </a></li>
+              
+              <li><a href="/confirmacion"> Eliminar cuenta</a></li>
+              
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    <p id="notice" style="color: #f2f2f2;"><%= notice %></p>    
+
+<div class="parte1" style="text-align: center;">
+<h1><strong>Editar Cuenta</strong></h1>
+<div class="form">
+<%= form_with(model: @user, method: :patch) do |form|%>
+    <div class="field">
+        <%= form.label :nombre%>
+        <%= form.text_field :nombre%>
+    </div>
+    <br>
+    <div class="field">
+        <%= form.label :apellidos%>
+        <%= form.text_field :apellidos%>
+    </div>
+    <br>
+    <div class="field">
+        <%= form.label :username%>
+        <%= form.text_field :username%>
+    </div>
+    <br>
+    <div class="field">
+        <%= form.label :email%>
+        <%= form.text_field :email%>
+    </div>
+    <br>
+    <div class="field">
+        <%= form.label :sexo%>
+        <%= form.text_field :sexo%>
+    </div>
+    <br>
+    <div class="field">
+        <%= form.label :tipo%>
+        <%= form.text_field :tipo%>
+    </div>
+    <br>
+    <div class='actions'>
+        <%= form.submit%>
+    </div>
+<% end %>
+<%= link_to 'Cuenta', cuenta_path, :method => :get, :class => "button"%>
+</div>
+
+</div>
+</body>

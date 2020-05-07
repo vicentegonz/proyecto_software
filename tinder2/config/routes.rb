@@ -10,6 +10,11 @@ Rails.application.routes.draw do
   get 'cuenta', to: 'cuenta#show'
   get 'confirmacion', to: 'cuenta#delete'
   get 'eliminada', to: 'cuenta#done'
+  get 'cuenta/edit', to: 'cuenta#edit'
+  get 'user', to: 'cuenta#show'
+  
+  patch 'user', to: 'cuenta#update'
+  
 
   #create
   get 'principal/welcome'
@@ -74,4 +79,6 @@ Rails.application.routes.draw do
   patch 'restaurants/:id', to: 'restaurants#update'
   #delete
   delete 'restaurants/:id', to: 'restaurants#destroy'
+
+  #delete 'hola/:id', to 'cuenta#eliminar_cuenta'
 end
