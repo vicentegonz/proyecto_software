@@ -8,7 +8,7 @@ class Addtousers < ActiveRecord::Migration[5.2]
     add_column :users, :edad, :integer
     add_column :users, :descripcion, :string
 
-    remove_column :restaurants, :did 
+    remove_column :restaurants, :did
     add_column :restaurants, :did, :integer
   end
 end

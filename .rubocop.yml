@@ -112,8 +112,10 @@ Style/HashTransformValues:
 Style/MixinUsage:
     Enabled: false
 Metrics/BlockLength:
-  Max: 60
+  Max: 65
 Bundler/OrderedGems:
   Enabled: false
 Style/NumericLiterals:
+  Enabled: false
+Layout/EmptyLinesAroundBlockBody:
   Enabled: false
