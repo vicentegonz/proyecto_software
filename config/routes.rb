@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   get 'user', to: 'cuenta#show'
   
   patch 'user', to: 'cuenta#update'
+  delete 'users', to: 'cuentas#destroy', as: 'delete'
+  
+  
   
 
   #create
