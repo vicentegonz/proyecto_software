@@ -112,6 +112,11 @@
         border-radius: 20px;
         background-color: rgba(255, 255, 255, 0.671);
       }
+      .style_image{
+        border-radius: 40px;
+        
+        
+      }
 </style>
 </head>
 <body>
@@ -137,6 +142,9 @@
       <br><br>
 <div class="info">
 <h1><strong>Mi cuenta</strong></h1>
+<div class="photo">
+  <%= image_tag("user.jpg", :size => "115x115", :class => "style_image")%>
+</div>
 
 <p><strong>Nombre completo: </strong><%= current_user.nombre %> <%= current_user.apellidos %></p><br>
 <p><strong>Username:</strong> <%= current_user.username %></p><br>
