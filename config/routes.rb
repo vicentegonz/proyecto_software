@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-
-
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations'
@@ -11,14 +9,10 @@ Rails.application.routes.draw do
   get 'confirmacion', to: 'cuenta#delete'
   get 'eliminada', to: 'cuenta#done'
   get 'cuenta/edit', to: 'cuenta#edit'
+
   get 'user', to: 'cuenta#show'
-  
   patch 'user', to: 'cuenta#update'
   delete 'users', to: 'cuentas#destroy', as: 'delete'
-  
-  
-  
-
   #create
   get 'principal/welcome'
   get 'comunas/new', to: 'comunas#new'
@@ -58,7 +52,6 @@ Rails.application.routes.draw do
 
   get 'meetings/:id/edit', to: 'meetings#edit', as: :meetings_edit
   patch 'meetings/:id', to: 'meetings#update'
-
 
   #delete
   delete 'comunas/:id', to: 'comunas#destroy'

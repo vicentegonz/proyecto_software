@@ -108,3 +108,12 @@ Style/HashTransformKeys:
 
 Style/HashTransformValues:
   Enabled: false
+
+Style/MixinUsage:
+    Enabled: false
+Metrics/BlockLength:
+  Max: 60
+Bundler/OrderedGems:
+  Enabled: false
+Style/NumericLiterals:
+  Enabled: false

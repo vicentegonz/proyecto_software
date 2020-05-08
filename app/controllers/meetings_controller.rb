@@ -11,13 +11,10 @@ class MeetingsController < ApplicationController
   def create
     meeting_params = params.require(:meeting).permit(:usuario1, :usuario2, :rid)
     @meeting = Meeting.create(meeting_params)
-
     if @meeting.save
       redirect_to meetings_new_path, notice: 'Cita creada exitosamente.'
-
     else
       redirect_to meetings_new_path, notice: 'No se pudo crear la cita.'
-    
     end
   end
 
@@ -29,17 +26,13 @@ class MeetingsController < ApplicationController
     @meeting = Meeting.find(params[:id])
   end
 
-
   def update
-    meeting_params = params.require(:meeting).permit(:usuario1, :usuario2)
+    meeting_params = params.require(:meeting).permit(:usuario1, :usuario2, :rid)
     @meeting = Meeting.find(params[:id])
-
     if @meeting.update(meeting_params)
       redirect_to meeting_path(@meeting.id), notice: 'Cita editada con éxito'
-
     else
       redirecto_to meeting_path(@meeting.id), notice: 'Ocurrió un error al editar la cita'
-      
     end
   end
 

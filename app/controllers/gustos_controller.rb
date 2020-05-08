@@ -20,11 +20,8 @@ class GustosController < ApplicationController
 
     else
       redirect_to gustos_new_path, notice: 'No se pudo crear el gusto.'
-    
     end
   end
-
-  
 
   def edit
     @gusto = Gusto.find(params[:id])
@@ -33,13 +30,10 @@ class GustosController < ApplicationController
   def update
     gusto_params = params.require(:gusto).permit(:nombre, :descripcion)
     @gusto = Gusto.find(params[:id])
-
     if @gusto.update(gusto_params)
       redirect_to gusto_path(@gusto.id), notice: 'Gusto editado con éxito'
-
     else
       redirecto_to gusto_path(@gusto.id), notice: 'Ocurrió un error al editar el gusto'
-      
     end
   end
 

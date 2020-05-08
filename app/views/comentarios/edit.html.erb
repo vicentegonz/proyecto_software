@@ -152,8 +152,16 @@
 
     <div class = 'field'>
         <%= form.label :contenido %>
-        <%= form.text_field :contenido %></br>
+        <%= form.text_field :contenido %>
     </div>
+    <div class = 'field'>
+      <%= form.label :rid %>
+      <%= form.number_field :rid %>
+  </div>
+  <div class = 'field'>
+    <%= form.label :uid %>
+    <%= form.number_field :uid %>
+</div>
 
     <div class='actions'>
         <%= form.submit %>
