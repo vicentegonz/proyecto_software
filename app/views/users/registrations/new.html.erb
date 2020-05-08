@@ -37,8 +37,8 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div>
-    <p>para tipo -> admin, dueño, client</p></br>
-    <p>para sexo -> hombre, mujer, otro</p></br>
+    <p>para tipo -> admin, dueño, client</p><br>
+    <p>para sexo -> hombre, mujer, otro</p><br>
   </div>
 
   <div class="field">
@@ -69,16 +69,6 @@
   <div class="field">
     <%= f.label :sexo %><br />
     <%= f.text_field :sexo, autofocus: true, autocomplete: "hombre, mujer, otro" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :contacto %><br />
-    <%= f.text_field :contacto, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :comuna %><br />
-    <%= f.text_field :comuna, autofocus: true%>
   </div>
 
   <div class="field">

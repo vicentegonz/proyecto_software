@@ -1,9 +1,10 @@
 class CuentaController < ApplicationController
     
-    def eliminar_cuenta
-        @cuenta = Cuenta.find(params[:id])
+    def destroy
+        puts "hola"
+        @cuenta = Cuenta.find(current_user.id)
         @cuenta.destroy
-        redirect_to welcome_path, notice: 'Cuenta eliminado correctamente'
+        redirect_to root_path, notice: 'Cuenta eliminada correctamente'
     end
     def edit
         @user = User.find(current_user.id)
@@ -13,7 +14,7 @@ class CuentaController < ApplicationController
     def update
     puts "primeeer holaaaaaa"
     
-    cuenta_params = params.require(:user).permit(:nombre, :apellidos, :username, :email, :sexo, :tipo, :contacto, :comuna)
+    cuenta_params = params.require(:user).permit(:nombre, :apellidos, :username, :email, :sexo, :tipo)
     puts "segunso gollaaaaa"
     puts cuenta_params
     @user = User.find(current_user.id)

@@ -48,9 +48,9 @@
     <h1>El usuario <strong><%= current_user.username %></strong> sera eliminado </h1>
     <div class="info">
     <p><h3>¿Estás seguro?</h3></p>
-    <form action="/eliminada">
-        <button  type="submit" class="button" >Si</button>
-    </form>
+    
+    <%= link_to 'Si', delete_path, method: :delete, data: {confirm: 'Esta sera tu ultima advertencia?'}, :class => "button" %>
+
 
         <%=link_to 'No',  welcome_path, method: :get, :class => "button"%>
 
@@ -58,4 +58,3 @@
     </div> 
     </div>
 </body>
-
