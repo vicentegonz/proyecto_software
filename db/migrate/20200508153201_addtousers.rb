@@ -1,6 +1,6 @@
 class Addtousers < ActiveRecord::Migration[5.2]
   def change
-    remove_column :meetings, :usuario2
+    #remove_column :meetings, :usuario2
     remove_column :meetings, :rid
     add_column :meetings, :usuario2, :string
     add_column :meetings, :rid, :integer
