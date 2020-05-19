@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_08_155747) do
+ActiveRecord::Schema.define(version: 2020_05_19_175536) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "adminpack"
@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 2020_05_08_155747) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "comuna"
-    t.integer "did"
+    t.integer "uid"
   end
 
   create_table "users", force: :cascade do |t|
