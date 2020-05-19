@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_19_175536) do
+ActiveRecord::Schema.define(version: 2020_05_19_184029) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "adminpack"
@@ -31,6 +31,8 @@ ActiveRecord::Schema.define(version: 2020_05_19_175536) do
     t.string "nombre"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "restaurant_id"
+    t.index ["restaurant_id"], name: "index_comunas_on_restaurant_id"
   end
 
   create_table "gustos", force: :cascade do |t|
@@ -56,7 +58,7 @@ ActiveRecord::Schema.define(version: 2020_05_19_175536) do
     t.string "descripcion"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "comuna"
+    t.integer "cid"
     t.integer "uid"
   end
 
@@ -76,9 +78,16 @@ ActiveRecord::Schema.define(version: 2020_05_19_175536) do
     t.integer "edad"
     t.string "descripcion"
     t.binary "foto"
+    t.bigint "comentario_id"
+    t.bigint "gusto_id"
+    t.index ["comentario_id"], name: "index_users_on_comentario_id"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["gusto_id"], name: "index_users_on_gusto_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "comunas", "restaurants"
+  add_foreign_key "users", "comentarios"
+  add_foreign_key "users", "gustos"
 end

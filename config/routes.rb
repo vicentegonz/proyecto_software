@@ -4,6 +4,12 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
   root to: 'hello#hola'
+  resources :users do
+    resources :comentarios
+    resources :gustos
+    resources :meetings
+  end
+
   #cuenta
   get 'cuenta', to: 'cuenta#show'
   get 'confirmacion', to: 'cuenta#delete'
