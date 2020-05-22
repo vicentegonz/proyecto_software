@@ -16,18 +16,18 @@ class RestaurantsController < ApplicationController
   end
 
   def create
-    restaurant_params = params.require(:restaurant).permit(:nombre, :valoracion, :comentarios, :descripcion, :comuna, :did)
+    restaurant_params = params.require(:restaurant).permit(:nombre, :valoracion, :comentarios, :descripcion, :cid, :uid)
     @restaurant = Restaurant.create(restaurant_params)
 
     if @restaurant.save
       redirect_to restaurants_new_path, notice: "Se ha creado exitosamente "
     else
-      redirect_to restaurants_new_path, notice: "No se pudo crear la comuna"
+      redirect_to restaurants_new_path, notice: "No se pudo crear el restuarant"
     end
   end
 
   def update
-    restaurant_params = params.require(:restaurant).permit(:nombre, :valoracion, :comentarios, :descripcion, :comuna, :did)
+    restaurant_params = params.require(:restaurant).permit(:nombre, :valoracion, :comentarios, :descripcion, :cid, :uid)
     @restaurant = Restaurant.find(params[:id])
     if @restaurant.update(restaurant_params)
       redirect_to restaurant_path(@restaurant.id), notice:'Se ha creado correctamente'

@@ -10,37 +10,42 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_19_184029) do
+ActiveRecord::Schema.define(version: 2020_05_22_215053) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "adminpack"
   enable_extension "plpgsql"
 
+  create_table "Meetings_Users", id: false, force: :cascade do |t|
+    t.bigint "User_id", null: false
+    t.bigint "Meeting_id", null: false
+  end
+
   create_table "comentarios", force: :cascade do |t|
-    t.integer "rid"
     t.date "fecha"
     t.string "hora"
-    t.integer "uid"
     t.string "contenido"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.bigint "restaurant_id"
+    t.index ["restaurant_id"], name: "index_comentarios_on_restaurant_id"
+    t.index ["user_id"], name: "index_comentarios_on_user_id"
   end
 
   create_table "comunas", force: :cascade do |t|
-    t.integer "cid"
     t.string "nombre"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "restaurant_id"
-    t.index ["restaurant_id"], name: "index_comunas_on_restaurant_id"
   end
 
   create_table "gustos", force: :cascade do |t|
-    t.integer "uid"
     t.string "nombre"
     t.string "descripcion"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_gustos_on_user_id"
   end
 
   create_table "meetings", force: :cascade do |t|
@@ -48,7 +53,6 @@ ActiveRecord::Schema.define(version: 2020_05_19_184029) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "usuario2"
-    t.integer "rid"
   end
 
   create_table "restaurants", force: :cascade do |t|
@@ -58,8 +62,11 @@ ActiveRecord::Schema.define(version: 2020_05_19_184029) do
     t.string "descripcion"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "cid"
-    t.integer "uid"
+    t.bigint "comuna_id"
+    t.integer "dueno_id"
+    t.bigint "user_id"
+    t.index ["comuna_id"], name: "index_restaurants_on_comuna_id"
+    t.index ["user_id"], name: "index_restaurants_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -74,20 +81,20 @@ ActiveRecord::Schema.define(version: 2020_05_19_184029) do
     t.string "nombre"
     t.string "apellidos"
     t.string "contacto"
-    t.string "comuna"
     t.integer "edad"
     t.string "descripcion"
     t.binary "foto"
-    t.bigint "comentario_id"
-    t.bigint "gusto_id"
-    t.index ["comentario_id"], name: "index_users_on_comentario_id"
+    t.bigint "comuna_id"
+    t.index ["comuna_id"], name: "index_users_on_comuna_id"
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["gusto_id"], name: "index_users_on_gusto_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
-  add_foreign_key "comunas", "restaurants"
-  add_foreign_key "users", "comentarios"
-  add_foreign_key "users", "gustos"
+  add_foreign_key "comentarios", "restaurants"
+  add_foreign_key "comentarios", "users"
+  add_foreign_key "gustos", "users"
+  add_foreign_key "restaurants", "comunas"
+  add_foreign_key "restaurants", "users"
+  add_foreign_key "users", "comunas"
 end
