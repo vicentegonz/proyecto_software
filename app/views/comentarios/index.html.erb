@@ -149,8 +149,8 @@
 <table style="border:1px solid black;margin-left:auto;margin-right:auto;">
   <thead>
     <tr>
-      <th>user id</th>
-      <th>restorant id</th>
+      <th>Usuario</th>
+      <th>Restaurant</th>
       <th>Contenido</th>
       <th colspan="1"> Acciones </th>
     </tr>
@@ -159,8 +159,8 @@
   <tbody>
     <% @comentarios.each do |comentario| %>
       <tr>
-        <td><%= comentario.uid %></td>
-        <td><%= comentario.rid %></td>
+        <td><%= comentario.user_id %></td>
+        <td><%= comentario.restaurant_id %></td>
         <td><%= comentario.contenido %></td>
         <td> <%= link_to 'Ver detalles', comentario_path(comentario.id)%></p>
       </tr>

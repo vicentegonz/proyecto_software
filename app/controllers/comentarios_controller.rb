@@ -8,7 +8,7 @@ class ComentariosController < ApplicationController
   end
 
   def create
-    comentario_params = params.require(:comentario).permit(:contenido, :rid, :uid)
+    comentario_params = params.require(:comentario).permit(:contenido, :restaurant_id, :user_id)
     @comentario = Comentario.create(comentario_params)
 
     if @comentario.save

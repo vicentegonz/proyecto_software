@@ -16,7 +16,7 @@ class RestaurantsController < ApplicationController
   end
 
   def create
-    restaurant_params = params.require(:restaurant).permit(:nombre, :valoracion, :comentarios, :descripcion, :cid, :uid)
+    restaurant_params = params.require(:restaurant).permit(:nombre, :valoracion, :comentarios, :descripcion, :comuna_id, :user_id)
     @restaurant = Restaurant.create(restaurant_params)
 
     if @restaurant.save

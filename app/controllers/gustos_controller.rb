@@ -12,7 +12,7 @@ class GustosController < ApplicationController
   end
 
   def create
-    gusto_params = params.require(:gusto).permit(:nombre, :descripcion)
+    gusto_params = params.require(:gusto).permit(:nombre, :descripcion, :user_id)
     @gusto = Gusto.create(gusto_params)
 
     if @gusto.save
