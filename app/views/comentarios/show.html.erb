@@ -156,17 +156,17 @@ nav ul li ul li a:hover{
 <table style="border:1px solid black;margin-left:auto;margin-right:auto;">
   <thead>
       <tr>
-          <th style="text-align: center;">user id</th>
-          <th style="text-align: center;">restorant id</th>
-          <th style="text-align: center;">contenido</th>
+          <th style="text-align: center;">Usuario</th>
+          <th style="text-align: center;">Restaurant</th>
+          <th style="text-align: center;">Contenido</th>
           
       </tr>
   </thead>
 
 <tbody>
   <tr>
-      <td style="text-align: center;"><%= @comentario.uid%></td>
-      <td style="text-align: center;"><%= @comentario.rid%></td>
+      <td style="text-align: center;"><%= @comentario.user_id%></td>
+      <td style="text-align: center;"><%= @comentario.restaurant_id%></td>
       <td style="text-align: center;"><%= @comentario.contenido%></td>
       
   </tr>

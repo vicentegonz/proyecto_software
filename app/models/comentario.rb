@@ -1,5 +1,5 @@
 class Comentario < ApplicationRecord
     belongs_to :user 
-    has_one :restaurant 
+    belongs_to :restaurant 
 
 end

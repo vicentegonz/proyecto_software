@@ -158,9 +158,9 @@
                 <th style="text-align: center;">Valoracion</th>
                 <th style="text-align: center;">Comentarios</th>
                 <th style="text-align: center;">Descripcion</th>
+                <th style="text-align: center;">Comuna</th>
+                <th style="text-align: center;">Dueño</th>
                 <th style="text-align: center;">Accion</th>
-                <th style="text-align: center;">cid</th>
-                <th style="text-align: center;">id dueño</th>
             </tr>
         </thead>
 
@@ -169,18 +169,18 @@
         <tr>
             <td style="text-align: center;"><%= restaurant.nombre%></td>
             <td style="text-align: center;"><%= restaurant.valoracion%></td>
-            <td style="text-align: center;"><%= restaurant.comentarios%></td>
+            <td style="text-align: center;"><%= restaurant.comentar%></td>
             <td style="text-align: center;"><%= restaurant.descripcion%></td>
-            <td style="text-align: center;"><%= restaurant.cid%></td>
-            <td style="text-align: center;"><%= restaurant.uid%></td>
-            <td style="text-align: center;"><%= link_to 'Ver detalles', restaurant_path(restaurant.id)%></td>
+            <td style="text-align: center;"><%= restaurant.comuna_id%></td>
+            <td style="text-align: center;"><%= restaurant.user_id%></td>
+            <td style="text-align: center;"><%= link_to 'Ver detalles', restaurant%></td>
         </tr>
         <%end%>
     </tbody>
     </table>
     <br>
     
-    <%= button_to "Agregar restaurant", restaurants_new_path, :method => :get, :class => "button" %>
+    <%= button_to "Agregar restaurant", new_restaurant_path, :method => :get, :class => "button" %>
 </div>
 
 </body>>

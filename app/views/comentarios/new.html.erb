@@ -139,24 +139,8 @@
 <p id="notice"><%= notice %></p>
 <div class="page" >
 <h1><strong>Comentarios</strong></h1>
+<%= render 'form', comentario: @comentario %>
 
-<%= form_with(model: @comentario, method: :post) do |form| %>
 
-    <div class = 'field'>
-        <p>tu uid es <%= current_user.id%><p>
-        <%= form.label :contenido %>
-        <%= form.text_field :contenido %><br>
-        <%= form.label :rid %>
-        <%= form.text_field :rid %><br>
-        <%= form.label :uid %>
-        <%= form.text_field :uid %><br>
-    </div>
-
-    <div class='actions'>
-        <%= form.submit %>
-    </div>
-
-<% end %>
-<%= link_to 'Listado de comentarios', comentarios_path, :method => :get, :class => "button" %>
 </div>
 </body>

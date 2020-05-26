@@ -12,7 +12,7 @@ class CuentaController < ApplicationController
   end
 
   def update
-    cuenta_params = params.require(:user).permit(:nombre, :apellidos, :username, :email, :sexo, :tipo, :contacto, :comuna, :edad, :descripcion, :foto)
+    cuenta_params = params.require(:user).permit(:nombre, :apellidos, :username, :email, :sexo, :tipo, :contacto, :comuna_id, :edad, :descripcion, :foto)
     @user = User.find(current_user.id)
     if @user.update(cuenta_params)
       puts "holaaaa"
@@ -20,5 +20,8 @@ class CuentaController < ApplicationController
     else
       redirect_to cuenta_path, notice:'Ocurrio un error'
     end
+  end
+  def show
+    @user = User.find(current_user.id)
   end
 end
