@@ -6,6 +6,7 @@ class CuentaController < ApplicationController
   end
 
   def edit
+    puts current_user.id
     @user = User.find(current_user.id)
     puts @user.nombre
     puts current_user.id
