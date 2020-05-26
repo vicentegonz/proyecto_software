@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   get 'eliminada', to: 'cuenta#done'
   get 'cuenta/edit', to: 'cuenta#edit'
 
+  get 'coments', to: 'comentarios#index'
+
   get 'user', to: 'cuenta#show'
   patch 'user', to: 'cuenta#update'
   delete 'users', to: 'cuentas#destroy', as: 'delete'
