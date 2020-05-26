@@ -8,6 +8,10 @@ Rails.application.routes.draw do
   resources :restaurants do
     resources :comentarios
   end
+
+  resources :users do
+    resources :gustos
+  end
   
 
   #cuenta
@@ -18,16 +22,16 @@ Rails.application.routes.draw do
 
   get 'coments', to: 'comentarios#index'
 
-  get 'user', to: 'cuenta#show'
-  patch 'user', to: 'cuenta#update'
-  delete 'users', to: 'cuentas#destroy', as: 'delete'
+  #get 'user', to: 'cuenta#show'
+  #patch 'user', to: 'cuenta#update'
+  #delete 'users', to: 'cuentas#destroy', as: 'delete'
   #create
   get 'principal/welcome'
   get 'comunas/new', to: 'comunas#new'
   post 'comunas', to: 'comunas#create'
 
-  get 'gustos/new', to: 'gustos#new'
-  post 'gustos', to: 'gustos#create'
+  #get 'gustos/new', to: 'gustos#new'
+  #post 'gustos', to: 'gustos#create'
 
   #get 'comentarios/new', to: 'comentarios#new'
   #post 'comentarios', to: 'comentarios#create'
@@ -39,8 +43,8 @@ Rails.application.routes.draw do
   get 'comunas', to: 'comunas#index'
   get 'comunas/:id', to: 'comunas#show', as: 'comuna'
 
-  get 'gustos', to: 'gustos#index'
-  get 'gustos/:id', to: 'gustos#show', as: 'gusto'
+  #get 'gustos', to: 'gustos#index'
+  #get 'gustos/:id', to: 'gustos#show', as: 'gusto'
 
   #get 'comentarios', to: 'comentarios#index'
   #get 'comentarios/:id', to: 'comentarios#show', as: 'comentario'
@@ -52,8 +56,8 @@ Rails.application.routes.draw do
   get 'comunas/:id/edit', to: 'comunas#edit', as: :comunas_edit
   patch 'comunas/:id', to: 'comunas#update'
 
-  get 'gustos/:id/edit', to: 'gustos#edit', as: :gustos_edit
-  patch 'gustos/:id', to: 'gustos#update'
+  #get 'gustos/:id/edit', to: 'gustos#edit', as: :gustos_edit
+  #patch 'gustos/:id', to: 'gustos#update'
 
   #get 'comentarios/:id/edit', to: 'comentarios#edit', as: :comentarios_edit
   #patch 'comentarios/:id', to: 'comentarios#update'
