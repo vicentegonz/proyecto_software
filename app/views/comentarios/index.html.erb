@@ -152,7 +152,7 @@
       <th>Usuario</th>
       <th>Restaurant</th>
       <th>Contenido</th>
-      <th colspan="1"> Acciones </th>
+      <th colspan="1"> Eliminar </th>
     </tr>
   </thead>
 
@@ -162,7 +162,7 @@
         <td><%= comentario.user_id %></td>
         <td><%= comentario.restaurant_id %></td>
         <td><%= comentario.contenido %></td>
-        <td> <%= link_to 'Ver detalles', comentario_path(comentario.id)%></p>
+        
       </tr>
     <% end %>
   </tbody>
@@ -170,6 +170,5 @@
 
 <br>
 
-<%= button_to 'Crear Comentarios', comentarios_new_path, :method => :get, :class => "button" %>
 </div>
 </body>

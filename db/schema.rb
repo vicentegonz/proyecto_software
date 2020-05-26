@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_22_213848) do
+ActiveRecord::Schema.define(version: 2020_05_23_010102) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "adminpack"
@@ -79,13 +79,13 @@ ActiveRecord::Schema.define(version: 2020_05_22_213848) do
   create_table "restaurants", force: :cascade do |t|
     t.string "nombre"
     t.float "valoracion"
-    t.string "comentarios"
     t.string "descripcion"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "comuna_id"
     t.integer "dueno_id"
     t.bigint "user_id"
+    t.string "comentar"
     t.index ["comuna_id"], name: "index_restaurants_on_comuna_id"
     t.index ["user_id"], name: "index_restaurants_on_user_id"
   end
