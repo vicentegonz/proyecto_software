@@ -16,10 +16,10 @@ class GustosController < ApplicationController
 
   def create
     @gusto = Gusto.new(gusto_params)
-    @gusto.user = @user
+    @gusto.user = current_user
     respond_to do |format|
       if @gusto.save
-        format.html { redirect_to user_gustos_path(:restaurant_id), notice: 'Gusto was successfully created.'}
+        format.html { redirect_to user_gustos_path(:user_id), notice: 'Gusto was successfully created.'}
       else
         format.html { render :new }
         format.json { render json: @gusto.errors, status: :unprocessable_entity }
@@ -72,4 +72,5 @@ class GustosController < ApplicationController
 
     def gusto_params
       params.require(:gusto).permit(:nombre, :descripcion, :user_id)
+    end
 end

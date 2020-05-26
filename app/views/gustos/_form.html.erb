@@ -1,0 +1,29 @@
+<%= form_with(url: (@gusto.new_record? ? [@gusto, @gusto] : user_gusto_path), model: @gusto, local: true) do |form| %>
+<% if gusto.errors.any? %>    
+    <div id="error_explanation">
+      <h2><%= pluralize(gusto.errors.count, "error") %> prohibited this taste from being saved:</h2>
+      <ul>
+      <% gusto.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+    <% end %>
+
+    <div class = 'field'>
+        <p>tu uid es <%= current_user.id%><p>
+        <%= form.label :nombre %>
+        <%= form.text_field :nombre %><br>
+        <%= form.label :descripcion %>
+        <%= form.text_field :descripcion %><br>
+        <%= form.label :gusto_id %>
+        <%= form.number_field :gusto_id %><br>
+        <%= form.label :user_id %>
+        <%= form.number_field :user_id %><br>
+    </div>
+
+    <div class='actions'>
+        <%= form.submit %>
+    </div>
+
+<% end %>
