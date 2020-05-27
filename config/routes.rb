@@ -13,10 +13,10 @@ Rails.application.routes.draw do
   
 
   #cuenta
-  get 'cuenta', to: 'cuenta#show'
+  get 'cuenta/gustos', to: 'cuenta#show', as: 'cuenta_taste'
   get 'confirmacion', to: 'cuenta#delete'
   get 'eliminada', to: 'cuenta#done'
-  get 'cuenta/edit', to: 'cuenta#edit'
+  get 'cuenta/gustos/edit', to: 'cuenta#edit', as: 'cuenta_gustos'
   
 
   get 'coments', to: 'comentarios#index'
@@ -35,6 +35,9 @@ Rails.application.routes.draw do
   #get 'comentarios/new', to: 'comentarios#new'
   #post 'comentarios', to: 'comentarios#create'
 
+  ###############################################3
+  get 'cuenta/gustos/new', to: 'gustos#new', as: 'nuevo_gusto'
+  ###############################################
   get 'meetings/new', to: 'meetings#new'
   post 'meetings', to: 'meetings#create'
 

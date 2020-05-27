@@ -129,7 +129,7 @@
           <li><a href="/comentarios">Comentarios</a></li>
           <li><a href="/gustos">Gustos</a></li>
           <li><a href="/meetings">Citas</a></li>
-          <li class="alignright"><a href="/cuenta">Mi cuenta</a>
+          <li class="alignright"><a href="/cuenta/gustos">Mi cuenta</a>
             <ul>
               <li><a><%=link_to 'Cerrar session', destroy_user_session_path, method: :delete%>
               </a></li>
@@ -200,7 +200,7 @@
         <%= form.submit%>
     </div>
 <% end %>
-<%= link_to 'Cuenta', cuenta_path, :method => :get, :class => "button"%>
+<%= link_to 'Cuenta', cuenta_gustos_path, :method => :get, :class => "button"%>
 </div>
 </div>
 </body>

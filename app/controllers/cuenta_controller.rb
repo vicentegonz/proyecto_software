@@ -15,11 +15,12 @@ class CuentaController < ApplicationController
   def update
     cuenta_params = params.require(:user).permit(:nombre, :apellidos, :username, :email, :sexo, :tipo, :contacto, :comuna_id, :edad, :descripcion, :foto)
     @user = User.find(current_user.id)
+    puts @user.edad
     if @user.update(cuenta_params)
       puts "holaaaa"
-      redirect_to cuenta_path, notice:'Se ha creado correctamente'
+      redirect_to cuenta_taste_path, notice:'Se ha creado correctamente'
     else
-      redirect_to cuenta_path, notice:'Ocurrio un error'
+      redirect_to cuenta_gustos_path, notice:'Ocurrio un error'
     end
   end
   def show

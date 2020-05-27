@@ -139,7 +139,7 @@
       <li><a href="/comentarios">Comentarios</a></li>
       <li><a href="/gustos">Gustos</a></li>
       <li><a href="/meetings">Citas</a></li>
-      <li class="alignright"><a href="/cuenta">Mi cuenta</a>
+      <li class="alignright"><a href="/cuenta/gustos">Mi cuenta</a>
         <ul>
           <li><a><%=link_to 'Cerrar session', destroy_user_session_path, method: :delete%>
           </a></li>
@@ -151,25 +151,47 @@
     </ul>
   </nav>
       <br><br>
+
+
 <div class="info">
-<h1><strong>Mi cuenta</strong></h1>
-<div class="photo">
-  <%= image_tag(@user.foto, :class => "img_preview") if @user.foto.attached? %>
+  <h1><strong>Mi cuenta</strong></h1>
+  <div class="photo">
+    <%= image_tag(@user.foto, :class => "img_preview") if @user.foto.attached? %>
+
+
+  <p><strong>Nombre completo: </strong><%= current_user.nombre %> <%= current_user.apellidos %></p>
+  <p><strong>Username:</strong> <%= current_user.username %></p>
+  <p><strong>Email: </strong><%= current_user.email %></p>
+  <p><strong>Sexo: </strong><%= current_user.sexo %></p>
+  <p><strong>Tipo de usuario: </strong><%= current_user.tipo %></p>
+  <p><strong>Numero de contacto: </strong><%= current_user.contacto %></p>
+  <p><strong>Comuna: </strong><%= current_user.comuna_id %></p>
+  <p><strong>Edad: </strong><%= current_user.edad %></p>
+  <p><strong>Descripcion: </strong><%= current_user.descripcion %></p>
+  <%= link_to 'Editar', cuenta_gustos_path, :method => :get, :class => "button"%>
+  
+
+
+
+  <div class="gustos">
+  <% @i= 1 %>
+  <p><strong> Tus Gustos </strong></p>
+  <% @user.gustos.each do |gusto| %>
+    <a href="#" class="list-group-item list-group-item-action">
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="nombre_gusto"><strong> <%= @i %> - <%= gusto.nombre%></strong></h5>
+      </div>
+      <p class="descripcion_gusto"><%= gusto.descripcion%></p>
+      
+    </a>
+    <br><br>
+    <% @i += 1%>
+  <%end%>
+
+
+  <%= link_to 'Agregar Gustos', nuevo_gusto_path, :method => :get, :class => "button"%>
+
+
 </div>
-
-<p><strong>Nombre completo: </strong><%= current_user.nombre %> <%= current_user.apellidos %></p>
-<p><strong>Username:</strong> <%= current_user.username %></p>
-<p><strong>Email: </strong><%= current_user.email %></p>
-<p><strong>Sexo: </strong><%= current_user.sexo %></p>
-<p><strong>Tipo de usuario: </strong><%= current_user.tipo %></p>
-<p><strong>Numero de contacto: </strong><%= current_user.contacto %></p>
-<p><strong>Comuna: </strong><%= current_user.comuna_id %></p>
-<p><strong>Edad: </strong><%= current_user.edad %></p>
-<p><strong>Descripcion: </strong><%= current_user.descripcion %></p>
-
-
-<%= link_to 'Editar', cuenta_edit_path, :method => :get, :class => "button"%>
-
-
 </div>
 </body>
