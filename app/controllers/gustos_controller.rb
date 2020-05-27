@@ -19,7 +19,7 @@ class GustosController < ApplicationController
     @gusto.user = current_user
     respond_to do |format|
       if @gusto.save
-        format.html { redirect_to user_gustos_path(:user_id), notice: 'Gusto was successfully created.'}
+        format.html { redirect_to cuenta_taste_path(:user_id), notice: 'Gusto was successfully created.'}
       else
         format.html { render :new }
         format.json { render json: @gusto.errors, status: :unprocessable_entity }
