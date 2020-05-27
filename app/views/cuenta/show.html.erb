@@ -105,7 +105,7 @@
         text-align: center;
         border-radius: 5px;
         background-color: #f2f2f2;
-        padding: 20px;
+        padding: 20;
         width: 330px;
         margin-left: auto;
         margin-right: auto;
@@ -114,8 +114,17 @@
       }
       .style_image{
         border-radius: 40px;
-        
-        
+      }
+      .list-group-item list-group-item-action{
+        text-align: center;
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 20;
+        width: 330px;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 20px;
+        background-color: rgba(255, 255, 255, 0.671);
       }
       .photo{
         width: 150px;
@@ -136,7 +145,7 @@
       <li><a class="/welcome" href="/welcome">Home</a></li>
       <li><a href="/restaurants">Restaurants</a></li>
       <li><a href="/comunas">Comunas</a></li>
-      <li><a href="/comentarios">Comentarios</a></li>
+      <li><a href="/coments">Comentarios</a></li>
       <li><a href="/gustos">Gustos</a></li>
       <li><a href="/meetings">Citas</a></li>
       <li class="alignright"><a href="/cuenta/gustos">Mi cuenta</a>
@@ -157,7 +166,7 @@
   <h1><strong>Mi cuenta</strong></h1>
   <div class="photo">
     <%= image_tag(@user.foto, :class => "img_preview") if @user.foto.attached? %>
-
+  </div>
 
   <p><strong>Nombre completo: </strong><%= current_user.nombre %> <%= current_user.apellidos %></p>
   <p><strong>Username:</strong> <%= current_user.username %></p>
@@ -170,12 +179,13 @@
   <p><strong>Descripcion: </strong><%= current_user.descripcion %></p>
   <%= link_to 'Editar', cuenta_gustos_path, :method => :get, :class => "button"%>
   
+  
 
 
-
-  <div class="gustos">
   <% @i= 1 %>
+
   <p><strong> Tus Gustos </strong></p>
+  
   <% @user.gustos.each do |gusto| %>
     <a href="#" class="list-group-item list-group-item-action">
       <div class="d-flex w-100 justify-content-between">
@@ -184,14 +194,17 @@
       <p class="descripcion_gusto"><%= gusto.descripcion%></p>
       
     </a>
+    
     <br><br>
+    
     <% @i += 1%>
   <%end%>
 
 
   <%= link_to 'Agregar Gustos', nuevo_gusto_path, :method => :get, :class => "button"%>
+  
 
 
-</div>
-</div>
+
 </body>
+

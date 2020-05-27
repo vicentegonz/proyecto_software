@@ -65,7 +65,7 @@
         <h2 class="text-white-50 mx-auto mt-2 mb-5">A free page where you will find your Half-Orange.</h2>
         
         <% if current_user %>
-        <p class="text-white-50 mx-auto mt-2 mb-5">Bienvenido <%= current_user.email%></p>
+        <p class="text-white-50 mx-auto mt-2 mb-5">Bienvenido <%= current_user.username%></p>
         <%=link_to 'Inicia', welcome_path, method: :get, :class => "btn btn-primary js-scroll-trigger"%>
       
         <%=link_to 'cerrar session', destroy_user_session_path, method: :delete, :class => "btn btn-primary js-scroll-trigger"%>
