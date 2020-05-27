@@ -134,7 +134,9 @@
       <li><a href="/restaurants">Restaurants</a></li>
       <li><a href="/comunas">Comunas</a></li>
       <li><a href="/coments">Comentarios</a></li>
-      <li><a href="/gustos">Gustos</a></li>
+      <%if current_user.tipo != "Dueño"%>
+        <li><a href="/gustos">Gustos</a></li>
+      <%end%>
       <li><a href="/meetings">Citas</a></li>
       <li class="alignright"><a href="/cuenta/gustos">Mi cuenta</a>
         <ul>
@@ -165,22 +167,39 @@
         </thead>
 
     <tbody>
+      <%if current_user.tipo == "Dueño"%>
         <% @restaurants.each do |restaurant|%>
-        <tr>
-            <td style="text-align: center;"><%= restaurant.nombre%></td>
-            <td style="text-align: center;"><%= restaurant.valoracion%></td>
-            <td style="text-align: center;"><%= restaurant.comentar%></td>
-            <td style="text-align: center;"><%= restaurant.descripcion%></td>
-            <td style="text-align: center;"><%= restaurant.comuna_id%></td>
-            <td style="text-align: center;"><%= restaurant.user_id%></td>
-            <td style="text-align: center;"><%= link_to 'Ver detalles', restaurant%></td>
-        </tr>
+          <%if current_user.id == restaurant.user_id %>
+          <tr>
+              <td style="text-align: center;"><%= restaurant.nombre%></td>
+              <td style="text-align: center;"><%= restaurant.valoracion%></td>
+              <td style="text-align: center;"><%= restaurant.comentar%></td>
+              <td style="text-align: center;"><%= restaurant.descripcion%></td>
+              <td style="text-align: center;"><%= restaurant.comuna_id%></td>
+              <td style="text-align: center;"><%= restaurant.user_id%></td>
+              <td style="text-align: center;"><%= link_to 'Ver detalles', restaurant%></td>
+          </tr>
+          <%end%>
         <%end%>
+      <%else%>
+        <% @restaurants.each do |restaurant|%>
+            <tr>
+                <td style="text-align: center;"><%= restaurant.nombre%></td>
+                <td style="text-align: center;"><%= restaurant.valoracion%></td>
+                <td style="text-align: center;"><%= restaurant.comentar%></td>
+                <td style="text-align: center;"><%= restaurant.descripcion%></td>
+                <td style="text-align: center;"><%= restaurant.comuna_id%></td>
+                <td style="text-align: center;"><%= restaurant.user_id%></td>
+                <td style="text-align: center;"><%= link_to 'Ver detalles', restaurant%></td>
+            </tr>
+            <%end%>
+      <%end%>
     </tbody>
     </table>
     <br>
-    
-    <%= button_to "Agregar restaurant", new_restaurant_path, :method => :get, :class => "button" %>
+    <%if current_user.tipo == "Administrador"%>
+      <%= button_to "Agregar restaurant", new_restaurant_path, :method => :get, :class => "button" %>
+    <%end%>
 </div>
 
 </body>>

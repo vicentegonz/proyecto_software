@@ -129,7 +129,9 @@
       <li><a href="/restaurants">Restaurants</a></li>
       <li><a href="/comunas">Comunas</a></li>
       <li><a href="/coments">Comentarios</a></li>
-      <li><a href="/gustos">Gustos</a></li>
+      <%if current_user.tipo != "Dueño"%>
+        <li><a href="/gustos">Gustos</a></li>
+      <%end%>
       <li><a href="/meetings">Citas</a></li>
       <li class="alignright"><a href="/cuenta/gustos">Mi cuenta</a>
         <ul>
@@ -160,10 +162,14 @@
       <tbody>
         <% @gustos.each do |gusto| %>
           <tr>
-            <td style="text-align: center;"><%= gusto.nombre %></td>
-            <td style="text-align: center;"><%= gusto.descripcion %></td>
-            <td style="text-align: center;"><%= gusto.user_id %></td>
-            <td style="text-align: center;"><%= link_to 'Ver detalles', gusto_path(gusto.id)%></p>
+            <%if current_user.tipo == "Cliente" or current_user.tipo == "Administrador"%>
+              <%if current_user.id == gusto.user_id or current_user.tipo == "Administrador"%>
+                <td style="text-align: center;"><%= gusto.nombre %></td>
+                <td style="text-align: center;"><%= gusto.descripcion %></td>
+                <td style="text-align: center;"><%= gusto.user_id %></td>
+                <td style="text-align: center;"><%= link_to 'Ver detalles', gusto_path(gusto.id)%></p>
+              <%end%>
+            <%end%>
           </tr>
         <% end %>
       </tbody>

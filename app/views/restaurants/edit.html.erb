@@ -127,7 +127,9 @@
           <li><a href="/restaurants">Restaurants</a></li>
           <li><a href="/comunas">Comunas</a></li>
           <li><a href="/coments">Comentarios</a></li>
-          <li><a href="/gustos">Gustos</a></li>
+          <%if current_user.tipo != "Dueño"%>
+            <li><a href="/gustos">Gustos</a></li>
+          <%end%>
           <li><a href="/meetings">Citas</a></li>
           <li class="alignright"><a href="/cuenta/gustos">Mi cuenta</a>
             <ul>
@@ -166,16 +168,18 @@
         <%= form.text_field :descripcion%>
     </div>
     <br>
-    <div class="field">
-      <%= form.label :cid%>
-      <%= form.number_field :comuna_id%>
-    </div>
-    <br>
-    <div class="field">
-      <%= form.label :uid%>
-      <%= form.number_field :user_id%>
-    </div>
-    <br>
+    <%if current_user.tipo == "Administrador"%>
+      <div class="field">
+        <%= form.label :comuna_id%>
+        <%= form.number_field :comuna_id%>
+      </div>
+      <br>
+      <div class="field">
+        <%= form.label :user_id%>
+        <%= form.number_field :user_id%>
+      </div>
+      <br>
+    <%end%>
     <div class='actions'>
         <%= form.submit%>
     </div>
