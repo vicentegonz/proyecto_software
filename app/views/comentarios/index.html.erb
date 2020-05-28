@@ -152,6 +152,7 @@
       <th>Usuario</th>
       <th>Restaurant</th>
       <th>Contenido</th>
+      <th colspan="1"> Editar </th>
       <th colspan="1"> Eliminar </th>
     </tr>
   </thead>
@@ -162,6 +163,8 @@
         <td><%= comentario.user_id %></td>
         <td><%= comentario.restaurant_id %></td>
         <td><%= comentario.contenido %></td>
+        <td><%= link_to 'Editar', edit_restaurant_comentario_path(comentario.restaurant_id, comentario), :method => :get, :class => "button"%></td>
+        <td><%= link_to 'Destroy', restaurant_comentario_path(comentario.restaurant_id, comentario), method: :delete, data: { confirm: 'Are you sure?' }%></td></tr>
         
       </tr>
     <% end %>

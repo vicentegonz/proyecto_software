@@ -17,8 +17,8 @@ class RestaurantsController < ApplicationController
   end
 
   def create
-    restaurant_params = params.require(:restaurant).permit(:nombre, :valoracion, :comentar, :descripcion, :comuna_id, :user_id)
-    @restaurant = Restaurant.create(restaurant_params)
+    restaurant_params = params.require(:restaurant).permit(:nombre, :valoracion, :comentar, :descripcion, :comuna_id)
+    @restaurant = Restaurant.create(restaurant_params.merge(user_id: current_user.id))
 
     if @restaurant.save
       redirect_to new_restaurant_path, notice: "Se ha creado exitosamente "

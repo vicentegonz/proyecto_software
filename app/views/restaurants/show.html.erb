@@ -196,6 +196,7 @@
     </div>
   </div>
   <%end%>
+  
 
   <br>
  
@@ -205,7 +206,7 @@
   
     <%= link_to 'Eliminar restaurant', restaurant_path(@restaurant.id), method: :delete, data: {confirm: 'Estas seguro?'}, :class => "button" %>
 
-    <%= link_to 'Crear comentario ', new_restaurant_comentario_path(@restaurant.id), :method => :get, :class => "button" %>
+    <%= link_to 'Agregar comentario ', new_restaurant_comentario_path(@restaurant.id), :method => :get, :class => "button" %>
     
   </div>
 
