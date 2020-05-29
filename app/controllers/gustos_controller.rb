@@ -15,7 +15,7 @@ class GustosController < ApplicationController
   end
 
   def create
-    @gusto = Gusto.new(gusto_params)
+    @gusto = Gusto.new(gusto_params.merge(user_id: current_user.id))
     @gusto.user = current_user
     respond_to do |format|
       if @gusto.save
@@ -71,6 +71,6 @@ class GustosController < ApplicationController
     end
 
     def gusto_params
-      params.require(:gusto).permit(:nombre, :descripcion, :user_id)
+      params.require(:gusto).permit(:nombre, :descripcion)
     end
 end

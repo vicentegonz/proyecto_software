@@ -10,11 +10,11 @@ class ComentariosController < ApplicationController
   end
 
   def create
-    @comentario = Comentario.new(comentario_params)
+    @comentario = Comentario.new(comentario_params.merge(restaurant_id: @restaurant.id, user_id: current_user.id))
     @comentario.restaurant = @restaurant
     respond_to do |format|
       if @comentario.save
-        format.html { redirect_to restaurant_comentarios_path(:restaurant_id), notice: 'Comentario was successfully created.'}
+        format.html { redirect_to comuna_restaurant_path(@restaurant.comuna_id, @restaurant.id), notice: 'Comentario was successfully created.'}
       else
         format.html { render :new }
         format.json { render json: @comentario.errors, status: :unprocessable_entity }
@@ -42,11 +42,11 @@ class ComentariosController < ApplicationController
     @comentario = Comentario.find(params[:id])
     puts @comentario.contenido
     if @comentario.update(comentario_params)
-      redirect_to comentario_path(@comentario.id), notice: 'Comentario editado con éxito'
+      redirect_to restaurant_comentarios_path, notice: 'Comentario editado con éxito'
       puts @comentario.contenido
 
     else
-      redirecto_to comentario_path(@comentario.id), notice: 'Ocurrió un error al editar el comentario'
+      redirecto_to restaurant_comentarios_path, notice: 'Ocurrió un error al editar el comentario'
     end
   end
 
@@ -59,8 +59,6 @@ class ComentariosController < ApplicationController
   end
   
 
-# Acá hay código que me salté
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_comentario
@@ -72,7 +70,7 @@ class ComentariosController < ApplicationController
       @restaurant = Restaurant.find(params[:restaurant_id])  
     end
     def comentario_params
-      params.require(:comentario).permit(:contenido, :restaurant_id, :user_id)
+      params.require(:comentario).permit(:contenido)
     end
 
 end

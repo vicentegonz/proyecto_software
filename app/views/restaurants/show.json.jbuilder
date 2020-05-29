@@ -1,0 +1,1 @@
+json.partial! "restaurants/restaurant", comentario: @restaurant

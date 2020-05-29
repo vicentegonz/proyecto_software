@@ -131,7 +131,7 @@
   <nav>
     <ul>
       <li><a class="/welcome" href="/welcome">Home</a></li>
-      <li><a href="/restaurants">Restaurants</a></li>
+      <li><a href="/restauran">Restaurants</a></li>
       <li><a href="/comunas">Comunas</a></li>
       <li><a href="/coments">Comentarios</a></li>
       <%if current_user.tipo != "Dueño"%>
@@ -169,6 +169,7 @@
     <tbody>
       <%if current_user.tipo == "Dueño"%>
         <% @restaurants.each do |restaurant|%>
+
           <%if current_user.id == restaurant.user_id %>
           <tr>
               <td style="text-align: center;"><%= restaurant.nombre%></td>
@@ -177,9 +178,10 @@
               <td style="text-align: center;"><%= restaurant.descripcion%></td>
               <td style="text-align: center;"><%= restaurant.comuna_id%></td>
               <td style="text-align: center;"><%= restaurant.user_id%></td>
-              <td style="text-align: center;"><%= link_to 'Ver detalles', restaurant%></td>
+            <td style="text-align: center;"><%= link_to 'Ver detalles', comuna_restaurant_path(restaurant.comuna.id, restaurant)%></td>
           </tr>
           <%end%>
+
         <%end%>
       <%else%>
         <% @restaurants.each do |restaurant|%>
@@ -197,9 +199,11 @@
     </tbody>
     </table>
     <br>
+
     <%if current_user.tipo == "Administrador"%>
-      <%= button_to "Agregar restaurant", new_restaurant_path, :method => :get, :class => "button" %>
+      <%= button_to "Agregar restaurant", new_comuna_restaurant_path, :method => :get, :class => "button" %>
     <%end%>
+
 </div>
 
 </body>>

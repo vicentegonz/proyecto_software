@@ -126,7 +126,7 @@
   <nav>
     <ul>
       <li><a class="/welcome" href="/welcome">Home</a></li>
-      <li><a href="/restaurants">Restaurants</a></li>
+      <li><a href="/restauran">Restaurants</a></li>
       <li><a href="/comunas">Comunas</a></li>
       <li><a href="/coments">Comentarios</a></li>
       <%if current_user.tipo != "Dueño"%>
@@ -154,24 +154,34 @@
       <th>Usuario</th>
       <th>Restaurant</th>
       <th>Contenido</th>
+      <th colspan="1"> Editar </th>
+      <th colspan="1"> Eliminar </th>
+
     </tr>
   </thead>
 
   <tbody>
     <% @comentarios.each do |comentario| %>
       <tr>
+
         <%if current_user.tipo == "Cliente"%>
           <%if current_user.id == comentario.user_id%>
             <td><%= comentario.user_id %></td>
             <td><%= comentario.restaurant_id %></td>
             <td><%= comentario.contenido %></td>
+            <td><%= link_to 'Editar', edit_comuna_restaurant_comentario_path(comentario.restaurant.comuna_id , comentario.restaurant_id, comentario), :method => :get, :class => "button"%></td>
+            <td><%= link_to 'Destroy', comuna_restaurant_comentario_path(comentario.restaurant_id, comentario.restaurant_id, comentario), method: :delete, data: { confirm: 'Are you sure?' }%></td></tr>
           <%end%>
         <%end%>
         <%if current_user.tipo == "Administrador"%>
             <td><%= comentario.user_id %></td>
             <td><%= comentario.restaurant_id %></td>
             <td><%= comentario.contenido %></td>
+            <td><%= link_to 'Editar', edit_comuna_restaurant_comentario_path(comentario.restaurant.comuna_id , comentario.restaurant_id, comentario), :method => :get, :class => "button"%></td>
+            <td><%= link_to 'Destroy', comuna_restaurant_comentario_path(comentario.restaurant_id, comentario.restaurant_id, comentario), method: :delete, data: { confirm: 'Are you sure?' }%></td></tr>
+
         <%end%>
+
 
       </tr>
     <% end %>

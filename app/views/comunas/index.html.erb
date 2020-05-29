@@ -127,7 +127,7 @@
   <nav>
     <ul>
       <li><a class="/welcome" href="/welcome">Home</a></li>
-      <li><a href="/restaurants">Restaurants</a></li>
+      <li><a href="/restauran">Restaurants</a></li>
       <li><a href="/comunas">Comunas</a></li>
       <li><a href="/coments">Comentarios</a></li>
       <%if current_user.tipo != "Dueño"%>
@@ -167,9 +167,11 @@
     </tbody>
     </table>
     <br>
+
     <%if current_user.tipo == "Administrador"%>
       <%= button_to "Agregar comuna", comunas_new_path, :method => :get, :class => "button"%>
     <%end%>
+
 </div>
 
 </body>>
