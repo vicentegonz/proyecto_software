@@ -131,7 +131,7 @@
   <nav>
     <ul>
       <li><a class="/welcome" href="/welcome">Home</a></li>
-      <li><a href="/restaurants">Restaurants</a></li>
+      <li><a href="/restauran">Restaurants</a></li>
       <li><a href="/comunas">Comunas</a></li>
       <li><a href="/coments">Comentarios</a></li>
       <li><a href="/gustos">Gustos</a></li>
@@ -173,14 +173,13 @@
             <td style="text-align: center;"><%= restaurant.descripcion%></td>
             <td style="text-align: center;"><%= restaurant.comuna_id%></td>
             <td style="text-align: center;"><%= restaurant.user_id%></td>
-            <td style="text-align: center;"><%= link_to 'Ver detalles', restaurant%></td>
+            <td style="text-align: center;"><%= link_to 'Ver detalles', comuna_restaurant_path(restaurant.comuna.id, restaurant)%></td>
         </tr>
         <%end%>
     </tbody>
     </table>
     <br>
     
-    <%= button_to "Agregar restaurant", new_restaurant_path, :method => :get, :class => "button" %>
 </div>
 
 </body>>

@@ -126,7 +126,7 @@
   <nav>
     <ul>
       <li><a class="/welcome" href="/welcome">Home</a></li>
-      <li><a href="/restaurants">Restaurants</a></li>
+      <li><a href="/restauran">Restaurants</a></li>
       <li><a href="/comunas">Comunas</a></li>
       <li><a href="/coments">Comentarios</a></li>
       <li><a href="/gustos">Gustos</a></li>
@@ -163,8 +163,8 @@
         <td><%= comentario.user_id %></td>
         <td><%= comentario.restaurant_id %></td>
         <td><%= comentario.contenido %></td>
-        <td><%= link_to 'Editar', edit_restaurant_comentario_path(comentario.restaurant_id, comentario), :method => :get, :class => "button"%></td>
-        <td><%= link_to 'Destroy', restaurant_comentario_path(comentario.restaurant_id, comentario), method: :delete, data: { confirm: 'Are you sure?' }%></td></tr>
+        <td><%= link_to 'Editar', edit_comuna_restaurant_comentario_path(comentario.restaurant.comuna_id , comentario.restaurant_id, comentario), :method => :get, :class => "button"%></td>
+        <td><%= link_to 'Destroy', comuna_restaurant_comentario_path(comentario.restaurant_id, comentario.restaurant_id, comentario), method: :delete, data: { confirm: 'Are you sure?' }%></td></tr>
         
       </tr>
     <% end %>

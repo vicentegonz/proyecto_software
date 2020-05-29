@@ -8,9 +8,9 @@ class ComunasController < ApplicationController
     @comuna = Comuna.create(comuna_params)
 
     if @comuna.save
-      redirect_to comunas_new_path, notice: "Se ha creado exitosamente "
+      redirect_to comunas_path, notice: "Se ha creado exitosamente "
     else
-      redirect_to comunas_new_path, notice: "No se pudo crear la comuna"
+      redirect_to comunas_path, notice: "No se pudo crear la comuna"
     end
   end
 
@@ -31,9 +31,9 @@ class ComunasController < ApplicationController
     @comuna = Comuna.find(params[:id])
 
     if @comuna.update(comuna_params)
-      redirect_to comuna_path(@comuna.id), notice:'Comuna editada con exito'
+      redirect_to comunas_path(@comuna.id), notice:'Comuna editada con exito'
     else
-      redirect_to comuna_path(@comuna.id), notice:'Ocurrio un error'
+      redirect_to comunas_path(@comuna.id), notice:'Ocurrio un error'
     end
   end
 

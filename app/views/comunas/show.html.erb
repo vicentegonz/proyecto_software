@@ -147,7 +147,7 @@
   <nav>
     <ul>
       <li><a class="/welcome" href="/welcome">Home</a></li>
-      <li><a href="/restaurants">Restaurants</a></li>
+      <li><a href="/restauran">Restaurants</a></li>
       <li><a href="/comunas">Comunas</a></li>
       <li><a href="/coments">Comentarios</a></li>
       <li><a href="/gustos">Gustos</a></li>
@@ -186,10 +186,33 @@
   </tr>
 </tbody>
 </table>
+<% @comuna.restaurants.each do |restaurant| %>
+  <div class="comentario">
+    <div class="photo">
+    </div>
+    <br><br><br>
+    <div class="text">
+      <table style="border:1px solid black;margin-left:auto;margin-right:auto;">
+        <thead>
+          <tr><th>Nombre restaurant</th>
+        </thead>
+        <tbody>
+          <tr><td><%= restaurant.nombre %></td>
+          </tr>
+        </tbody>
+      </table>
+      
+    </div>
+  </div>
+  <%end%>
+
+
+
 </p>
 <%= link_to 'Listado de comunas', comunas_path, :method => :get, :class => "button"%>
-<%= link_to 'Editar comuna', comunas_edit_path(@comuna.id), :method => :get, :class => "button"%>
+<%= link_to 'Editar comuna', edit_comuna_path(@comuna.id), :method => :get, :class => "button"%>
 <%= link_to 'Eliminar comuna', comuna_path(@comuna.id), method: :delete, data: {confirm: 'Estas seguro?'}, :class => "button"%>
+<%= link_to 'Agregar restaurant ', new_comuna_restaurant_path(@comuna.id), :method => :get, :class => "button"%>
 </div>
 
 </body>

@@ -131,7 +131,7 @@
   <nav>
     <ul>
       <li><a class="/welcome" href="/welcome">Home</a></li>
-      <li><a href="/restaurants">Restaurants</a></li>
+      <li><a href="/restauran">Restaurants</a></li>
       <li><a href="/comunas">Comunas</a></li>
       <li><a href="/coments">Comentarios</a></li>
       <li><a href="/gustos">Gustos</a></li>
@@ -189,7 +189,7 @@
         </thead>
         <tbody>
           <tr><td><%= comentario.contenido %></td>
-          <td><%= link_to 'Destroy', restaurant_comentario_path(@restaurant, comentario), method: :delete, data: { confirm: 'Are you sure?' }%></td></tr>
+          <td><%= link_to 'Destroy', comuna_restaurant_comentario_path(@restaurant.comuna, @restaurant, comentario), method: :delete, data: { confirm: 'Are you sure?' }%></td></tr>
         </tbody>
       </table>
       
@@ -200,13 +200,13 @@
 
   <br>
  
-    <%= link_to 'Listado de restaurants', restaurants_path, :method => :get, :class => "button" %>
+    <%= link_to 'Listado de restaurants', comuna_restaurants_path(@restaurant.comuna), :method => :get, :class => "button" %>
  
-    <%= link_to 'Editar restaurant', edit_restaurant_path(@restaurant.id), :method => :get, :class => "button" %>
+    <%= link_to 'Editar restaurant', edit_comuna_restaurant_path(@restaurant.comuna, @restaurant.id), :method => :get, :class => "button" %>
   
-    <%= link_to 'Eliminar restaurant', restaurant_path(@restaurant.id), method: :delete, data: {confirm: 'Estas seguro?'}, :class => "button" %>
+    <%= link_to 'Eliminar restaurant', comuna_restaurant_path(@restaurant.comuna, @restaurant.id), method: :delete, data: {confirm: 'Estas seguro?'}, :class => "button" %>
 
-    <%= link_to 'Agregar comentario ', new_restaurant_comentario_path(@restaurant.id), :method => :get, :class => "button" %>
+    <%= link_to 'Agregar comentario ', new_comuna_restaurant_comentario_path(@restaurant.comuna, @restaurant.id), :method => :get, :class => "button" %>
     
   </div>
 
