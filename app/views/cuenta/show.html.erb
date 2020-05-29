@@ -1,72 +1,55 @@
 <head>
-<style>
-    .info{
-        text-align: center;
-    }
-    ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-        background-color: #333;
+  <style>
+      .info{
+          text-align: center;
       }
-      
-      nav {
-        width: 100%;
-        height: 60px;
-        background-color: #333;
-      
-      }
-      nav ul {
-        float:left;
-      }
-      nav ul li{
-        float: left;
-        list-style: none;
-        position: relative;
-        text-decoration: none;
-      }
-      
-      nav ul li a{
-        display: block;
-        color: azure;
-        font-size: 14px;
-        padding: 22px 14px;
-        text-decoration: none;
-      }
-      nav ul li ul{
-        display: none;
-        position: absolute;
-        background-color: #ad8080f8;
-        width: 100px;
-        text-decoration: none;
-        padding: 0;
-      }
-      nav ul li:hover ul{
-        display: block;
-        position: absolute;
-        text-decoration: none;
-        color: whitesmoke;
-        background-color: #ad8080f8;
+      ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+          background-color: #333;
+        }
         
-      }
-      nav ul li:hover a{
-        text-decoration: none;
-        color: whitesmoke;
-        text-decoration: none;
+        nav {
+          width: 100%;
+          height: 60px;
+          background-color: #333;
         
-      }
-      nav ul li ul li a{
-        padding: 5px 5px;
-        float: left;
-        text-decoration: none;
-        background-color: #333;
-      
-      }
-      nav ul li ul li a:hover{
-        background-color: #ad8080f8;
-        color: whitesmoke;
+        }
+        nav ul {
+          float:left;
+        }
+        nav ul li{
+          float: left;
+          list-style: none;
+          position: relative;
+          text-decoration: none;
+        }
         
+
+        nav ul li a{
+          display: block;
+          color: azure;
+          font-size: 14px;
+          padding: 22px 14px;
+          text-decoration: none;
+        }
+        nav ul li ul{
+          display: none;
+          position: absolute;
+          background-color: #ad8080f8;
+          width: 100px;
+          text-decoration: none;
+          padding: 0;
+        }
+        nav ul li:hover ul{
+          display: block;
+          position: absolute;
+          text-decoration: none;
+          color: whitesmoke;
+          background-color: #ad8080f8;
+
       }
       
       .alignright{
@@ -156,75 +139,112 @@
         padding:0;	
       
       }
+    nav ul li ul li a{
+          padding: 5px 5px;
+          float: left;
+          text-decoration: none;
+          background-color: #333;
+        
+        }
+        nav ul li ul li a:hover{
+          background-color: #ad8080f8;
+          color: whitesmoke;
+          
+        }
+    
+        nav ul li:hover a{
+          text-decoration: none;
+          color: whitesmoke;
+          text-decoration: none;
+          }
 </style>
 </head>
 <body>
   <nav>
-    <ul>
-      <li><a class="/welcome" href="/welcome">Home</a></li>
-      <li><a href="/restauran">Restaurants</a></li>
-      <li><a href="/comunas">Comunas</a></li>
-      <li><a href="/coments">Comentarios</a></li>
-      <li><a href="/gustos">Gustos</a></li>
-      <li><a href="/meetings">Citas</a></li>
-      <li class="alignright"><a href="/cuenta/gustos">Mi cuenta</a>
-        <ul>
-          <li><a><%=link_to 'Cerrar session', destroy_user_session_path, method: :delete%>
-          </a></li>
+      <ul>
+        <li><a class="/welcome" href="/welcome">Home</a></li>
+        <li><a href="/restaurants">Restaurants</a></li>
+        <li><a href="/comunas">Comunas</a></li>
+        <li><a href="/coments">Comentarios</a></li>
+        <%if current_user.tipo != "Dueño"%>
+          <li><a href="/gustos">Gustos</a></li>
+        <%end%>
+        <li><a href="/meetings">Citas</a></li>
+        <li class="alignright"><a href="/cuenta/gustos">Mi cuenta</a>
+          <ul>
+            <li><a><%=link_to 'Cerrar session', destroy_user_session_path, method: :delete%>
+            </a></li>
+            
+            <li><a href="/confirmacion"> Eliminar cuenta</a></li>
+            
+          </ul>
+        </li>
+      </ul>
+    </nav>
+ 
           
-          <li><a href="/confirmacion"> Eliminar cuenta</a></li>
-          
-        </ul>
-      </li>
-    </ul>
-  </nav>
-      <br><br>
+        
 
-<div class="section1">
-  <div class="info">
-    <h1><strong>Mi cuenta</strong></h1>
-    <div class="photo">
-      <%= image_tag(@user.foto, :class => "img_preview") if @user.foto.attached? %>
-    </div>
-
-    <p><strong>Nombre completo: </strong><%= current_user.nombre %> <%= current_user.apellidos %></p>
-    <p><strong>Username:</strong> <%= current_user.username %></p>
-    <p><strong>Email: </strong><%= current_user.email %></p>
-    <p><strong>Sexo: </strong><%= current_user.sexo %></p>
-    <p><strong>Tipo de usuario: </strong><%= current_user.tipo %></p>
-    <p><strong>Numero de contacto: </strong><%= current_user.contacto %></p>
-    <p><strong>Comuna: </strong><%= current_user.comuna_id %></p>
-    <p><strong>Edad: </strong><%= current_user.edad %></p>
-    <p><strong>Descripcion: </strong><%= current_user.descripcion %></p>
-    <%= link_to 'Editar', cuenta_gustos_path, :method => :get, :class => "button"%>
-    
   
-</div>
-</div>
-<div class="section2">
-  <% @i= 1 %>
-
-  <p><strong> Tus Gustos </strong></p>
-  
-  <% @user.gustos.each do |gusto| %>
-    <a href="#" class="list-group-item list-group-item-action">
-      <div class="d-flex w-100 justify-content-between">
-        <h5 class="nombre_gusto"><strong> <%= @i %> - <%= gusto.nombre%></strong></h5>
+  <div class="section1">
+    <div class="info">
+      <h1><strong>Mi cuenta</strong></h1>
+      <div class="photo">
+        <%= image_tag(@user.foto, :class => "img_preview") if @user.foto.attached? %>
       </div>
-      <p class="descripcion_gusto"><%= gusto.descripcion%></p>
-      
-    </a>
-    
-    <br><br>
-    
-    <% @i += 1%>
-  <%end%>
-
-
-  <%= link_to 'Agregar Gustos', nuevo_gusto_path, :method => :get, :class => "button"%>
   
+      <p><strong>Nombre completo: </strong><%= current_user.nombre %> <%= current_user.apellidos %></p>
+      <p><strong>Username:</strong> <%= current_user.username %></p>
+      <p><strong>Email: </strong><%= current_user.email %></p>
+      <p><strong>Sexo: </strong><%= current_user.sexo %></p>
+      <p><strong>Tipo de usuario: </strong><%= current_user.tipo %></p>
+      <p><strong>Numero de contacto: </strong><%= current_user.contacto %></p>
+      <p><strong>Comuna: </strong><%= current_user.comuna_id %></p>
+      <p><strong>Edad: </strong><%= current_user.edad %></p>
+      <p><strong>Descripcion: </strong><%= current_user.descripcion %></p>
+      <%= link_to 'Editar', cuenta_gustos_path, :method => :get, :class => "button"%>
+      
+    
+  </div>
+  </div>
+  <%if current_user.tipo == "Cliente"%>
+    <div class="section2">
+      <% @i= 1 %>
+    
+      <p><strong> Tus Gustos </strong></p>
+      
+      <% @user.gustos.each do |gusto| %>
+        <a href="#" class="list-group-item list-group-item-action">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="nombre_gusto"><strong> <%= @i %> - <%= gusto.nombre%></strong></h5>
+          </div>
+          <p class="descripcion_gusto"><%= gusto.descripcion%></p>
+          
+        </a>
+        
+        <br><br>
+        
+        <% @i += 1%>
+      <%end%>
+    
+    
+      <%= link_to 'Agregar Gustos', nuevo_gusto_path, :method => :get, :class => "button"%>
+      
+    </div>
+  
+
+  <%end%>  
+
+  <%if current_user.tipo == "Dueño"%>
+    <div class="section2">
+      <p><strong> Tus Restaurants </strong></p>
+  <%end%>  
+  <%if current_user.tipo == "Administrador"%>
+    <div class="section2">
+      <h1><strong> YOU ARE A FKN GOD!!!!  </strong></h1>
+  <%end%> 
+  </body>
+
 </div>
-
-
-</body>
-
+ </div>
+ </div>

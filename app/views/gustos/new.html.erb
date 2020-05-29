@@ -131,7 +131,9 @@
       <li><a href="/restauran">Restaurants</a></li>
       <li><a href="/comunas">Comunas</a></li>
       <li><a href="/coments">Comentarios</a></li>
-      <li><a href="/gustos">Gustos</a></li>
+      <%if current_user.tipo != "Dueño"%>
+        <li><a href="/gustos">Gustos</a></li>
+      <%end%>
       <li><a href="/meetings">Citas</a></li>
       <li class="alignright"><a href="/cuenta/gustos">Mi cuenta</a>
         <ul>

@@ -34,7 +34,7 @@ class RestaurantsController < ApplicationController
     
 
   def update
-    restaurant_params = params.require(:restaurant).permit(:nombre, :valoracion, :comentarios, :descripcion, :cid, :uid)
+    restaurant_params = params.require(:restaurant).permit(:nombre, :valoracion, :comentarios, :descripcion, :comuna_id, :user_id)
     @restaurant = Restaurant.find(params[:id])
     if @restaurant.update(restaurant_params)
       redirect_to restaurant_path(@restaurant.id), notice:'Se ha creado correctamente'

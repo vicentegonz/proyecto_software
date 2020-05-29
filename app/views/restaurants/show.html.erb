@@ -134,7 +134,9 @@
       <li><a href="/restauran">Restaurants</a></li>
       <li><a href="/comunas">Comunas</a></li>
       <li><a href="/coments">Comentarios</a></li>
-      <li><a href="/gustos">Gustos</a></li>
+      <%if current_user.tipo != "Dueño"%>
+        <li><a href="/gustos">Gustos</a></li>
+      <%end%>
       <li><a href="/meetings">Citas</a></li>
       <li class="alignright"><a href="/cuenta/gustos">Mi cuenta</a>
         <ul>
@@ -185,11 +187,17 @@
       <table style="border:1px solid black;margin-left:auto;margin-right:auto;">
         <thead>
           <tr><th>Comentario</th>
-          <th>Eliminar</th></tr>
+          <%if comentario.user_id == current_user.id or current_user.tipo == "Administrador"%>  
+            <th>Eliminar</th></tr>
+          <%end%>
         </thead>
         <tbody>
           <tr><td><%= comentario.contenido %></td>
-          <td><%= link_to 'Destroy', comuna_restaurant_comentario_path(@restaurant.comuna, @restaurant, comentario), method: :delete, data: { confirm: 'Are you sure?' }%></td></tr>
+
+          <%if comentario.user_id == current_user.id or current_user.tipo == "Administrador"%> 
+            <td><%= link_to 'Destroy', comuna_restaurant_comentario_path(@restaurant.comuna, @restaurant, comentario), method: :delete, data: { confirm: 'Are you sure?' }%></td></tr>
+          <%end%>
+
         </tbody>
       </table>
       
@@ -200,13 +208,16 @@
 
   <br>
  
-    <%= link_to 'Listado de restaurants', comuna_restaurants_path(@restaurant.comuna), :method => :get, :class => "button" %>
- 
-    <%= link_to 'Editar restaurant', edit_comuna_restaurant_path(@restaurant.comuna, @restaurant.id), :method => :get, :class => "button" %>
-  
-    <%= link_to 'Eliminar restaurant', comuna_restaurant_path(@restaurant.comuna, @restaurant.id), method: :delete, data: {confirm: 'Estas seguro?'}, :class => "button" %>
 
+    <%= link_to 'Listado de restaurants', comuna_restaurants_path(@restaurant.comuna), :method => :get, :class => "button" %>
+    <%if current_user.tipo == "Administrador" or current_user.tipo == "Dueño"%>
+      <%= link_to 'Editar restaurant', edit_comuna_restaurant_path(@restaurant.comuna, @restaurant.id), :method => :get, :class => "button" %>
+      <%if current_user.tipo == "Administrador"%>
+        <%= link_to 'Eliminar restaurant', comuna_restaurant_path(@restaurant.comuna, @restaurant.id), method: :delete, data: {confirm: 'Estas seguro?'}, :class => "button" %>
+      <%end%>
+    <%end%>
     <%= link_to 'Agregar comentario ', new_comuna_restaurant_comentario_path(@restaurant.comuna, @restaurant.id), :method => :get, :class => "button" %>
+
     
   </div>
 
