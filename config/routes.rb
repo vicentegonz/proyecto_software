@@ -5,8 +5,10 @@ Rails.application.routes.draw do
   }
   root to: 'hello#hola'
 
-  resources :restaurants do
-    resources :comentarios
+  resources :comunas do
+    resources :restaurants do
+      resources :comentarios
+    end
   end
 
 
@@ -20,14 +22,19 @@ Rails.application.routes.draw do
   
 
   get 'coments', to: 'comentarios#index'
+  get 'restauran', to: 'restaurants#index'
+  #get 'comun', to: 'comunas#index'
+  #get 'comun/:id', to: 'comunas#show', as: 'show_comuna'
+
+
 
   get 'user', to: 'cuenta#show'
   patch 'user', to: 'cuenta#update'
   delete 'users', to: 'cuentas#destroy', as: 'delete'
   #create
   get 'principal/welcome'
-  get 'comunas/new', to: 'comunas#new'
-  post 'comunas', to: 'comunas#create'
+  #get 'comunas/new', to: 'comunas#new'
+  #post 'comunas', to: 'comunas#create'
 
   get 'gustos/new', to: 'gustos#new'
   post 'gustos', to: 'gustos#create'
@@ -38,12 +45,16 @@ Rails.application.routes.draw do
   ###############################################3
   get 'cuenta/gustos/new', to: 'gustos#new', as: 'nuevo_gusto'
   ###############################################
+  ##############################################
+  
+  ##############################################
+
   get 'meetings/new', to: 'meetings#new'
   post 'meetings', to: 'meetings#create'
 
   #Read
-  get 'comunas', to: 'comunas#index'
-  get 'comunas/:id', to: 'comunas#show', as: 'comuna'
+  #get 'comunas', to: 'comunas#index'
+  #get 'comunas/:id', to: 'comunas#show', as: 'comuna'
 
   get 'gustos', to: 'gustos#index'
   get 'gustos/:id', to: 'gustos#show', as: 'gusto'
@@ -55,8 +66,8 @@ Rails.application.routes.draw do
   get 'meetings/:id', to: 'meetings#show', as: 'meeting'
 
   #update
-  get 'comunas/:id/edit', to: 'comunas#edit', as: :comunas_edit
-  patch 'comunas/:id', to: 'comunas#update'
+  #get 'comunas/:id/edit', to: 'comunas#edit', as: :comunas_edit
+  #patch 'comunas/:id', to: 'comunas#update'
 
   get 'gustos/:id/edit', to: 'gustos#edit', as: :gustos_edit
   patch 'gustos/:id', to: 'gustos#update'
@@ -68,7 +79,7 @@ Rails.application.routes.draw do
   patch 'meetings/:id', to: 'meetings#update'
 
   #delete
-  delete 'comunas/:id', to: 'comunas#destroy'
+  #delete 'comunas/:id', to: 'comunas#destroy'
 
   delete 'gustos/:id', to: 'gustos#destroy'
 

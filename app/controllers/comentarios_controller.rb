@@ -14,7 +14,7 @@ class ComentariosController < ApplicationController
     @comentario.restaurant = @restaurant
     respond_to do |format|
       if @comentario.save
-        format.html { redirect_to restaurant_path(@restaurant.id), notice: 'Comentario was successfully created.'}
+        format.html { redirect_to comuna_restaurant_path(@restaurant.comuna_id, @restaurant.id), notice: 'Comentario was successfully created.'}
       else
         format.html { render :new }
         format.json { render json: @comentario.errors, status: :unprocessable_entity }
@@ -58,8 +58,6 @@ class ComentariosController < ApplicationController
     end
   end
   
-
-# Acá hay código que me salté
 
   private
     # Use callbacks to share common setup or constraints between actions.
