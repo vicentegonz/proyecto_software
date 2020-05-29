@@ -230,21 +230,20 @@
     
       <%= link_to 'Agregar Gustos', nuevo_gusto_path, :method => :get, :class => "button"%>
       
-    </div>
+    
   
 
   <%end%>  
 
   <%if current_user.tipo == "Dueño"%>
-    <div class="section2">
+    
       <p><strong> Tus Restaurants </strong></p>
   <%end%>  
   <%if current_user.tipo == "Administrador"%>
-    <div class="section2">
+    
       <h1><strong> YOU ARE A FKN GOD!!!!  </strong></h1>
   <%end%> 
-  </body>
 
 </div>
- </div>
- </div>
+
+</body>
