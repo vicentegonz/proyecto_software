@@ -26,7 +26,11 @@ Rails.application.routes.draw do
   #get 'comun', to: 'comunas#index'
   #get 'comun/:id', to: 'comunas#show', as: 'show_comuna'
 
+#################################
+  #get 'persons', to: 'personas#all_users'
 
+
+######################
 
   get 'user', to: 'cuenta#show'
   patch 'user', to: 'cuenta#update'
