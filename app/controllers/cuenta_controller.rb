@@ -1,6 +1,6 @@
 class CuentaController < ApplicationController
   def destroy
-    @cuenta = Cuenta.find(current_user.id)
+    @cuenta = User.find(current_user.id)
     @cuenta.destroy
     redirect_to root_path, notice: 'Cuenta eliminada correctamente'
   end
@@ -23,7 +23,10 @@ class CuentaController < ApplicationController
       redirect_to cuenta_gustos_path, notice:'Ocurrio un error'
     end
   end
+
   def show
     @user = User.find(current_user.id)
   end
+
+  
 end

@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
 
   
-
+  get 'like', to:'meetings#new', as: 'like'
   #cuenta
   get 'cuenta/gustos', to: 'cuenta#show', as: 'cuenta_taste'
   get 'confirmacion', to: 'cuenta#delete'
@@ -32,7 +32,7 @@ Rails.application.routes.draw do
   patch 'user', to: 'cuenta#update'
   delete 'users', to: 'cuentas#destroy', as: 'delete'
   #create
-  get 'principal/welcome'
+  
   #get 'comunas/new', to: 'comunas#new'
   #post 'comunas', to: 'comunas#create'
 

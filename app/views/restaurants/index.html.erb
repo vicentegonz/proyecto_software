@@ -192,8 +192,8 @@
                 <td style="text-align: center;"><%= restaurant.descripcion%></td>
                 <td style="text-align: center;"><%= restaurant.comuna_id%></td>
                 <td style="text-align: center;"><%= restaurant.user_id%></td>
-                <td style="text-align: center;"><%= link_to 'Ver detalles', restaurant%></td>
-            </tr>
+                <td style="text-align: center;"><%= link_to 'Ver detalles', comuna_restaurant_path(restaurant.comuna.id, restaurant)%></td>
+              </tr>
             <%end%>
       <%end%>
     </tbody>
