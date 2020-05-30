@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   #get 'comun/:id', to: 'comunas#show', as: 'show_comuna'
 
 #################################
-  #get 'persons', to: 'personas#all_users'
+  get 'chao', to: 'personas#all_users'
 
 
 ######################
