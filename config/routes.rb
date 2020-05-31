@@ -29,6 +29,8 @@ Rails.application.routes.draw do
 #################################
   get 'chao', to: 'personas#all_users'
 
+  get 'post', to: 'post#aplicar'
+
 
 ######################
 
