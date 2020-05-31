@@ -125,11 +125,13 @@
   width:50%;
   float:center;
   text-align: center;
-  height:100vh;
+  height:70%%;
   box-sizing: border-box;
   margin:auto;
   padding:0;	
-  margin-left: 480px; 
+  background-color: whitesmoke;
+  border-radius: 5px;
+
 }
 nav {
   width: 100%;
@@ -237,90 +239,59 @@ nav ul li ul li a:hover{
 
 <br><br><br>
 
-<h1>Listado usuarios</h1>
+<h1>Postula aquí</h1>
 <div class="section1">  
   <br><br><br>
 
-  
+<form>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Email</label>
+      <input type="email" class="form-control" id="inputEmail4">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputPassword4">Password</label>
+      <input type="password" class="form-control" id="inputPassword4">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputAddress">Address</label>
+    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+  </div>
+  <div class="form-group">
+    <label for="inputAddress2">Descripción</label>
+    <input type="text" class="form-control" id="inputAddress2" placeholder="Restaurant de carnes">
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputCity">Comuna</label>
+      <input type="text" class="form-control" id="inputCity">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="inputState">State</label>
+      <select id="inputState" class="form-control">
+        <option selected>Choose...</option>
+        <option>...</option>
+      </select>
+    </div>
 
-  
-  <% @users = User.all %>
-  
-  <% @users.each do |user| %>
-          <div class="card mb-3" style="max-width: 540px;">
-        <div class="row no-gutters">
-          <div class="col-md-4">
-            <div class="photo" >
-              <%= image_tag(user.foto, :class => "img_preview") if user.foto.attached?  %>
-            </div>
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <h5 class="card-title"><%=user.username%></h5>
-              <p class="card-text"><%=user.nombre%> <%=user.apellidos%></p>
-              <p class="card-text"><%=user.tipo%></p>
-              <p class="card-text"><%=user.sexo%></p>
-              <p class="card-text"><%=user.descripcion%></p>
-              <a href="/confirmacion" class="btn btn-primary">Eliminar Usuario</a>
-            </div>
-          </div>
-        </div>
-      </div>
+  </div>
+  <div class="form-group">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="gridCheck">
+      <label class="form-check-label" for="gridCheck">
+        Check me out
+      </label>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Sign in</button>
+</form>  
 
 
-    <br><br><br>
-  
-  <%end%>
 
-   
+
 </div>
 
 
 
-<%if current_user.tipo == "Administrador" or current_user.tipo == "Dueño"%>
-  <%if current_user.tipo == "Administrador"%>
-    <div class="row">
-      <div class="column" style="background-color:#aaa;">
-          <div class="photo" style="text-align: center;">
-          <%= image_tag("restaurant.jpg", :size => "260x180")%>
-          </div>
-          <br><br>
-          <div style="text-align: center;">
-          <%= button_to "Restaurants", restauran_path, :method => :get, :class => "button" %>
-
-          
-        </div>
-        <p></p>
-      </div>
-      <div class="column" style="background-color:#bbb;">
-          <div class="photo" style="text-align: center;">
-          <%= image_tag("comunas.jpg", :size => "260x180")%>
-      </div>
-      <br><br>
-      <div style="text-align: center;">
-          <%= button_to "Comunas", comunas_path, :method => :get, :class => "button" %>
-      </div>
-      </div>
-      <div class="column" style="background-color:#ccc;">
-          <div class="photo" style="text-align: center;">
-          <%= image_tag("comentarios.png", :size => "260x180")%>
-      </div>
-      <br><br>
-  <%else%>
-    <div class="row">
-      <div class="column" style="background-color:#aaa;">
-          <div class="photo" style="text-align: center;">
-          <%= image_tag("restaurant.jpg", :size => "260x180")%>
-          </div>
-          <br><br>
-          <div style="text-align: center;">
-            <%= button_to "Restaurants", restauran_path, :method => :get, :class => "button" %>
-        
-        </div>
-        <p></p>
-  <%end%>
-<%end%>    
-
-    </div>
-  </div>
 </body>
