@@ -165,12 +165,12 @@
     <br>
     <div class="field">
         <%= form.label :sexo%>
-        <%= form.text_field :sexo%>
+        <%= form.select :sexo, [['Hombre','Hombre'],['Mujer','Mujer'],['Otro','Otro']] %>
     </div>
     <br>
     <div class="field">
       <%= form.label :contacto%>
-      <%= form.text_field :contacto%>
+      <%= form.number_field :contacto%>
     </div>
     <br>
     <div class="field">
@@ -180,7 +180,7 @@
     <br>
     <div class="field">
       <%= form.label :edad%>
-      <%= form.text_field :edad%>
+      <%= form.number_field :edad%>
     </div>
     <br>
     <div class="field">
@@ -197,7 +197,7 @@
         <%= form.submit%>
     </div>
 <% end %>
-<%= link_to 'Cuenta', cuenta_gustos_path, :method => :get, :class => "button"%>
+<%= link_to 'Cuenta', cuenta_taste_path, :method => :get, :class => "button"%>
 </div>
 </div>
 </body>
