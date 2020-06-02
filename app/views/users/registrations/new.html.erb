@@ -60,9 +60,9 @@
     <%= f.text_field :username, autofocus: true, autocomplete: "username" %>
   </div>
   <div class="field">
+    <% @comuna = Comuna.all %>
     <%= f.label :comuna_id %><br/>
-    <%= f.number_field :comuna_id, autofocus: true, autocomplete: "comuna" %>
-  </div>
+    <%= f.select :comuna_id, @comuna.collect {|u| [u.nombre, u.id] } %>  </div>
 
   <div class="field">
     <%= f.label :tipo %><br />

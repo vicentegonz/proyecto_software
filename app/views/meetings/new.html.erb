@@ -162,9 +162,10 @@
         <%= form.text_field :usuario2 %>
     </div>
     <br>
+    <% @restaurant = Restaurant.all %>
     <div class = 'field'>
       <%= form.label :restaurant_id %>
-      <%= form.number_field :restaurant_id %>
+      <%= form.select :restaurant_id, @restaurant.collect {|u| [ u.id] } %>
     </div>
     <br>
     <div class='actions' style="text-align: center;">
@@ -174,13 +175,15 @@
     <br>
     <%= link_to 'Listado de Citas', meetings_path, :method => :get, :class => "button" %>
 <%end%>
+
 <%if current_user.tipo == 'Cliente'%>
 <%= form_with(model: @meetings, method: :post) do |form|%>
 <div class='actions' style="text-align: center;">
   <p>Elige el restaurant donde te gustaria tener la cita</p>
+  <% @restaurant = Restaurant.all %>
   <div class = 'field'>
     <%= form.label :restaurant_id %>
-    <%= form.number_field :restaurant_id %>
+    <%= form.select :restaurant_id, @restaurant.collect {|u| [u.nombre, u.id] } %>
   </div>
   <%= form.submit %>
 </div>

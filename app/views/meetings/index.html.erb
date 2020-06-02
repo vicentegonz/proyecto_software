@@ -160,24 +160,32 @@
                 <th style="text-align: center;">Usuario1</th>
                 <th style="text-align: center;">Usuario2</th>
                 <th style="text-align: center;">id restorant</th>
+                <%if current_user.tipo == "Administrador"%>
                 <th style="text-align: center;">Accion</th>
+                <%end%>
           </tr>
         </thead>
 
       <tbody>
           <% @meetings.each do |meeting| %>
           <tr>
+            <%if meeting.check == 1 and (meeting.usuario2.to_i == current_user.id or meeting.usuario1.to_i == current_user.id or current_user.tipo == "Administrador")%>
             <td style="text-align: center;"><%= meeting.usuario1 %></td>
             <td style="text-align: center;"><%= meeting.usuario2 %></td>
-            <td style="text-align: center;"><%= meeting.restaurant_id %></td>
+            <td style="text-align: center;"><%= meeting.restaurant_id%></td>
+            <%if current_user.tipo == "Administrador"%>
+            
             <td style="text-align: center;"> <%= link_to 'Ver detalles', meeting_path(meeting.id)%></p>
+            <%end%>
+            <%end%>
           </tr>
-          <% end %>
+          <%end%>
+          
       </tbody>
     </table>
 
     <br>
-
-    <%= button_to 'Crear Citas', meetings_new_path, :method => :get, :class => "button" %>
+    
+    <!-- <%= button_to 'Crear Citas', meetings_new_path, :method => :get, :class => "button" %> -->
   </div>
 </body>
