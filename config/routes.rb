@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
 
   
-  get 'like', to:'meetings#new', as: 'like'
+  get 'like/:id_user1/:id_user2', to:'meetings#new', as: 'like'
   #cuenta
   get 'cuenta/gustos', to: 'cuenta#show', as: 'cuenta_taste'
   get 'confirmacion', to: 'cuenta#delete'

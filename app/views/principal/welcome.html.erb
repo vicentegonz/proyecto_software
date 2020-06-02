@@ -244,7 +244,7 @@ nav ul li ul li a:hover{
         <div class="carousel-caption">
           <h3><%=user.username%></h3>
           <p><%=user.descripcion%></p>
-          <%= button_to "Like", like_path, :method => :get, :class => "button_red" %>
+          <%= button_to "Like", like_path(id_user1: current_user.id, id_user2: user.id), :method => :get, :class => "button_red" %>
         </div>
       </div>
     
