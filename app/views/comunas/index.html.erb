@@ -169,7 +169,7 @@
     <br>
 
     <%if current_user.tipo == "Administrador"%>
-      <%= button_to "Agregar comuna", comunas_new_path, :method => :get, :class => "button"%>
+      <%= button_to "Agregar comuna", new_comuna_path, :method => :get, :class => "button"%>
     <%end%>
 
 </div>

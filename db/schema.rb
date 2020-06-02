@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_02_154208) do
+ActiveRecord::Schema.define(version: 2020_06_02_210537) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "adminpack"
@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(version: 2020_06_02_154208) do
     t.datetime "updated_at", null: false
     t.string "usuario2"
     t.integer "check"
+    t.integer "restaurant_id"
   end
 
   create_table "restaurants", force: :cascade do |t|
