@@ -11,10 +11,11 @@ class MeetingsController < ApplicationController
 
   def create
     meeting_params = params.require(:meeting).permit()
-    if Meeting.exists?(meeting_params.merge(usuario1: $id_user2 current_user.id, usuario2: current_user.id, check:0))
+    if Meeting.exists?(usuario1: $id_user2 , usuario2: current_user.id, check: 0)
       @meeting = Meeting.create(meeting_params.merge(usuario1: current_user.id, usuario2: $id_user2,check:1))
     else
       @meeting = Meeting.create(meeting_params.merge(usuario1: current_user.id, usuario2: $id_user2,check:0))
+    end
 
     if @meeting.save
       redirect_to welcome_path, notice: 'Cita creada exitosamente.'

@@ -174,7 +174,7 @@
     <br>
     <%= link_to 'Listado de Citas', meetings_path, :method => :get, :class => "button" %>
 <%end%>
-<%if current_user.tipo == 'Client'%>
+<%if current_user.tipo == 'Cliente'%>
 <%= form_with(model: @meetings, method: :post) do |form|%>
 <div class='actions' style="text-align: center;">
   <p>Elige el restaurant donde te gustaria tener la cita</p>
