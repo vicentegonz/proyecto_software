@@ -149,7 +149,7 @@
 <div class="header">
 <h1 style="color: white;"><strong>Nueva Cita</strong></h1>
 </div>
-
+<%if current_user.tipo == 'Administrador'%>
 <%= form_with(model: @meetings, method: :post) do |form|%>
 
     <div class = 'field' style="text-align: center;">
@@ -173,6 +173,20 @@
 <%end%>
     <br>
     <%= link_to 'Listado de Citas', meetings_path, :method => :get, :class => "button" %>
+<%end%>
+<%if current_user.tipo == 'Client'%>
+<%= form_with(model: @meetings, method: :post) do |form|%>
+<div class='actions' style="text-align: center;">
+  <p>Elige el restaurant donde te gustaria tener la cita</p>
+  <div class = 'field'>
+    <%= form.label :restaurant_id %>
+    <%= form.number_field :restaurant_id %>
+  </div>
+  <%= form.submit %>
+</div>
+<%end%>
+<%end%>
+
 
 </body>
 
