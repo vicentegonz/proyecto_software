@@ -135,9 +135,12 @@
       <li><a href="/comunas">Comunas</a></li>
       <li><a href="/coments">Comentarios</a></li>
       <%if current_user.tipo != "Dueño"%>
-        <li><a href="/gustos">Gustos</a></li>
+        <li><a href="gustos">Gustos</a></li>
       <%end%>
-      <li><a href="/meetings">Citas</a></li>
+      <li><a href="meetings">Citas</a></li>
+      <%if current_user.tipo == "Administrador"%>
+        <li><a href="/chao">Usuarios</a></li>
+      <%end%>
       <li class="alignright"><a href="/cuenta/gustos">Mi cuenta</a>
         <ul>
           <li><a><%=link_to 'Cerrar session', destroy_user_session_path, method: :delete%>
@@ -162,6 +165,9 @@
                 <th style="text-align: center;">Descripcion</th>
                 <th style="text-align: center;">Comuna</th>
                 <th style="text-align: center;">Dueño</th>
+                <%if current_user.tipo != "Cliente"%>
+                  <th style="text-align: center;">Estado</th>
+                <%end%>
                 <th style="text-align: center;">Accion</th>
             </tr>
         </thead>
@@ -178,13 +184,17 @@
               <td style="text-align: center;"><%= restaurant.descripcion%></td>
               <td style="text-align: center;"><%= restaurant.comuna_id%></td>
               <td style="text-align: center;"><%= restaurant.user_id%></td>
+              <td style="text-align: center;"><%= restaurant.aceptado%></td>
             <td style="text-align: center;"><%= link_to 'Ver detalles', comuna_restaurant_path(restaurant.comuna.id, restaurant)%></td>
           </tr>
           <%end%>
 
         <%end%>
-      <%else%>
+      <%end%>
+      <%if current_user.tipo == "Cliente"%>
         <% @restaurants.each do |restaurant|%>
+
+          <%if restaurant.aceptado == 1 %> 
             <tr>
                 <td style="text-align: center;"><%= restaurant.nombre%></td>
                 <td style="text-align: center;"><%= restaurant.valoracion%></td>
@@ -195,14 +205,25 @@
                 <td style="text-align: center;"><%= link_to 'Ver detalles', comuna_restaurant_path(restaurant.comuna.id, restaurant)%></td>
               </tr>
             <%end%>
+          <%end%>
+      <%end%>
+      <%if current_user.tipo == "Administrador"%>
+        <% @restaurants.each do |restaurant|%>
+          <tr>
+              <td style="text-align: center;"><%= restaurant.nombre%></td>
+              <td style="text-align: center;"><%= restaurant.valoracion%></td>
+              <td style="text-align: center;"><%= restaurant.comentar%></td>
+              <td style="text-align: center;"><%= restaurant.descripcion%></td>
+              <td style="text-align: center;"><%= restaurant.comuna_id%></td>
+              <td style="text-align: center;"><%= restaurant.user_id%></td>
+              <td style="text-align: center;"><%= restaurant.aceptado%></td>
+              <td style="text-align: center;"><%= link_to 'Ver detalles', comuna_restaurant_path(restaurant.comuna.id, restaurant)%></td>
+            </tr>
+        <%end%>
       <%end%>
     </tbody>
     </table>
     <br>
-
-    <%if current_user.tipo == "Administrador"%>
-      <%= button_to "Agregar restaurant", new_comuna_restaurant_path, :method => :get, :class => "button" %>
-    <%end%>
 
 </div>
 

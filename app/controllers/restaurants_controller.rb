@@ -19,7 +19,7 @@ class RestaurantsController < ApplicationController
   end
 
   def create
-    restaurant_params = params.require(:restaurant).permit(:nombre, :valoracion, :comentar, :descripcion)
+    restaurant_params = params.require(:restaurant).permit(:nombre, :valoracion, :comentar, :descripcion, :aceptado)
     @restaurant = Restaurant.new(restaurant_params.merge(user_id: current_user.id, comuna_id: @comuna.id))
     @restaurant.comuna = @comuna
     respond_to do |format|
@@ -34,7 +34,7 @@ class RestaurantsController < ApplicationController
     
 
   def update
-    restaurant_params = params.require(:restaurant).permit(:nombre, :valoracion, :comentarios, :descripcion, :comuna_id, :user_id)
+    restaurant_params = params.require(:restaurant).permit(:nombre, :valoracion, :comentarios, :descripcion, :aceptado, :comuna_id, :user_id)
     @restaurant = Restaurant.find(params[:id])
     if @restaurant.update(restaurant_params)
       redirect_to restaurant_path(@restaurant.id), notice:'Se ha creado correctamente'
@@ -46,7 +46,7 @@ class RestaurantsController < ApplicationController
   def destroy
     @restaurant = Restaurant.find(params[:id])
     @restaurant.destroy
-    redirect_to restaurants_path, notice: 'Restaurant eliminado correctamente'
+    redirect_to restauran_path, notice: 'Restaurant eliminado correctamente'
   end
   private
     def set_restaurant

@@ -30,8 +30,19 @@
       <%= form.text_field :descripcion %>
   </div>
   <br>
-  
-  
+  <%="tu id de dueno es #{current_user.id}"%>
+  <div class='field' style="text-align: center;">
+    <%= form.label :dueno %>
+    <%= form.text_field :dueno %>
+</div>
+<br>
+<%if current_user.tipo == "Administrador"%>
+    <div class='field' style="text-align: center;">
+      <%= form.label :aceptado %>
+      <%= form.text_field :aceptado %>
+  </div>
+  <br>
+<%end%>
   <div class='actions' style="text-align: center;">
       <%= form.submit%>
   </div>

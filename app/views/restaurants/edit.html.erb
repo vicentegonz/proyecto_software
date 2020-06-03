@@ -128,9 +128,12 @@
           <li><a href="/comunas">Comunas</a></li>
           <li><a href="/coments">Comentarios</a></li>
           <%if current_user.tipo != "Dueño"%>
-            <li><a href="/gustos">Gustos</a></li>
+            <li><a href="gustos">Gustos</a></li>
           <%end%>
-          <li><a href="/meetings">Citas</a></li>
+          <li><a href="meetings">Citas</a></li>
+          <%if current_user.tipo == "Administrador"%>
+            <li><a href="/chao">Usuarios</a></li>
+          <%end%>
           <li class="alignright"><a href="/cuenta/gustos">Mi cuenta</a>
             <ul>
               <li><a><%=link_to 'Cerrar session', destroy_user_session_path, method: :delete%>
@@ -177,6 +180,11 @@
       <div class="field">
         <%= form.label :user_id%>
         <%= form.number_field :user_id%>
+      </div>
+      <br>
+      <div class="field">
+        <%= form.label :aceptado%>
+        <%= form.number_field :aceptado%>
       </div>
       <br>
     <%end%>

@@ -218,12 +218,13 @@ nav ul li ul li a:hover{
     <li><a href="restauran">Restaurants</a></li>
     <li><a href="comunas">Comunas</a></li>
     <li><a href="coments">Comentarios</a></li>
-    <li><a href="/chao">Usuarios</a></li>
-    <li><a href="/post">Postula aquí</a></li>
     <%if current_user.tipo != "Dueño"%>
       <li><a href="gustos">Gustos</a></li>
     <%end%>
     <li><a href="meetings">Citas</a></li>
+    <%if current_user.tipo == "Administrador"%>
+      <li><a href="/chao">Usuarios</a></li>
+    <%end%>
     <li><a href=>
     <li class="alignright"><a href="cuenta/gustos">Mi cuenta</a>
       <ul>
@@ -240,58 +241,6 @@ nav ul li ul li a:hover{
 <br><br><br>
 
 <h1>Postula aquí</h1>
-<div class="section1">  
-  <br><br><br>
-
-<form>
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="inputEmail4">Email</label>
-      <input type="email" class="form-control" id="inputEmail4">
-    </div>
-    <div class="form-group col-md-6">
-      <label for="inputPassword4">Password</label>
-      <input type="password" class="form-control" id="inputPassword4">
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="inputAddress">Address</label>
-    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-  </div>
-  <div class="form-group">
-    <label for="inputAddress2">Descripción</label>
-    <input type="text" class="form-control" id="inputAddress2" placeholder="Restaurant de carnes">
-  </div>
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="inputCity">Comuna</label>
-      <input type="text" class="form-control" id="inputCity">
-    </div>
-    <div class="form-group col-md-4">
-      <label for="inputState">State</label>
-      <select id="inputState" class="form-control">
-        <option selected>Choose...</option>
-        <option>...</option>
-      </select>
-    </div>
-
-  </div>
-  <div class="form-group">
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="gridCheck">
-      <label class="form-check-label" for="gridCheck">
-        Check me out
-      </label>
-    </div>
-  </div>
-  <button type="submit" class="btn btn-primary">Sign in</button>
-</form>  
-
-
-
-
-</div>
-
-
+  <h1>hay q eliminar este boton </h1>
 
 </body>
