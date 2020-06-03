@@ -7,7 +7,6 @@ class User < ApplicationRecord
   has_many :comentarios
   has_many :gustos
   has_many :meetings
-  belongs_to :comuna
   has_one_attached :foto
   has_many :restaurants
 

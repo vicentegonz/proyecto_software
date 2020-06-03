@@ -1,0 +1,60 @@
+<head>
+<style>
+    body {
+        padding: 0;
+        margin: 0;
+        background-image: url("<%= asset_path('delete.jpg') %>");
+        background-attachment: fixed;
+        background-size: cover;
+        font-family: 'Lato', sans-serif;
+        display: block;
+    }
+    h1, h3{
+        color: azure;
+    }
+    .info{
+        text-align: center;
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 20px;
+        width: 300px;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 20px;
+        background-color: rgba(255, 255, 255, 0.671);
+      }
+      .button {
+        background-color: white;
+        color: black;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        border-radius: 5px;
+        font-size: 12px;
+        margin: 4px 2px;
+        transition-duration: 0.8s;
+        border: 2px solid black;
+    }
+      .button:hover{
+          background-color: rgb(3, 110, 65);
+          color: white;
+      }
+</style>
+</head>
+<body>
+    <div class="all" style="text-align: center;">
+    <h1>El usuario <strong><%= current_user.username %></strong> sera eliminado </h1>
+    <div class="info">
+    <p><h3>¿Estás seguro?</h3></p>
+    
+    <%= link_to 'Si', delete_path, method: :delete, data: {confirm: 'Esta sera tu ultima advertencia?'}, :class => "button" %>
+
+
+        <%=link_to 'No',  welcome_path, method: :get, :class => "button"%>
+
+    
+    </div> 
+    </div>
+</body>
