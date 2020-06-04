@@ -42,22 +42,22 @@
 
   <div class="field">
     <%= f.label :nombre %><br />
-    <%= f.text_field :nombre, autofocus: true, autocomplete: "username" %>
+    <%= f.text_field :nombre, autofocus: true, maxlength: 20, autocomplete: "username" %>
   </div>
 
   <div class="field">
     <%= f.label :apellidos %><br />
-    <%= f.text_field :apellidos, autofocus: true, autocomplete: "username" %>
+    <%= f.text_field :apellidos, autofocus: true, maxlength: 20, autocomplete: "username" %>
   </div>
 
   <div class="field">
     <%= f.label :email %><br/>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autofocus: true, maxlength: 20, autocomplete: "email" %>
   </div>
 
   <div class="field">
     <%= f.label :username %><br/>
-    <%= f.text_field :username, autofocus: true, autocomplete: "username" %>
+    <%= f.text_field :username, autofocus: true, maxlength: 20, autocomplete: "username" %>
   </div>
 
 
@@ -73,12 +73,12 @@
 
   <div class="field">
     <%= f.label :edad %><br />
-    <%= f.number_field :edad, autofocus: true %>
+    <%= f.number_field :edad, autofocus: true , min:0, max:100%>
   </div>
 
   <div class="field">
     <%= f.label :descripcion %><br />
-    <%= f.text_field :descripcion, autofocus: true %>
+    <%= f.text_field :descripcion, maxlength: 20, autofocus: true %>
   </div>
 
   <div class="field">

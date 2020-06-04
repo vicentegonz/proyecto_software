@@ -27,11 +27,21 @@
     .header{
         background-color: gray;
     }
-    h1,h2{
+    h1{
         text-align: center;
+        font-style: normal;
+        text-transform: uppercase;
+    }
+    h2{
+      text-align: center;
+        font-style: normal;
     }
     body{
-            background-image: url("<%= asset_path('oranges.jpg') %>");
+            background-image: url("<%= asset_path('orange_4.jpg') %>");
+            background-attachment: fixed;
+            background-size: cover;
+            font-family: 'Lato', sans-serif;
+            display: block;
     }
     circle{
         border-radius: 50%;
@@ -183,6 +193,10 @@ nav ul li ul li a:hover{
   height:360px;
   margin: auto;
 }
+.abajo{
+  padding: 50px;
+  margin: auto;
+}
 
   
 
@@ -192,33 +206,11 @@ nav ul li ul li a:hover{
 </head>
 
 <body>  
-<div class="header">
+<!-- <div class="header">
 <h1>Half-Orange &#128149; &#128165; </h1>
-</div>
-<nav>
-  <ul>
-    <li><a class="/welcome" href="/welcome">Home</a></li>
-    <li><a href="restauran">Restaurants</a></li>
-    <li><a href="comunas">Comunas</a></li>
-    <li><a href="coments">Comentarios</a></li>
-    <%if current_user.tipo != "Dueño"%>
-      <li><a href="gustos">Gustos</a></li>
-    <%end%>
-    <li><a href="meetings">Citas</a></li>
-    <%if current_user.tipo == "Administrador"%>
-      <li><a href="/chao">Usuarios</a></li>
-    <%end%>
-    <li class="alignright"><a href="cuenta/gustos">Mi cuenta</a>
-      <ul>
-        <li><a><%=link_to 'Cerrar session', destroy_user_session_path, method: :delete%>
-        </a></li>
-        
-        <li><a href="/confirmacion"> Eliminar cuenta</a></li>
-        
-      </ul>
-    </li>
-  </ul>
-</nav>
+</div> -->
+<%= render :template => "header.html.erb"%>
+<h1>Half-Orange &#128149; &#128165; </h1>
 <div class="container">
   <h2>Encuentra tu pareja perfecta aquí</h2>
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -240,14 +232,18 @@ nav ul li ul li a:hover{
       </div>
       <% @users = User.all %>
       <% @users.each do |user| %>
+      <%if user.tipo == "Cliente"%>
       <div class="item">
         <%= image_tag(user.foto, :class => "img_preview") if user.foto.attached?  %>
         <div class="carousel-caption">
           <h3><%=user.username%></h3>
           <p><%=user.descripcion%></p>
-          <%= button_to "Like", like_path(id_user1: current_user.id, id_user2: user.id), :method => :get, :class => "button_red" %>
+          <%if current_user.tipo == "Cliente"%>
+            <%= button_to "Like", like_path(id_user1: current_user.id, id_user2: user.id), :method => :get, :class => "button_red" %>
+          <%end%>
         </div>
       </div>
+      <%end%>
     
     <%end%>
     </div>
@@ -265,7 +261,7 @@ nav ul li ul li a:hover{
 </div>
 
   <br><br>
-
+<div class="abajo">
 <%if current_user.tipo == "Administrador" or current_user.tipo == "Dueño"%>
   <%if current_user.tipo == "Administrador"%>
     <div class="row">
@@ -295,8 +291,11 @@ nav ul li ul li a:hover{
           <%= image_tag("comentarios.png", :size => "260x180")%>
       </div>
       <br><br>
+      <div style="text-align: center;">
+        <%= button_to "Comentarios", coments_path, :method => :get, :class => "button" %>
+    </div>
   <%else%>
-    <div class="row">
+    <div class="row" style="margin: auto;">
       <div class="column" style="background-color:#aaa;">
           <div class="photo" style="text-align: center;">
           <%= image_tag("restaurant.jpg", :size => "260x180")%>
@@ -306,9 +305,10 @@ nav ul li ul li a:hover{
             <%= button_to "Restaurants", restauran_path, :method => :get, :class => "button" %>
         
         </div>
-        <p></p>
+        
   <%end%>
-<%end%>    
+<%end%> 
+      </div>   
 
     </div>
   </div>

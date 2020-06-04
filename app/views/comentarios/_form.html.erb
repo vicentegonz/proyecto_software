@@ -1,4 +1,4 @@
-<%= form_with(url: (@comentario.new_record? ? [@restaurant.comuna, @restaurant, @comentario] : comuna_restaurant_comentarios_path), model: @comentario, local: true) do |form| %>
+<%= form_with(url: (@comentario.new_record? ? [@restaurant.comuna, @restaurant, @comentario] : comuna_restaurant_comentario_path), model: @comentario, local: true) do |form| %>
 <% if comentario.errors.any? %>    
     <div id="error_explanation">
       <h2><%= pluralize(comentario.errors.count, "error") %> prohibited this comentario from being saved:</h2>
@@ -11,9 +11,9 @@
     <% end %>
 
     <div class = 'field'>
-        <p>tu uid es <%= current_user.id%><p>
+        
         <%= form.label :contenido %>
-        <%= form.text_field :contenido %><br>
+        <%= form.text_field :contenido, maxlength: 20 %><br>
         
     </div>
 

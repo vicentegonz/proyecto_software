@@ -48,77 +48,7 @@
             background-color: rgb(6, 105, 39);
             color: white;
         }
-        ul {
-          list-style-type: none;
-          margin: 0;
-          padding: 0;
-          overflow: hidden;
-          background-color: #333;
-        }
-        
-        nav {
-          width: 100%;
-          height: 60px;
-          background-color: #333;
-        
-        }
-        nav ul {
-          float:left;
-        }
-        nav ul li{
-          float: left;
-          list-style: none;
-          position: relative;
-          text-decoration: none;
-        }
-        
-        nav ul li a{
-          display: block;
-          color: azure;
-          font-size: 14px;
-          padding: 22px 14px;
-          text-decoration: none;
-        }
-        nav ul li ul{
-          display: none;
-          position: absolute;
-          background-color: #ad8080f8;
-          width: 100px;
-          text-decoration: none;
-          padding: 0;
-        }
-        nav ul li:hover ul{
-          display: block;
-          position: absolute;
-          text-decoration: none;
-          color: whitesmoke;
-          background-color: #ad8080f8;
-          
-        }
-        nav ul li:hover a{
-          text-decoration: none;
-          color: whitesmoke;
-          text-decoration: none;
-          
-        }
-        nav ul li ul li a{
-          padding: 5px 5px;
-          float: left;
-          text-decoration: none;
-          background-color: #333;
-        
-        }
-        nav ul li ul li a:hover{
-          background-color: #ad8080f8;
-          color: whitesmoke;
-          
-        }
-        
-        .alignright{
-          position: absolute;
-          float:right;
-          right: 15px;
-        }
+
         .alignright { float: right; }
         h1{
           color: white;
@@ -128,30 +58,7 @@
 
 </head>
 <body >
-  <nav>
-    <ul>
-      <li><a class="/welcome" href="/welcome">Home</a></li>
-      <li><a href="/restauran">Restaurants</a></li>
-      <li><a href="/comunas">Comunas</a></li>
-      <li><a href="/coments">Comentarios</a></li>
-      <%if current_user.tipo != "Dueño"%>
-        <li><a href="gustos">Gustos</a></li>
-      <%end%>
-      <li><a href="meetings">Citas</a></li>
-      <%if current_user.tipo == "Administrador"%>
-        <li><a href="/chao">Usuarios</a></li>
-      <%end%>
-      <li class="alignright"><a href="/cuenta/gustos">Mi cuenta</a>
-        <ul>
-          <li><a><%=link_to 'Cerrar session', destroy_user_session_path, method: :delete%>
-          </a></li>
-          
-          <li><a href="/confirmacion"> Eliminar cuenta</a></li>
-          
-        </ul>
-      </li>
-    </ul>
-  </nav>
+  <%= render :template => "header.html.erb"%>
     
 <p id="notice"><%= notice %></p>
 <div class="parte1" style="text-align: center;">
@@ -182,7 +89,7 @@
               <td style="text-align: center;"><%= restaurant.valoracion%></td>
               <td style="text-align: center;"><%= restaurant.comentar%></td>
               <td style="text-align: center;"><%= restaurant.descripcion%></td>
-              <td style="text-align: center;"><%= restaurant.comuna_id%></td>
+              <td style="text-align: center;"><%= restaurant.comuna.nombre%></td>
               <td style="text-align: center;"><%= restaurant.user_id%></td>
               <td style="text-align: center;"><%= restaurant.aceptado%></td>
             <td style="text-align: center;"><%= link_to 'Ver detalles', comuna_restaurant_path(restaurant.comuna.id, restaurant)%></td>
@@ -200,7 +107,7 @@
                 <td style="text-align: center;"><%= restaurant.valoracion%></td>
                 <td style="text-align: center;"><%= restaurant.comentar%></td>
                 <td style="text-align: center;"><%= restaurant.descripcion%></td>
-                <td style="text-align: center;"><%= restaurant.comuna_id%></td>
+                <td style="text-align: center;"><%= restaurant.comuna.nombre%></td>
                 <td style="text-align: center;"><%= restaurant.user_id%></td>
                 <td style="text-align: center;"><%= link_to 'Ver detalles', comuna_restaurant_path(restaurant.comuna.id, restaurant)%></td>
               </tr>
@@ -214,7 +121,7 @@
               <td style="text-align: center;"><%= restaurant.valoracion%></td>
               <td style="text-align: center;"><%= restaurant.comentar%></td>
               <td style="text-align: center;"><%= restaurant.descripcion%></td>
-              <td style="text-align: center;"><%= restaurant.comuna_id%></td>
+              <td style="text-align: center;"><%= restaurant.comuna.nombre%></td>
               <td style="text-align: center;"><%= restaurant.user_id%></td>
               <td style="text-align: center;"><%= restaurant.aceptado%></td>
               <td style="text-align: center;"><%= link_to 'Ver detalles', comuna_restaurant_path(restaurant.comuna.id, restaurant)%></td>

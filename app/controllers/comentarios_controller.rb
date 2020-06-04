@@ -42,18 +42,18 @@ class ComentariosController < ApplicationController
     @comentario = Comentario.find(params[:id])
     puts @comentario.contenido
     if @comentario.update(comentario_params)
-      redirect_to restaurant_comentarios_path, notice: 'Comentario editado con éxito'
+      redirect_to comuna_restaurant_path(@comentario.restaurant.comuna_id, @comentario.restaurant_id), notice: 'Comentario editado con éxito'
       puts @comentario.contenido
 
     else
-      redirecto_to restaurant_comentarios_path, notice: 'Ocurrió un error al editar el comentario'
+      redirecto_to comuna_restaurant_path(@comentario.restaurant.comuna_id, @comentario.restaurant_id), notice: 'Ocurrió un error al editar el comentario'
     end
   end
 
   def destroy
     @comentario.destroy
     respond_to do |format|
-      format.html { redirect_to restaurant_comentarios_path(:restaurant_id), notice: 'Comentario was successfully destroyed.' }
+      format.html { redirect_to comuna_restaurant_path(@comentario.restaurant.comuna_id, @comentario.restaurant_id), notice: 'Comentario was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

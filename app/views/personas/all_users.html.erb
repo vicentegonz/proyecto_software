@@ -11,7 +11,7 @@
     }
     
     /* Create three equal columns that floats next to each other */
-    .column {
+    *.column {
       float: left;
       width: 33.33%;
       padding: 10px;
@@ -23,12 +23,15 @@
       content: "";
       display: table;
       clear: both;
-    }
+    } 
     .header{
         background-color: gray;
     }
     h1,h2{
         text-align: center;
+        font-style: normal;
+        text-transform: uppercase;
+        text-decoration: underline;
     }
     body{
             background-image: url("<%= asset_path('oranges.jpg') %>");
@@ -201,40 +204,15 @@ nav ul li ul li a:hover{
 
 
 
+
     
     
     </style>
 </head>
 
 <body>  
-<div class="header">
-<h1>Half-Orange &#128149; &#128165; </h1>
-</div>
-<nav>
-  <ul>
-    <li><a class="/welcome" href="/welcome">Home</a></li>
-    <li><a href="restauran">Restaurants</a></li>
-    <li><a href="comunas">Comunas</a></li>
-    <li><a href="coments">Comentarios</a></li>
-    <%if current_user.tipo != "Dueño"%>
-      <li><a href="/gustos">Gustos</a></li>
-    <%end%>
-    <li><a href="meetings">Citas</a></li>
-    <%if current_user.tipo == "Administrador"%>
-      <li><a href="/chao">Usuarios</a></li>
-    <%end%>
-    <li><a href=>
-    <li class="alignright"><a href="cuenta/gustos">Mi cuenta</a>
-      <ul>
-        <li><a><%=link_to 'Cerrar session', destroy_user_session_path, method: :delete%>
-        </a></li>
-        
-        <li><a href="/confirmacion"> Eliminar cuenta</a></li>
-        
-      </ul>
-    </li>
-  </ul>
-</nav>
+
+<%= render :template => "header.html.erb"%>
 
 <br><br><br>
 
@@ -262,7 +240,7 @@ nav ul li ul li a:hover{
               <p class="card-text"><%=user.tipo%></p>
               <p class="card-text"><%=user.sexo%></p>
               <p class="card-text"><%=user.descripcion%></p>
-              <a href="/confirmacion" class="btn btn-primary">Eliminar Usuario</a>
+              <%=link_to 'Eliminar usuario', eliminar_path(user.id), :method => :get%>
             </div>
           </div>
         </div>
