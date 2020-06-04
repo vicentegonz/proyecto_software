@@ -22,6 +22,7 @@ class RestaurantsController < ApplicationController
     restaurant_params = params.require(:restaurant).permit(:nombre, :valoracion, :comentar, :descripcion, :aceptado)
     @restaurant = Restaurant.new(restaurant_params.merge(user_id: current_user.id, comuna_id: @comuna.id))
     @restaurant.comuna = @comuna
+    
     respond_to do |format|
       if @restaurant.save
         format.html { redirect_to comuna_path(@restaurant.comuna), notice: 'Restaurant was successfully created.'}

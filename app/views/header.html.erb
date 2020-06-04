@@ -7,7 +7,9 @@
       <%if current_user.tipo != "Dueño"%>
         <li><a href="/gustos">Gustos</a></li>
       <%end%>
-      <li><a href="/meetings">Citas</a></li>
+      <%if current_user.tipo != "Dueño"%>
+        <li><a href="/meetings">Citas</a></li>
+      <%end%>
       <%if current_user.tipo == "Administrador"%>
         <li><a href="/chao">Usuarios</a></li>
       <%end%>

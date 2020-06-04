@@ -101,7 +101,7 @@
       <%if current_user.tipo == "Cliente"%>
         <% @restaurants.each do |restaurant|%>
 
-          <%if restaurant.aceptado == '1' %> 
+          <%if restaurant.aceptado == 1%> 
             <tr>
                 <td style="text-align: center;"><%= restaurant.nombre%></td>
                 <td style="text-align: center;"><%= restaurant.valoracion%></td>
