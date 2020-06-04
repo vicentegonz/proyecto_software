@@ -30,77 +30,7 @@
             font-family: 'Lato', sans-serif;
             display: block;
     }
-    ul {
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
-      background-color: #333;
-    }
-    
-    nav {
-      width: 100%;
-      height: 60px;
-      background-color: #333;
-    
-    }
-    nav ul {
-      float:left;
-    }
-    nav ul li{
-      float: left;
-      list-style: none;
-      position: relative;
-      text-decoration: none;
-    }
-    
-    nav ul li a{
-      display: block;
-      color: azure;
-      font-size: 14px;
-      padding: 22px 14px;
-      text-decoration: none;
-    }
-    nav ul li ul{
-      display: none;
-      position: absolute;
-      background-color: #ad8080f8;
-      width: 100px;
-      text-decoration: none;
-      padding: 0;
-    }
-    nav ul li:hover ul{
-      display: block;
-      position: absolute;
-      text-decoration: none;
-      color: whitesmoke;
-      background-color: #ad8080f8;
-      
-    }
-    nav ul li:hover a{
-      text-decoration: none;
-      color: whitesmoke;
-      text-decoration: none;
-      
-    }
-    nav ul li ul li a{
-      padding: 5px 5px;
-      float: left;
-      text-decoration: none;
-      background-color: #333;
-    
-    }
-    nav ul li ul li a:hover{
-      background-color: #ad8080f8;
-      color: whitesmoke;
-      
-    }
-    
-    .alignright{
-      position: absolute;
-      float:right;
-      right: 15px;
-    }
+
     .button {
       background-color: white;
       color: black;
@@ -123,30 +53,7 @@
   </style>
 </head>
 <body>
-  <nav>
-    <ul>
-      <li><a class="/welcome" href="/welcome">Home</a></li>
-      <li><a href="/restauran">Restaurants</a></li>
-      <li><a href="/comunas">Comunas</a></li>
-      <li><a href="/coments">Comentarios</a></li>
-      <%if current_user.tipo != "Dueño"%>
-        <li><a href="gustos">Gustos</a></li>
-      <%end%>
-      <li><a href="meetings">Citas</a></li>
-      <%if current_user.tipo == "Administrador"%>
-        <li><a href="/chao">Usuarios</a></li>
-      <%end%>
-      <li class="alignright"><a href="/cuenta/gustos">Mi cuenta</a>
-        <ul>
-          <li><a><%=link_to 'Cerrar session', destroy_user_session_path, method: :delete%>
-          </a></li>
-          
-          <li><a href="/confirmacion"> Eliminar cuenta</a></li>
-          
-        </ul>
-      </li>
-    </ul>
-  </nav>
+  <%= render :template => "header.html.erb"%>
 <p id="notice"><%= notice %></p>
 <div style="text-align: center;">
 <h1><strong>Comentarios</strong></h1>
@@ -157,8 +64,11 @@
       <th>Usuario</th>
       <th>Restaurant</th>
       <th>Contenido</th>
-      <th colspan="1"> Editar </th>
-      <th colspan="1"> Eliminar </th>
+      <%if current_user.tipo == "Administrador"%>
+      <th>Editar</th>
+      <th>Eliminar</th>
+      <%end%>
+      
 
     </tr>
   </thead>
@@ -172,15 +82,13 @@
             <td><%= comentario.user_id %></td>
             <td><%= comentario.restaurant_id %></td>
             <td><%= comentario.contenido %></td>
-            <td><%= link_to 'Editar', edit_comuna_restaurant_comentario_path(comentario.restaurant.comuna_id , comentario.restaurant_id, comentario), :method => :get, :class => "button"%></td>
-            <td><%= link_to 'Destroy', comuna_restaurant_comentario_path(comentario.restaurant_id, comentario.restaurant_id, comentario), method: :delete, data: { confirm: 'Are you sure?' }%></td></tr>
           <%end%>
         <%end%>
         <%if current_user.tipo == "Administrador"%>
-            <td><%= comentario.user_id %></td>
-            <td><%= comentario.restaurant_id %></td>
+            <td><%= comentario.user.nombre %></td>
+            <td><%= comentario.restaurant.nombre %></td>
             <td><%= comentario.contenido %></td>
-            <td><%= link_to 'Editar', edit_comuna_restaurant_comentario_path(comentario.restaurant.comuna_id , comentario.restaurant_id, comentario), :method => :get, :class => "button"%></td>
+            <td><%= link_to 'Editar', edit_comuna_restaurant_comentario_path(comentario.restaurant.comuna_id , comentario.restaurant_id, comentario), :method => :get%></td>
             <td><%= link_to 'Destroy', comuna_restaurant_comentario_path(comentario.restaurant_id, comentario.restaurant_id, comentario), method: :delete, data: { confirm: 'Are you sure?' }%></td></tr>
 
         <%end%>

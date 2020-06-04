@@ -1,6 +1,7 @@
 class GustosController < ApplicationController
   before_action :set_gusto, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  before_action :set_user, only: [:new, :update, :create, :show]
 
   def index
     @gustos = Gusto.all
@@ -16,7 +17,7 @@ class GustosController < ApplicationController
 
   def create
     @gusto = Gusto.new(gusto_params.merge(user_id: current_user.id))
-    @gusto.user = current_user
+    @gusto.user = @user
     respond_to do |format|
       if @gusto.save
         format.html { redirect_to cuenta_taste_path(:user_id), notice: 'Gusto was successfully created.'}
@@ -67,7 +68,7 @@ class GustosController < ApplicationController
     end
 
     def set_user
-      @user = User.find(params[:user_id])
+      @user = User.find(current_user.id)
     end
 
     def gusto_params

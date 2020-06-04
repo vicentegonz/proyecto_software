@@ -1,8 +1,14 @@
 class CuentaController < ApplicationController
   def destroy
-    @cuenta = User.find(current_user.id)
+    $id_user2 = params[:id_user]
+    @cuenta = User.find($id_user2)
+    @usuario = @cuenta
     @cuenta.destroy
-    redirect_to root_path, notice: 'Cuenta eliminada correctamente'
+    if @usuario.id == current_user.id
+      redirect_to root_path, notice: 'Cuenta eliminada correctamente'
+    else
+      redirect_to chao_path, notice: 'Cuenta eliminada correctamente'
+    end
   end
 
   def edit
@@ -26,6 +32,12 @@ class CuentaController < ApplicationController
 
   def show
     @user = User.find(current_user.id)
+  end
+
+  def delete 
+    $id_user2 = params[:id_user]
+    puts $id_user2
+    @cuenta = User.find($id_user2)
   end
 
   

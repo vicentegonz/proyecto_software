@@ -16,12 +16,12 @@ Rails.application.routes.draw do
   get 'like/:id_user1/:id_user2', to:'meetings#new', as: 'like'
   #cuenta
   get 'cuenta/gustos', to: 'cuenta#show', as: 'cuenta_taste'
-  get 'confirmacion', to: 'cuenta#delete'
+  get 'confirmacion/:id_user', to: 'cuenta#delete', as: 'eliminar'
   get 'eliminada', to: 'cuenta#done'
   get 'cuenta/gustos/edit', to: 'cuenta#edit', as: 'cuenta_gustos'
   
 
-  get 'coments', to: 'comentarios#index'
+  get 'coments', to: 'comentarios#index', as: 'coments'
   get 'restauran', to: 'restaurants#index'
   #get 'comun', to: 'comunas#index'
   #get 'comun/:id', to: 'comunas#show', as: 'show_comuna'
@@ -36,7 +36,7 @@ Rails.application.routes.draw do
 
   get 'user', to: 'cuenta#show'
   patch 'user', to: 'cuenta#update'
-  delete 'users', to: 'cuentas#destroy', as: 'delete'
+  delete 'users/:id_user', to: 'cuenta#destroy', as: 'delete'
   #create
   
   #get 'comunas/new', to: 'comunas#new'
