@@ -35,11 +35,9 @@ class CuentaController < ApplicationController
     @user = User.find(current_user.id)
   end
 
-  def delete 
+  def delete
     $id_user2 = params[:id_user]
     puts $id_user2
     @cuenta = User.find($id_user2)
   end
-
-  
 end

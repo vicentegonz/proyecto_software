@@ -14,21 +14,13 @@ class ComentariosController < ApplicationController
     @comentario.restaurant = @restaurant
     respond_to do |format|
       if @comentario.save
-        format.html { redirect_to comuna_restaurant_path(@restaurant.comuna_id, @restaurant.id), notice: 'Comentario was successfully created.'}
+        format.html { redirect_to comuna_restaurant_path(@restaurant.comuna_id, @restaurant.id), notice: 'Comentario was successfully created.' }
       else
         format.html { render :new }
         format.json { render json: @comentario.errors, status: :unprocessable_entity }
       end
     end
   end
-
-    #if @comentario.save
-    #  redirect_to comentarios_new_path, notice: 'Comentario creado exitosamente.'
-
-    #else
-    #  redirect_to comentarios_new_path, notice: 'No se pudo crear el comentario.'
-    #end
-  #end
 
   def show
     @comentario = Comentario.find(params[:id])
@@ -44,7 +36,6 @@ class ComentariosController < ApplicationController
     if @comentario.update(comentario_params)
       redirect_to comuna_restaurant_path(@comentario.restaurant.comuna_id, @comentario.restaurant_id), notice: 'Comentario editado con éxito'
       puts @comentario.contenido
-
     else
       redirecto_to comuna_restaurant_path(@comentario.restaurant.comuna_id, @comentario.restaurant_id), notice: 'Ocurrió un error al editar el comentario'
     end
@@ -57,20 +48,18 @@ class ComentariosController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_comentario
 
-      @comentario = Comentario.find(params[:id])
-    end
+  def set_comentario
+    @comentario = Comentario.find(params[:id])
+  end
 
-    def set_restaurant
-      @restaurant = Restaurant.find(params[:restaurant_id])  
-    end
-    def comentario_params
-      params.require(:comentario).permit(:contenido)
-    end
+  def set_restaurant
+    @restaurant = Restaurant.find(params[:restaurant_id])
+  end
 
+  def comentario_params
+    params.require(:comentario).permit(:contenido)
+  end
 end

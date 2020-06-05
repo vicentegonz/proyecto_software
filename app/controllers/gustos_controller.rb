@@ -20,26 +20,13 @@ class GustosController < ApplicationController
     @gusto.user = @user
     respond_to do |format|
       if @gusto.save
-        format.html { redirect_to cuenta_taste_path(:user_id), notice: 'Gusto was successfully created.'}
+        format.html { redirect_to cuenta_taste_path(:user_id), notice: 'Gusto was successfully created.' }
       else
         format.html { render :new }
         format.json { render json: @gusto.errors, status: :unprocessable_entity }
       end
     end
   end
-
-
-
-    #gusto_params = params.require(:gusto).permit(:nombre, :descripcion, :user_id)
-    #@gusto = Gusto.create(gusto_params)
-
-    #if @gusto.save
-      #redirect_to gustos_new_path, notice: 'Gusto creado exitosamente.'
-
-    #else
-      #redirect_to gustos_new_path, notice: 'No se pudo crear el gusto.'
-    #end
-  #end
 
   def edit
     @gusto = Gusto.find(params[:id])
@@ -62,16 +49,16 @@ class GustosController < ApplicationController
   end
 
   private
-    def set_gusto
 
-      @gusto = Gusto.find(params[:id])
-    end
+  def set_gusto
+    @gusto = Gusto.find(params[:id])
+  end
 
-    def set_user
-      @user = User.find(current_user.id)
-    end
+  def set_user
+    @user = User.find(current_user.id)
+  end
 
-    def gusto_params
-      params.require(:gusto).permit(:nombre, :descripcion)
-    end
+  def gusto_params
+    params.require(:gusto).permit(:nombre, :descripcion)
+  end
 end
