@@ -91,6 +91,7 @@
 
 
 <% @comuna.restaurants.each do |restaurant| %>
+<%if restaurant.aceptado == 1%>
   <div class="comentario">
     <div class="photo">
     </div>
@@ -110,6 +111,7 @@
       
     </div>
   </div>
+  <%end%>
   <%end%>
 
 

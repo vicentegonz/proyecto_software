@@ -41,8 +41,9 @@
   </div>
 
   <div class="field">
+    
     <%= f.label :nombre %><br />
-    <%= f.text_field :nombre, autofocus: true, maxlength: 20, autocomplete: "username" %>
+    <%= f.text_field :nombre, autofocus: true, maxlength: 20, pattern:"[a-zA-Z]+",autocomplete: "username" %>
   </div>
 
   <div class="field">

@@ -3,10 +3,11 @@ class CuentaController < ApplicationController
     $id_user2 = params[:id_user]
     @cuenta = User.find($id_user2)
     @usuario = @cuenta
-    @cuenta.destroy
     if @usuario.id == current_user.id
+      @cuenta.destroy
       redirect_to root_path, notice: 'Cuenta eliminada correctamente'
     else
+      @cuenta.destroy
       redirect_to chao_path, notice: 'Cuenta eliminada correctamente'
     end
   end

@@ -5,6 +5,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   
+  
 <style>
     * {
       box-sizing: border-box;
@@ -233,6 +234,7 @@ nav ul li ul li a:hover{
       <% @users = User.all %>
       <% @users.each do |user| %>
       <%if user.tipo == "Cliente"%>
+      <%if user.id != current_user.id%>
       <div class="item">
         <%= image_tag(user.foto, :class => "img_preview") if user.foto.attached?  %>
         <div class="carousel-caption">
@@ -244,7 +246,7 @@ nav ul li ul li a:hover{
         </div>
       </div>
       <%end%>
-    
+    <%end%>
     <%end%>
     </div>
 

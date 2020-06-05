@@ -1,6 +1,7 @@
 class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
   before_action :set_comuna, only: [:new, :update, :create, :show]
+  before_action :set_user, only: [:new, :update, :create, :show]
   def index
     @restaurants = Restaurant.all
   end
@@ -22,6 +23,7 @@ class RestaurantsController < ApplicationController
     restaurant_params = params.require(:restaurant).permit(:nombre, :valoracion, :comentar, :descripcion, :aceptado)
     @restaurant = Restaurant.new(restaurant_params.merge(user_id: current_user.id, comuna_id: @comuna.id))
     @restaurant.comuna = @comuna
+  
     
     respond_to do |format|
       if @restaurant.save
@@ -57,5 +59,9 @@ class RestaurantsController < ApplicationController
     def set_comuna
       @comuna = Comuna.find(params[:comuna_id]) 
    end
+   def set_user
+    @user = User.find(current_user.id)
+   end
+
   
 end

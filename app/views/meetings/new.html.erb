@@ -93,12 +93,14 @@
   <% @restaurant = Restaurant.all %>
   <div class = 'field'>
     <%= form.label :restaurant_id %>
-    <%= form.select :restaurant_id, @restaurant.collect {|u| [u.nombre, u.id] } %>
+    <%= form.select :restaurant_id, Restaurant.where(aceptado: 1).collect  {|u| [u.nombre, u.id] } %>
   </div>
   <%= form.submit %>
 </div>
 <%end%>
 <%end%>
+<%= link_to "Inicio", welcome_path, :method => :get, :class => "button" %>
+
 
 
 </body>

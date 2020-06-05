@@ -79,7 +79,7 @@
       <tbody>
           <% @meetings.each do |meeting| %>
           <tr>
-            <%if (meeting.check == 1 and (meeting.usuario2.to_i == current_user.id or meeting.usuario1.to_i == current_user.id)) or current_user.tipo == "Administrador"%>
+            <%if meeting.check == 1 and (meeting.usuario2.to_i == current_user.id or meeting.usuario1.to_i == current_user.id or current_user.tipo == "Administrador" )%>
             <td style="text-align: center;"><%= meeting.usuario1 %></td>
             <td style="text-align: center;"><%= meeting.usuario2 %></td>
             <td style="text-align: center;"><%= meeting.restaurant_id%></td>
