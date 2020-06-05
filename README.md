@@ -12,7 +12,7 @@ Administrador
     - Comunas:  Ve las comunas existentes, puede agregar más y también ve los restaurantes de cada comuna. Asimimso, puede editarla y eliminarla.
     - Comentarios: Ve todos los comentarios que se han realizado, pudiendo eliminarlos o editarlos.
     - Gustos: Ve todos los gustos existentes, pudiendo eliminarlos o editarlos.
-    - Citas: Ve las citas existentes, puede editarla o eliminarla. Se puede editar, debido a que si se elimina un restaurant, debe poder asignar otro restaurant a dicha cita
+    - Citas: Ve las citas existentes, puede editarla o eliminarla. Se puede editar, debido a que si se elimina un restaurant, debe poder asignar otro restaurant a dicha cita. En caso de que se elimina un usuario no se elimina la cita debido a que ya se hizo mach entonces queda en el registro.
     - Usuarios: puede ver todos los usuarios existentes, con sus características y eliminar a cada usuario.
     - Cuenta: Puede ver su cuenta, cerrar sesión y eliminarla.
     
