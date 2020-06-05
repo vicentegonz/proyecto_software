@@ -236,7 +236,11 @@ nav ul li ul li a:hover{
       <%if user.tipo == "Cliente"%>
       <%if user.id != current_user.id%>
       <div class="item">
-        <%= image_tag(user.foto, :class => "img_preview") if user.foto.attached?  %>
+        <%if user.foto.attached?%>
+          <%= image_tag(user.foto, :class => "img_preview")  %>
+        <%else%>
+          <%= image_tag 'user.jpg',class: "img_preview"%>
+        <%end%>
         <div class="carousel-caption">
           <h3><%=user.username%></h3>
           <p><%=user.descripcion%></p>

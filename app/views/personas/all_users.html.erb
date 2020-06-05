@@ -230,8 +230,13 @@ nav ul li ul li a:hover{
         <div class="row no-gutters">
           <div class="col-md-4">
             <div class="photo" >
-              <%= image_tag(user.foto, :class => "img_preview") if user.foto.attached?  %>
+              <%if user.foto.attached? %>
+                <%= image_tag(user.foto, :class => "img_preview")  %>
+              <%else%>
+                <%= image_tag 'user.jpg',class: "img_preview"%>
+              <%end%>
             </div>
+           
           </div>
           <div class="col-md-8">
             <div class="card-body">

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_03_013724) do
+ActiveRecord::Schema.define(version: 2020_06_05_154213) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "adminpack"
@@ -108,8 +108,7 @@ ActiveRecord::Schema.define(version: 2020_06_03_013724) do
     t.integer "edad"
     t.string "descripcion"
     t.binary "foto"
-    t.bigint "comuna_id"
-    t.index ["comuna_id"], name: "index_users_on_comuna_id"
+    t.integer "comuna"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
@@ -121,5 +120,4 @@ ActiveRecord::Schema.define(version: 2020_06_03_013724) do
   add_foreign_key "gustos", "users"
   add_foreign_key "restaurants", "comunas"
   add_foreign_key "restaurants", "users"
-  add_foreign_key "users", "comunas"
 end

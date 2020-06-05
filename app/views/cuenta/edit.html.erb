@@ -85,8 +85,8 @@
     <br>
     <% @comunas = Comuna.all %>
     <div class = 'field'>
-      <%= form.label :comuna_id %>
-      <%= form.select :comuna_id, @comunas.collect {|u| [  u.nombre, u.id] } %>
+      <%= form.label :comuna %>
+      <%= form.select :comuna, @comunas.collect {|u| [  u.nombre, u.id] } %>
     </div>
    <br>
     <div class="field">
