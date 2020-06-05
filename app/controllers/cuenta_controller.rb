@@ -20,7 +20,7 @@ class CuentaController < ApplicationController
   end
 
   def update
-    cuenta_params = params.require(:user).permit(:nombre, :apellidos, :username, :email, :sexo, :tipo, :contacto, :comuna_id, :edad, :descripcion, :foto)
+    cuenta_params = params.require(:user).permit(:nombre, :apellidos, :username, :email, :sexo, :tipo, :contacto, :comuna, :edad, :descripcion, :foto)
     @user = User.find(current_user.id)
     puts @user.edad
     if @user.update(cuenta_params)

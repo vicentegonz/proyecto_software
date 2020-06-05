@@ -104,7 +104,11 @@
     <div class="info">
       <h1><strong>Mi cuenta</strong></h1>
       <div class="photo">
-        <%= image_tag(@user.foto, :class => "img_preview") if @user.foto.attached? %>
+        <%if @user.foto.attached?%>
+          <%= image_tag(@user.foto, :class => "img_preview")%>
+        <%else%>
+        <%= image_tag 'user.jpg',class: "img_preview"%>
+        <%end%>
       </div>
   
       <p><strong>Nombre completo: </strong><%= current_user.nombre %> <%= current_user.apellidos %></p>
@@ -113,7 +117,7 @@
       <p><strong>Sexo: </strong><%= current_user.sexo %></p>
       <p><strong>Tipo de usuario: </strong><%= current_user.tipo %></p>
       <p><strong>Numero de contacto: </strong><%= current_user.contacto %></p>
-      <p><strong>Comuna: </strong><%= current_user.comuna_id %></p>
+      <p><strong>Comuna: </strong><%= current_user.comuna %></p>
       <p><strong>Edad: </strong><%= current_user.edad %></p>
       <p><strong>Descripcion: </strong><%= current_user.descripcion %></p>
       <%= link_to 'Editar', cuenta_gustos_path, :method => :get, :class => "button"%>
