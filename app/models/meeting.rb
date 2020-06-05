@@ -1,4 +1,3 @@
 class Meeting < ApplicationRecord
-    has_one :restaurant
-    
+  has_one :restaurant
 end

@@ -8,7 +8,6 @@ class RestaurantsController < ApplicationController
 
   def show
     @restaurant = Restaurant.find(params[:id])
-    
   end
 
   def edit
@@ -23,18 +22,15 @@ class RestaurantsController < ApplicationController
     restaurant_params = params.require(:restaurant).permit(:nombre, :valoracion, :comentar, :descripcion, :aceptado)
     @restaurant = Restaurant.new(restaurant_params.merge(user_id: current_user.id, comuna_id: @comuna.id))
     @restaurant.comuna = @comuna
-  
-    
     respond_to do |format|
       if @restaurant.save
-        format.html { redirect_to comuna_path(@restaurant.comuna), notice: 'Restaurant was successfully created.'}
+        format.html { redirect_to comuna_path(@restaurant.comuna), notice: 'Restaurant was successfully created.' }
       else
         format.html { render :new }
         format.json { render json: @restaurant.errors, status: :unprocessable_entity }
       end
     end
   end
-    
 
   def update
     restaurant_params = params.require(:restaurant).permit(:nombre, :valoracion, :comentar, :descripcion, :aceptado)
@@ -51,17 +47,18 @@ class RestaurantsController < ApplicationController
     @restaurant.destroy
     redirect_to restauran_path, notice: 'Restaurant eliminado correctamente'
   end
+
   private
-    def set_restaurant
-      @restaurant = Restaurant.find(params[:id])
-    end
 
-    def set_comuna
-      @comuna = Comuna.find(params[:comuna_id]) 
-   end
-   def set_user
+  def set_restaurant
+    @restaurant = Restaurant.find(params[:id])
+  end
+
+  def set_comuna
+    @comuna = Comuna.find(params[:comuna_id])
+  end
+
+  def set_user
     @user = User.find(current_user.id)
-   end
-
-  
+  end
 end
