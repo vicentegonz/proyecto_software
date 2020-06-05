@@ -59,7 +59,7 @@
 <%= form_with(model: @comuna, method: :patch) do |form|%>
     <div class="field">
         <%= form.label :nombre%>
-        <%= form.text_field :nombre%>
+        <%= form.text_field :nombre, maxlength: 20, pattern:"[a-zA-Z\s]+"%>
     </div>
     <div class='actions'>
         <%= form.submit%>

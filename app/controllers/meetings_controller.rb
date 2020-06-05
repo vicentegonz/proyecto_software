@@ -50,6 +50,8 @@ class MeetingsController < ApplicationController
 
   def destroy
     @meeting = Meeting.find(params[:id])
+    puts "holaa"
+    puts @meeting.id
     @meeting.destroy
     redirect_to meetings_path, notice: ' Cita eliminada con éxito'
   end

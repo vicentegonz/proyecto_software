@@ -5,10 +5,10 @@ class User < ApplicationRecord
   validates_uniqueness_of :email
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_many :comentarios
-  has_many :gustos
-  has_many :meetings
+  has_many :comentarios, dependent: :destroy
+  has_many :gustos, dependent: :destroy
+  
   has_one_attached :foto
-  has_many :restaurants
+  has_many :restaurants, dependent: :destroy
 
 end
