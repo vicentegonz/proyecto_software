@@ -4,4 +4,5 @@ class Restaurant < ApplicationRecord
   has_one :user
   has_many :meetings, dependent: :destroy
   has_many :comentarios, dependent: :destroy
+  has_one_attached :foto
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_05_154213) do
+ActiveRecord::Schema.define(version: 2020_06_20_211806) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "adminpack"
@@ -89,6 +89,7 @@ ActiveRecord::Schema.define(version: 2020_06_05_154213) do
     t.bigint "user_id"
     t.string "comentar"
     t.integer "aceptado"
+    t.binary "foto"
     t.index ["comuna_id"], name: "index_restaurants_on_comuna_id"
     t.index ["user_id"], name: "index_restaurants_on_user_id"
   end

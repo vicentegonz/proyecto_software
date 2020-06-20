@@ -4,6 +4,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    
     <style>
       table {
         font-family: arial, sans-serif;
@@ -28,7 +29,8 @@
       body {
         padding: 0;
         margin: 0;
-        background-image: url("<%= asset_path('resta2.jpg') %>");
+        /*background-image: url("<%= asset_path('resta2.jpg') %>");*/
+        background-color: burlywood;
         background-attachment: fixed;
         background-size: cover;
         font-family: 'Lato', sans-serif;
@@ -78,9 +80,9 @@
 
 <p id="notice" style="color: white;"><%= notice %></p>
 
-<div style="text-align: center;">
-  <h1 style="color: white;"><strong><%= @restaurant.nombre%></strong></h1>
-  <table style="border:1px solid black;margin-left:auto;margin-right:auto;">
+<div style="text-align: center;margin:auto">
+<h1 style="color:black;"><strong><%= @restaurant.nombre%></strong></h1>
+  <!-- <table style="border:1px solid black;margin-left:auto;margin-right:auto;">
     <thead>
         <tr>
             <th style="text-align: center;">Nombre</th>
@@ -104,8 +106,30 @@
         <td style="text-align: center;"><%= @restaurant.aceptado%></td>
     </tr>
   </tbody>
-  </table>
-  <br><br>
+  </table> -->
+  <br>
+  <div class="card mb-3" style="max-width: 680px;margin:auto; background-color:bisque;">
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        <div class="photo" >
+          <%if @restaurant.foto.attached?%>
+            <%= image_tag(@restaurant.foto, :class => "img_preview") %>
+          <%else%>
+            <%= image_tag 'user.jpg',class: "img_preview"%>
+          <%end%>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h4 class="card-title"><%=@restaurant.comentar%></h4>
+          <p class="card-text"><%= @restaurant.descripcion %></p>
+          <p class="card-text"><%= @restaurant.valoracion %></p>
+          </div>
+      </div>
+    </div>
+  </div>
+
+
   <% @restaurant.comentarios.each do |comentario| %>
   <div class="card mb-3" style="max-width: 510px;margin:auto">
     <div class="row no-gutters">

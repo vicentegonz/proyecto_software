@@ -22,12 +22,16 @@
   <br>
   <div class='field' style="text-align: center;">
       <%= form.label :comentar %>
-      <%= form.text_field :comentar, maxlength: 20 %>
+      <%= form.text_field :comentar, maxlength: 30 %>
   </div>
   <br>
   <div class='field' style="text-align: center;">
       <%= form.label :descripcion %>
-      <%= form.text_field :descripcion, maxlength: 20 %>
+      <%= form.text_field :descripcion, maxlength: 30 %>
+  </div>
+  <div>
+    <%= form.label :foto %><br/>
+    <%= form.file_field :foto %>
   </div>
   <br>
   <!-- <%="tu id de dueno es #{current_user.id}"%>
