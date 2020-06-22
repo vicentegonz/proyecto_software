@@ -156,7 +156,8 @@
     </div>
   </div>
 
-
+  <%= image_tag google_map(center: [ @restaurant.latitude, @restaurant.longitude ].join(','))%>
+  
   <!-- <div class="comentario">
     <div class="photo">
     </div>

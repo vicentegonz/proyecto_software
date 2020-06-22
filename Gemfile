@@ -28,6 +28,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
 
 gem 'rubocop', require: false
+gem 'geocoder'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

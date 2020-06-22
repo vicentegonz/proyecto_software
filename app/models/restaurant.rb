@@ -5,4 +5,7 @@ class Restaurant < ApplicationRecord
   has_many :meetings, dependent: :destroy
   has_many :comentarios, dependent: :destroy
   has_one_attached :foto
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
+  
 end
