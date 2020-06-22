@@ -49,6 +49,18 @@
             background-color: rgb(6, 105, 39);
             color: white;
         }
+        .photo{
+      width: 150px;
+      height: 150px;
+      margin: auto;
+  
+      }
+   
+        .img_preview{
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+      }
 
 </style>
 </head>
@@ -59,33 +71,34 @@
 <div class="parte1" style="text-align: center;">
 
     <h1><strong>Gustos</strong></h1>
-    <table style="border:1px solid black;margin-left:auto;margin-right:auto;">
-      <thead>
-        <tr>
-          <th style="text-align: center;">Nombre</th>
-          <th style="text-align: center;">Descripcion</th>
-          <th style="text-align: center;">Usuario</th>
-          <th style="text-align: center;">Acciones </th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% @gustos.each do |gusto| %>
-          <tr>
-            <%if current_user.tipo == "Cliente" or current_user.tipo == "Administrador"%>
-              <%if current_user.id == gusto.user_id or current_user.tipo == "Administrador"%>
-                <td style="text-align: center;"><%= gusto.nombre %></td>
-                <td style="text-align: center;"><%= gusto.descripcion %></td>
-                <td style="text-align: center;"><%= gusto.user.nombre %></td>
-                <td style="text-align: center;"><%= link_to 'Ver detalles', gusto_path(gusto.id)%></p>
+    
+<% @gustos.each do |gusto| %>
+  <%if current_user.tipo == "Cliente" or current_user.tipo == "Administrador"%>
+    <%if current_user.id == gusto.user_id or current_user.tipo == "Administrador"%>
+      <div class="card mb-3" style="max-width: 510px;margin:auto">
+        <div class="row no-gutters">
+          <div class="col-md-4">
+            <div class="photo" >
+              <%if gusto.user.foto.attached?%>
+                <%= image_tag(gusto.user.foto, :class => "img_preview") %>
+              <%else%>
+                <%= image_tag 'user.jpg',class: "img_preview"%>
               <%end%>
-            <%end%>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-
-    <br>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h4 class="card-title">Usuario: <%=gusto.user.username%></h4>
+              <p class="card-text">Gusto: <%= gusto.nombre %></p>
+              <p class="card-text">Descripción: <%= gusto.descripcion %></p>
+              <p class="card-text"><%= link_to 'Ver detalles', gusto_path(gusto.id)%></p>
+              </div>
+          </div>
+        </div>
+      </div>
+    <%end%>
+  <%end%>
+<%end%>
 
 
 </div>

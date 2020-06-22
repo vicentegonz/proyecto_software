@@ -82,6 +82,7 @@
 
 <div style="text-align: center;margin:auto">
 <h1 style="color:black;"><strong><%= @restaurant.nombre%></strong></h1>
+
   <!-- <table style="border:1px solid black;margin-left:auto;margin-right:auto;">
     <thead>
         <tr>
@@ -122,14 +123,17 @@
       <div class="col-md-8">
         <div class="card-body">
           <h4 class="card-title"><%=@restaurant.comentar%></h4>
-          <p class="card-text"><%= @restaurant.descripcion %></p>
-          <p class="card-text"><%= @restaurant.valoracion %></p>
+          <p class="card-text">Valoración: <%= @restaurant.valoracion%></p>
+          <p class="card-text">Descripción: <%= @restaurant.descripcion%></p>
+          <p class="card-text">Dirección: <%= @restaurant.address%></p>
+          <p class="card-text">Dueño: <%= @restaurant.user_id%></p>
           </div>
       </div>
     </div>
   </div>
 
-
+  <%= image_tag google_map(center: [ @restaurant.latitude, @restaurant.longitude ].join(','))%>
+  
   <% @restaurant.comentarios.each do |comentario| %>
   <div class="card mb-3" style="max-width: 510px;margin:auto">
     <div class="row no-gutters">
@@ -144,8 +148,8 @@
       </div>
       <div class="col-md-8">
         <div class="card-body">
-          <h4 class="card-title"><%=comentario.user.username%></h4>
-          <p class="card-text"><%= comentario.contenido %></p>
+          <h4 class="card-title">Usuario: <%=comentario.user.username%></h4>
+          <p class="card-text">Comentario: <%= comentario.contenido %></p>
           <%if comentario.user_id == current_user.id or current_user.tipo == "Administrador"%>
             <%= link_to 'Editar', edit_comuna_restaurant_comentario_path(comentario.restaurant.comuna_id , comentario.restaurant_id, comentario), :method => :get%>
             
@@ -156,7 +160,6 @@
     </div>
   </div>
 
-  <%= image_tag google_map(center: [ @restaurant.latitude, @restaurant.longitude ].join(','))%>
   
   <!-- <div class="comentario">
     <div class="photo">

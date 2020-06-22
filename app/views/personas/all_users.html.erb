@@ -31,13 +31,13 @@
         text-align: center;
         font-style: normal;
         text-transform: uppercase;
-        text-decoration: underline;
+        
     }
     h1{
-      color: aliceblue;
+      color: darkorange;
     }
     body{
-            background-image: url("<%= asset_path('fondo_user.jpg') %>");
+            background-color: whitesmoke;
             background-attachment: fixed;
             background-size: cover;
             font-family: 'Lato', sans-serif;
@@ -247,11 +247,11 @@ nav ul li ul li a:hover{
           </div>
           <div class="col-md-8">
             <div class="card-body">
-              <h5 class="card-title"><%=user.username%></h5>
-              <p class="card-text"><%=user.nombre%> <%=user.apellidos%></p>
-              <p class="card-text"><%=user.tipo%></p>
-              <p class="card-text"><%=user.sexo%></p>
-              <p class="card-text"><%=user.descripcion%></p>
+              <h5 class="card-title">Nombre de usuario: <%=user.username%></h5>
+              <p class="card-text">Nombre completo: <%=user.nombre%> <%=user.apellidos%></p>
+              <p class="card-text">Tipo de usuario: <%=user.tipo%></p>
+              <p class="card-text">Sexo: <%=user.sexo%></p>
+              <p class="card-text">Descripción: <%=user.descripcion%></p>
               <%=link_to 'Eliminar usuario', eliminar_path(user.id), :method => :get%>
             </div>
           </div>
