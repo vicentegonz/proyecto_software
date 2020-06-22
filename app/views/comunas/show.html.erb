@@ -28,7 +28,7 @@
       body {
         padding: 0;
         margin: 0;
-        background-image: url("<%= asset_path('directions.jpg') %>");
+        background-color: whitesmoke;
         background-attachment: fixed;
         background-size: cover;
         font-family: 'Lato', sans-serif;
@@ -76,6 +76,21 @@
         font-style: normal;
         text-transform: uppercase;
     }
+    .card{
+          margin: 10px 200px;
+          background-color: whitesmoke;
+        }
+    .photo{
+            width: 150px;
+            height: 150px;
+            margin: auto;
+
+        }
+    .img_preview{
+          border-radius: 50%;
+          height: 150px;
+          width: 150px;
+        }
     
     </style>
 </head>
@@ -88,35 +103,65 @@
 <div style="text-align: center;">
 <h1><strong><%= @comuna.nombre%></strong></h1>
 <br>
-
-
-<% @comuna.restaurants.each do |restaurant| %>
-<%if restaurant.aceptado == 1%>
-  <div class="comentario">
-    <div class="photo">
+      <div class="card">
+      <%if current_user.tipo == "Administrador"%>
+        <% @comuna.restaurants.each do |restaurant|%>
+          <div class="card mb-3" style="max-width: 540px;">
+            <div class="row no-gutters">
+              <div class="col-md-4">
+                <div class="photo" >
+                  <%if restaurant.foto.attached? %>
+                    <%= image_tag(restaurant.foto, :class => "img_preview")  %>
+                  <%else%>
+                    <%= image_tag 'house.png',class: "img_preview"%>
+                  <%end%>
+                </div>
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title"><%= restaurant.nombre%></h5>
+                  <p class="card-text">Valoración: <%= restaurant.valoracion%></p>
+                  <p class="card-text">Descripción: <%= restaurant.descripcion%></p>
+                  <p class="card-text">Dirección: <%= restaurant.address%></p>
+                  <p class="card-text">Dueño: <%= restaurant.user_id%></p>
+                  <p class="card-text">Estado: <%= restaurant.aceptado%></p>
+                  <p class="card-text"><%= link_to 'Ver detalles', comuna_restaurant_path(restaurant.comuna.id, restaurant)%></p>  
+                </div>
+              </div>
+            </div>
+          </div>
+          <%end%>
+      <%else%>
+        <% @comuna.restaurants.each do |restaurant|%>
+          <%if restaurant.aceptado == 1%>
+          <div class="card mb-3" style="max-width: 540px;">
+            <div class="row no-gutters">
+              <div class="col-md-4">
+                <div class="photo" >
+                  <%if restaurant.foto.attached? %>
+                    <%= image_tag(restaurant.foto, :class => "img_preview")  %>
+                  <%else%>
+                    <%= image_tag 'house.png',class: "img_preview"%>
+                  <%end%>
+                </div>
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title"><%= restaurant.nombre%></h5>
+                  <p class="card-text">Valoración: <%= restaurant.valoracion%></p>
+                  <p class="card-text">Descripción: <%= restaurant.descripcion%></p>
+                  <p class="card-text">Dirección: <%= restaurant.address%></p>
+                  <p class="card-text">Dueño: <%= restaurant.user_id%></p>
+                  <p class="card-text"><%= link_to 'Ver detalles', comuna_restaurant_path(restaurant.comuna.id, restaurant)%></p>  
+                </div>
+              </div>
+            </div>
+          </div>
+          <%end%>
+        <%end%>
+      <%end%>
     </div>
-    <br><br>
-    <div class="text">
-      <table style="border:1px solid black;margin-left:auto;margin-right:auto;">
-        <thead>
-          <tr><th>Nombre restaurant</th>
-            <th>Detalles</th></tr>
-        </thead>
-        <tbody>
-          <tr><td><%= restaurant.nombre %></td>
-                <td style="text-align: center;"><%= link_to 'Ver detalles', comuna_restaurant_path(restaurant.comuna.id, restaurant)%></td>
-          </tr>
-        </tbody>
-      </table>
       
-    </div>
-  </div>
-  <%end%>
-  <%end%>
-
-
-
-</p>
 <%= link_to 'Listado de comunas', comunas_path, :method => :get, :class => "button"%>
 
 <%if current_user.tipo == "Administrador"%>

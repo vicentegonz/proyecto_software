@@ -21,10 +21,14 @@
         border: black;
           background-color: #dddddd;
         }
+        .comuna{
+          margin: 10px 200px;
+          background-color: whitesmoke;
+        }
         body{
             padding: 0;
             margin: 0;
-            background-image: url("<%= asset_path('city.jpg') %>");
+            background-color: whitesmoke;
             background-attachment: fixed;
             background-size: cover;
             font-family: 'Lato', sans-serif;
@@ -59,24 +63,22 @@
 <p id="notice"><%= notice %></p>
 <div class="parte1" style="text-align: center;">
     <h1><strong>Comunas</strong></h1>
-    <table style="border:1px solid black;margin-left:auto;margin-right:auto;">
-        <thead>
-            <tr>
-                <th style="text-align: center;">Nombre</th>
-                <th style="text-align: center;">Acciones</th>
-            </tr>
-        </thead>
-
-    <tbody>
-        <% @comunas.each do |comuna|%>
-        <tr>
-            <td style="text-align: center;"><%= comuna.nombre%></td>
-            <td style="text-align: center;"><%= link_to 'Ver detalles', comuna_path(comuna.id)%></td>
-        </tr>
-        <%end%>
-    </tbody>
-    </table>
+    
     <br>
+  <div class="comuna">
+    <% @comunas.each do |comuna|%>
+      <div class="card mb-3" style="max-width: 540px;">
+        <div class="row no-gutters">
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">Comuna: <%= comuna.nombre%></h5>
+              <p class="card-text"><%= link_to 'Ver detalles', comuna_path(comuna.id)%></p>  
+            </div>
+          </div>
+        </div>
+      </div>
+    <%end%>
+  </div>
 
     <%if current_user.tipo == "Administrador"%>
       <%= button_to "Agregar comuna", new_comuna_path, :method => :get, :class => "button"%>

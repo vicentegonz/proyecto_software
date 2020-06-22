@@ -38,7 +38,12 @@
         font-style: normal;
     }
     body{
-            background-image: url("<%= asset_path('orange_4.jpg') %>");
+            background-image:
+            linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+     url("<%= asset_path('orange_4.jpg') %>");
             background-attachment: fixed;
             background-size: cover;
             font-family: 'Lato', sans-serif;
@@ -211,6 +216,7 @@ nav ul li ul li a:hover{
 <!-- <div class="header">
 <h1>Half-Orange &#128149; &#128165; </h1>
 </div> -->
+<div class="oscurecer">
 <%= render :template => "header.html.erb"%>
 <h1>Half-Orange &#128149; &#128165; </h1>
 <div class="container">
@@ -254,6 +260,7 @@ nav ul li ul li a:hover{
     <%end%>
     <%end%>
     </div>
+  
 
     <!-- Left and right controls -->
     <a class="left carousel-control" href="#myCarousel" data-slide="prev">
@@ -268,55 +275,9 @@ nav ul li ul li a:hover{
 </div>
 
   <br><br>
-<div class="abajo">
-<%if current_user.tipo == "Administrador" or current_user.tipo == "Dueño"%>
-  <%if current_user.tipo == "Administrador"%>
-    <div class="row">
-      <div class="column" style="background-color:#aaa;">
-          <div class="photo" style="text-align: center;">
-          <%= image_tag("restaurant.jpg", :size => "260x180")%>
-          </div>
-          <br><br>
-          <div style="text-align: center;">
-          <%= button_to "Restaurants", restauran_path, :method => :get, :class => "button" %>
 
-          
-        </div>
-        <p></p>
-      </div>
-      <div class="column" style="background-color:#bbb;">
-          <div class="photo" style="text-align: center;">
-          <%= image_tag("comunas.jpg", :size => "260x180")%>
-      </div>
-      <br><br>
-      <div style="text-align: center;">
-          <%= button_to "Comunas", comunas_path, :method => :get, :class => "button" %>
-      </div>
-      </div>
-      <div class="column" style="background-color:#ccc;">
-          <div class="photo" style="text-align: center;">
-          <%= image_tag("comentarios.png", :size => "260x180")%>
-      </div>
-      <br><br>
-      <div style="text-align: center;">
-        <%= button_to "Comentarios", coments_path, :method => :get, :class => "button" %>
-    </div>
-  <%else%>
-    <div class="row" style="margin: auto;">
-      <div class="column" style="background-color:#aaa;">
-          <div class="photo" style="text-align: center;">
-          <%= image_tag("restaurant.jpg", :size => "260x180")%>
-          </div>
-          <br><br>
-          <div style="text-align: center;">
-            <%= button_to "Restaurants", restauran_path, :method => :get, :class => "button" %>
-        
-        </div>
-        
-  <%end%>
-<%end%> 
-      </div>   
 
     </div>
   </div>
+</div>
 </body>
