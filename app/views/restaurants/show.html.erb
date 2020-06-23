@@ -4,7 +4,13 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+   integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+   crossorigin=""/>
+   
+   <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+   integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+   crossorigin=""></script>
     <style>
       table {
         font-family: arial, sans-serif;
@@ -70,11 +76,35 @@
     background-color: #333333;
     
   }
+  #mapid { height: 300px;
+          width: 300px;
+          margin: auto; }
+    .section1{
+        width:60%;
+        float:left;
+        text-align: center;
+        height:100vh;
+        box-sizing: border-box; 
+        
+        word-wrap:break-word;
 
+
+      }
+      .section2{
+        width:40%;
+        float: right;
+        text-align: center;
+        height:100vh;
+        box-sizing: border-box;
+        margin:0px;
+        padding:0;	
+      
+      }
     
     </style>
 </head>
 <body>
+
   <%= render :template => "header.html.erb"%>
     
 
@@ -83,32 +113,8 @@
 <div style="text-align: center;margin:auto">
 <h1 style="color:black;"><strong><%= @restaurant.nombre%></strong></h1>
 
-  <!-- <table style="border:1px solid black;margin-left:auto;margin-right:auto;">
-    <thead>
-        <tr>
-            <th style="text-align: center;">Nombre</th>
-            <th style="text-align: center;">Valoracion</th>
-            <th style="text-align: center;">Comentarios</th>
-            <th style="text-align: center;">Descripcion</th>
-            <th style="text-align: center;">Comuna</th>
-            <th style="text-align: center;">Dueño</th>
-            <th style="text-align: center;">Estado</th>
-        </tr>
-    </thead>
-
-  <tbody>
-    <tr>
-        <td style="text-align: center;"><%= @restaurant.nombre%></td>
-        <td style="text-align: center;"><%= @restaurant.valoracion%></td>
-        <td style="text-align: center;"><%= @restaurant.comentar%></td>
-        <td style="text-align: center;"><%= @restaurant.descripcion%></td>
-        <td style="text-align: center;"><%= @restaurant.comuna.nombre%></td>
-        <td style="text-align: center;"><%= @restaurant.user_id%></td>
-        <td style="text-align: center;"><%= @restaurant.aceptado%></td>
-    </tr>
-  </tbody>
-  </table> -->
   <br>
+<div class="section1">
   <div class="card mb-3" style="max-width: 680px;margin:auto; background-color:bisque;">
     <div class="row no-gutters">
       <div class="col-md-4">
@@ -132,7 +138,6 @@
     </div>
   </div>
 
-  <%= image_tag google_map(center: [ @restaurant.latitude, @restaurant.longitude ].join(','))%>
   
   <% @restaurant.comentarios.each do |comentario| %>
   <div class="card mb-3" style="max-width: 510px;margin:auto">
@@ -151,59 +156,43 @@
           <h4 class="card-title">Usuario: <%=comentario.user.username%></h4>
           <p class="card-text">Comentario: <%= comentario.contenido %></p>
           <%if comentario.user_id == current_user.id or current_user.tipo == "Administrador"%>
-            <%= link_to 'Editar', edit_comuna_restaurant_comentario_path(comentario.restaurant.comuna_id , comentario.restaurant_id, comentario), :method => :get%>
-            
+            <%= link_to 'Editar', edit_comuna_restaurant_comentario_path(comentario.restaurant.comuna_id , comentario.restaurant_id, comentario), :method => :get%>   
             <%= link_to 'Destroy', comuna_restaurant_comentario_path(@restaurant.comuna, @restaurant, comentario), method: :delete, data: { confirm: 'Are you sure?' }%></td>
           <%end%>
           </div>
       </div>
     </div>
   </div>
+ <%end%>
+</div>
 
+<div class="section2">
+  <div id="mapid"></div>
   
-  <!-- <div class="comentario">
-    <div class="photo">
-    </div>
-    <br><br><br>
-    <div class="text">
-      <table style="border:1px solid black;margin-left:auto;margin-right:auto;">
-        <thead>
-          <tr><th>Comentario</th>
-          <%if comentario.user_id == current_user.id or current_user.tipo == "Administrador"%>  
-          <th>Editar</th>  
-          <th>Eliminar</th></tr>
-          <%end%>
-        </thead>
-        <tbody>
-          <tr><td><%= comentario.contenido %></td>
-
-          <%if comentario.user_id == current_user.id or current_user.tipo == "Administrador"%> 
-            <td><%= link_to 'Editar', edit_comuna_restaurant_comentario_path(comentario.restaurant.comuna_id , comentario.restaurant_id, comentario), :method => :get%></td>
-            <td><%= link_to 'Destroy', comuna_restaurant_comentario_path(@restaurant.comuna, @restaurant, comentario), method: :delete, data: { confirm: 'Are you sure?' }%></td></tr>
-          <%end%>
-
-        </tbody>
-      </table>
-      
-    </div>
-  </div> -->
-  <%end%>
-  
-
-  <br>
  
-
-    <%= link_to 'Listado de restaurants', comuna_path(@restaurant.comuna_id), :method => :get, :class => "button" %>
-    <%if current_user.tipo == "Administrador" or current_user.tipo == "Dueño"%>
-      <%= link_to 'Editar restaurant', edit_comuna_restaurant_path(@restaurant.comuna, @restaurant.id), :method => :get, :class => "button" %>
-      <%if current_user.tipo == "Administrador"%>
-        <%= link_to 'Eliminar restaurant', comuna_restaurant_path(@restaurant.comuna, @restaurant.id), method: :delete, data: {confirm: 'Estas seguro?'}, :class => "button" %>
-      <%end%>
-    <%end%>
-    <%if current_user.tipo == "Cliente"%>
-      <%= link_to 'Agregar comentario ', new_comuna_restaurant_comentario_path(@restaurant.comuna, @restaurant.id), :method => :get, :class => "button" %>
-    <%end%>
+  <script >
     
-  </div>
+    var mymap = L.map('mapid').setView([<%= @restaurant.latitude%>, <%= @restaurant.longitude%>], 14);
+    var attribution = '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors';
+    var tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+    var tiles = L.tileLayer(tileUrl, {attribution}); 
+    tiles.addTo(mymap)
+    var api_url = 'https://api.wheretheiss.at/v1/satellites/25544' ;
+    L.marker([<%= @restaurant.latitude%>, <%= @restaurant.longitude%>]).addTo(mymap);
+
+  </script>
+
+</div>
+<%= link_to 'Listado de restaurants', comuna_path(@restaurant.comuna_id), :method => :get, :class => "button" %>
+<%if current_user.tipo == "Administrador" or current_user.tipo == "Dueño"%>
+  <%= link_to 'Editar restaurant', edit_comuna_restaurant_path(@restaurant.comuna, @restaurant.id), :method => :get, :class => "button" %>
+  <%if current_user.tipo == "Administrador"%>
+    <%= link_to 'Eliminar restaurant', comuna_restaurant_path(@restaurant.comuna, @restaurant.id), method: :delete, data: {confirm: 'Estas seguro?'}, :class => "button" %>
+  <%end%>
+<%end%>
+<%if current_user.tipo == "Cliente"%>
+  <%= link_to 'Agregar comentario ', new_comuna_restaurant_comentario_path(@restaurant.comuna, @restaurant.id), :method => :get, :class => "button" %>
+<%end%>
+    
 
 </body>

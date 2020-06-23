@@ -125,7 +125,7 @@
                   <p class="card-text">Dirección: <%= restaurant.address%></p>
                   <p class="card-text">Dueño: <%= restaurant.user_id%></p>
                   <p class="card-text">Estado: <%= restaurant.aceptado%></p>
-                  <p class="card-text"><%= link_to 'Ver detalles', comuna_restaurant_path(restaurant.comuna.id, restaurant)%></p>  
+                  <p class="card-text"><%= link_to 'Ver detalles', comuna_restaurant_path(restaurant.comuna.id, restaurant),  data: { turbolinks: false }%></p>  
                 </div>
               </div>
             </div>
