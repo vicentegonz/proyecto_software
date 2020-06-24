@@ -1,176 +1,189 @@
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <style>
-      table {
-        font-family: arial, sans-serif;
-        border-collapse: collapse;
-        width: 50%;
-        margin-left:auto; 
-    margin-right:auto;
-        
-      }
-      
-      
-      td, th {
-        border: 3px solid black;
-        text-align: left;
-        padding: 8px;
-      }
-      
-      tr{
-      border: black;
-        background-color: #dddddd;
-      }
-      body {
-        padding: 0;
-        margin: 0;
-        background-color: whitesmoke;
-        background-attachment: fixed;
-        background-size: cover;
-        font-family: 'Lato', sans-serif;
-        display: block;
-    }
-    .button {
-      background-color: white;
-      color: black;
-      border: none;
-      padding: 10px 20px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      border-radius: 5px;
-      font-size: 15px;
-      margin: 4px 2px;
-      transition-duration: 0.8s;
-      border: 2px solid black;
-  }
-    .button:hover{
-        background-color: rgb(110, 42, 3);
-        color: white;
-    }
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
     table {
       font-family: arial, sans-serif;
       border-collapse: collapse;
       width: 50%;
+      margin-left:auto; 
+  margin-right:auto;
+      
     }
+    
     
     td, th {
       border: 3px solid black;
       text-align: left;
-      padding: 7px;
-      width: 80%;
+      padding: 8px;
     }
     
     tr{
     border: black;
       background-color: #dddddd;
     }
-    h1{
-      text-decoration: underline;
-      text-align: center;
-        font-style: normal;
-        text-transform: uppercase;
-    }
-    .card{
-          margin: 10px 200px;
-          background-color: whitesmoke;
-        }
-    .photo{
-            width: 150px;
-            height: 150px;
-            margin: auto;
+    body {
+      padding: 0;
+      margin: 0;
+      background-image: url("<%= asset_path('color.png') %>");
+      background-color: whitesmoke;
+      background-attachment: fixed;
+      background-size: cover;
+      font-family: 'Lato', sans-serif;
+      display: block;
+  }
+  .button {
+    background-color: white;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 5px;
+    font-size: 15px;
+    margin: 4px 2px;
+    transition-duration: 0.8s;
+    border: 2px solid black;
+}
+  .button:hover{
+      background-color: rgb(110, 42, 3);
+      color: white;
+  }
 
-        }
-    .img_preview{
-          border-radius: 50%;
-          height: 150px;
-          width: 150px;
-        }
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 50%;
+  }
+  
+  td, th {
+    border: 3px solid black;
+    text-align: left;
+    padding: 7px;
+    width: 80%;
+  }
+  
+  tr{
+  border: black;
+    background-color: #dddddd;
+  }
+  h1{
+    text-decoration: underline;
+    text-align: center;
+      font-style: normal;
+      text-transform: uppercase;
+  }
+  .card{
+        margin: 10px 350px;
+        background-color:rgb(202, 200, 200)
+      }
+  .carta{
+    margin: 10px 200px;
     
-    </style>
+  }
+
+  .photo{
+          
+          margin: auto;
+          height: 180px;
+        width: 180px;
+          
+
+      }
+  .img_preview{
+        border-radius: 50%;
+        height: 120px;
+        width: 120px;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        top: 50%;
+      }
+  
+  </style>
 </head>
 <body>
-  <%= render :template => "header.html.erb"%>
-    
+<%= render :template => "header.html.erb"%>
+  
 
 <p id="notice"><%= notice %></p>
 <p>
 <div style="text-align: center;">
 <h1><strong><%= @comuna.nombre%></strong></h1>
 <br>
-      <div class="card">
-      <%if current_user.tipo == "Administrador"%>
-        <% @comuna.restaurants.each do |restaurant|%>
-          <div class="card mb-3" style="max-width: 540px;">
-            <div class="row no-gutters">
-              <div class="col-md-4">
-                <div class="photo" >
-                  <%if restaurant.foto.attached? %>
-                    <%= image_tag(restaurant.foto, :class => "img_preview")  %>
-                  <%else%>
-                    <%= image_tag 'house.png',class: "img_preview"%>
-                  <%end%>
-                </div>
+
+    <div class="carta">
+    <%if current_user.tipo == "Administrador"%>
+      <% @comuna.restaurants.each do |restaurant|%>
+        <div class="card mb-3" style="max-width: 510px;margin:auto">
+          <div class="row no-gutters">
+            <div class="col-md-4">
+              <div class="photo" >
+                <%if restaurant.foto.attached? %>
+                  <%= image_tag(restaurant.foto, :class => "img_preview")  %>
+                <%else%>
+                  <%= image_tag 'house.png',class: "img_preview"%>
+                <%end%>
               </div>
-              <div class="col-md-8">
-                <div class="card-body">
-                  <h5 class="card-title"><%= restaurant.nombre%></h5>
-                  <p class="card-text">Valoración: <%= restaurant.valoracion%></p>
-                  <p class="card-text">Descripción: <%= restaurant.descripcion%></p>
-                  <p class="card-text">Dirección: <%= restaurant.address%></p>
-                  <p class="card-text">Dueño: <%= restaurant.user_id%></p>
-                  <p class="card-text">Estado: <%= restaurant.aceptado%></p>
-                  <p class="card-text"><%= link_to 'Ver detalles', comuna_restaurant_path(restaurant.comuna.id, restaurant),  data: { turbolinks: false }%></p>  
-                </div>
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title"><strong><%= restaurant.nombre%></strong></h5>
+                <p class="card-text">Valoración: <%= restaurant.valoracion%></p>
+                <p class="card-text">Descripción: <%= restaurant.descripcion%></p>
+                <p class="card-text">Dirección: <%= restaurant.address%></p>
+                <p class="card-text">Dueño: <%= restaurant.user_id%></p>
+                <p class="card-text">Estado: <%= restaurant.aceptado%></p>
+                <p class="card-text"><%= link_to 'Ver detalles', comuna_restaurant_path(restaurant.comuna.id, restaurant), data: { turbolinks: false }%></p>  
               </div>
             </div>
           </div>
-          <%end%>
-      <%else%>
-        <% @comuna.restaurants.each do |restaurant|%>
-          <%if restaurant.aceptado == 1%>
-          <div class="card mb-3" style="max-width: 540px;">
-            <div class="row no-gutters">
-              <div class="col-md-4">
-                <div class="photo" >
-                  <%if restaurant.foto.attached? %>
-                    <%= image_tag(restaurant.foto, :class => "img_preview")  %>
-                  <%else%>
-                    <%= image_tag 'house.png',class: "img_preview"%>
-                  <%end%>
-                </div>
+        </div>
+        <%end%>
+    <%else%>
+      <% @comuna.restaurants.each do |restaurant|%>
+        <%if restaurant.aceptado == 1%>
+        <div class="card mb-3" style="max-width: 510px;margin:auto">
+          <div class="row no-gutters">
+            <div class="col-md-4">
+              <div class="photo" >
+                <%if restaurant.foto.attached? %>
+                  <%= image_tag(restaurant.foto, :class => "img_preview")  %>
+                <%else%>
+                  <%= image_tag 'house.png',class: "img_preview"%>
+                <%end%>
               </div>
-              <div class="col-md-8">
-                <div class="card-body">
-                  <h5 class="card-title"><%= restaurant.nombre%></h5>
-                  <p class="card-text">Valoración: <%= restaurant.valoracion%></p>
-                  <p class="card-text">Descripción: <%= restaurant.descripcion%></p>
-                  <p class="card-text">Dirección: <%= restaurant.address%></p>
-                  <p class="card-text">Dueño: <%= restaurant.user_id%></p>
-                  <p class="card-text"><%= link_to 'Ver detalles', comuna_restaurant_path(restaurant.comuna.id, restaurant)%></p>  
-                </div>
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title"><strong><%= restaurant.nombre%></strong></h5>
+                <p class="card-text">Valoración: <%= restaurant.valoracion%></p>
+                <p class="card-text">Descripción: <%= restaurant.descripcion%></p>
+                <p class="card-text">Dirección: <%= restaurant.address%></p>
+                <p class="card-text">Dueño: <%= restaurant.user_id%></p>
+                <p class="card-text"><%= link_to 'Ver detalles', comuna_restaurant_path(restaurant.comuna.id, restaurant), data: { turbolinks: false }%></p>  
               </div>
             </div>
           </div>
-          <%end%>
+        </div>
         <%end%>
       <%end%>
-    </div>
-      
+    <%end%>
+  </div>
+    
 <%= link_to 'Listado de comunas', comunas_path, :method => :get, :class => "button"%>
 
 <%if current_user.tipo == "Administrador"%>
-  <%= link_to 'Editar comuna', edit_comuna_path(@comuna.id), :method => :get, :class => "button"%>
-  <!-- <%= link_to 'Agregar restaurant ', new_comuna_restaurant_path(@comuna.id), :method => :get, :class => "button"%> -->
-  <%= link_to 'Eliminar comuna', comuna_path(@comuna.id), method: :delete, data: {confirm: 'Estas seguro?'}, :class => "button"%>
+<%= link_to 'Editar comuna', edit_comuna_path(@comuna.id), :method => :get, :class => "button"%>
+<!-- <%= link_to 'Agregar restaurant ', new_comuna_restaurant_path(@comuna.id), :method => :get, :class => "button"%> -->
+<%= link_to 'Eliminar comuna', comuna_path(@comuna.id), method: :delete, data: {confirm: 'Estas seguro?'}, :class => "button"%>
 <%end%>
 <%if current_user.tipo == "Dueño"%>
-  <%= link_to 'Postular restaurant ', new_comuna_restaurant_path(@comuna.id), :method => :get, :class => "button"%>
+<%= link_to 'Postular restaurant ', new_comuna_restaurant_path(@comuna.id), :method => :get, :class => "button"%>
 <%end%>
 
 </div>

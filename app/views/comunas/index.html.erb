@@ -52,6 +52,10 @@
             background-color: rgb(6, 105, 39);
             color: black;
         }
+        .card{
+        margin: 10px 250px;
+        background-color:wheat
+      }
  
     
         </style>
@@ -71,7 +75,7 @@
         <div class="row no-gutters">
           <div class="col-md-8">
             <div class="card-body">
-              <h5 class="card-title">Comuna: <%= comuna.nombre%></h5>
+              <h4 class="card-title"><strong>Comuna: </strong><%= comuna.nombre%></h4>
               <p class="card-text"><%= link_to 'Ver detalles', comuna_path(comuna.id)%></p>  
             </div>
           </div>
