@@ -35,12 +35,14 @@
       body {
         padding: 0;
         margin: 0;
-        /*background-image: url("<%= asset_path('resta2.jpg') %>");*/
-        background-color: burlywood;
+        background-image: url("<%= asset_path('color.png') %>");
+        /*background-color: burlywood;*/
         background-attachment: fixed;
         background-size: cover;
         font-family: 'Lato', sans-serif;
         display: block;
+        
+        
     }
     .button {
       background-color: white;
@@ -78,28 +80,53 @@
   }
   #mapid { height: 300px;
           width: 300px;
-          margin: auto; }
+          margin: auto;
+          position: absolute;
+          margin-left: 10px; 
+          border-color: black;
+          border-style: solid;
+          }
     .section1{
-        width:60%;
+        width:70%;
+        
         float:left;
         text-align: center;
-        height:100vh;
-        box-sizing: border-box; 
         
+        box-sizing: border-box; 
+        background-color: darkgray;
         word-wrap:break-word;
-
-
+        border-color: black;
+        border-style: solid;
+        padding: 0px;
+      
+      }
+      .subsection{
+        box-sizing: border-box; 
+        background-color: darkgray;
+        word-wrap:break-word;
+        width: 100%;
+        height: 100%;
+        border-color: black;
+        border-style:groove;
+        
       }
       .section2{
-        width:40%;
+        width:30%;
         float: right;
         text-align: center;
         height:100vh;
         box-sizing: border-box;
-        margin:0px;
-        padding:0;	
+        	
       
       }
+      .header1{
+        padding: 20px;
+        
+        
+      }
+      hr { display: block; height: 1px;
+    border: 0; border-top: 1px solid black;
+    margin: 1em 0; padding: 0; }
     
     </style>
 </head>
@@ -107,7 +134,7 @@
 
   <%= render :template => "header.html.erb"%>
     
-
+<div class="header1">
 <p id="notice" style="color: white;"><%= notice %></p>
 
 <div style="text-align: center;margin:auto">
@@ -115,7 +142,9 @@
 
   <br>
 <div class="section1">
-  <div class="card mb-3" style="max-width: 680px;margin:auto; background-color:bisque;">
+  <div class="subsection">
+  
+  <div class="card mb-3" style="width: 100%;height: 100%;background-color:bisque;">
     <div class="row no-gutters">
       <div class="col-md-4">
         <div class="photo" >
@@ -137,8 +166,10 @@
       </div>
     </div>
   </div>
+</div>
 
-  
+ 
+  <div class="subsection">
   <% @restaurant.comentarios.each do |comentario| %>
   <div class="card mb-3" style="max-width: 510px;margin:auto">
     <div class="row no-gutters">
@@ -164,6 +195,7 @@
     </div>
   </div>
  <%end%>
+</div>
 </div>
 
 <div class="section2">
@@ -194,5 +226,5 @@
   <%= link_to 'Agregar comentario ', new_comuna_restaurant_comentario_path(@restaurant.comuna, @restaurant.id), :method => :get, :class => "button" %>
 <%end%>
     
-
+</div>
 </body>
