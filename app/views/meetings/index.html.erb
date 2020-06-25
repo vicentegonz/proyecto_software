@@ -4,6 +4,12 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
   <style>
     table {
           font-family: arial, sans-serif;
@@ -24,7 +30,11 @@
         body{
             padding: 0;
             margin: 0;
-            background-image: url("<%= asset_path('fondo_cita.jpg') %>");
+            /*background-image: url("<%= asset_path('fondo_cita.jpg') %>");*/
+            background-image: linear-gradient(
+      rgba(0, 0, 0, 0.2),
+      rgba(0, 0, 0, 0.2)
+    ), url("<%= asset_path('fondo_orange.jpg') %>");
             background-attachment: fixed;
             background-size: cover;
             font-family: 'Lato', sans-serif;
@@ -49,9 +59,64 @@
             color: white;
         }
 
-        h1{
-          color: whitesmoke;
-        }
+        
+        .container1{
+        width:200px;
+        
+        float:left;
+        margin-right: 0;
+        text-align: center;
+        height:50vh;
+        box-sizing: border-box;
+        padding:0;	
+        word-wrap:break-word;
+
+
+      }
+      .container2{
+        width:200px;
+        float:left;
+        text-align: center;
+        height:50vh;
+        box-sizing: border-box;
+        padding: 10px;
+        
+        
+        
+      
+      }
+      .container3{
+        
+        width:200px;
+        
+        float: left;
+        text-align: center;
+        height:50vh;
+        box-sizing: border-box;
+        margin:0;
+        padding:10px;
+
+        
+      
+      }
+      .cardcita{
+        margin: auto;
+        background-color: darkgray;
+        width: 700px;
+        height: 350px;
+        padding: 20px;
+        border-radius: 10%;
+        border-color: black;
+        border-style: solid;
+      }
+      .h1{
+        
+        color: black;
+        text-align: center;
+
+      }
+      
+ 
     </style>
 
 
@@ -61,10 +126,11 @@
 
 
 <p id="notice"><%= notice %></p>
+<h1><strong>Citas</strong></h1>
 <div class="parte1" style="text-align: center;">
-    <h1><strong>Citas</strong></h1>
-
-    <table style="border:1px solid black;margin-left:auto;margin-right:auto;">
+    
+<br>
+    <!-- <table style="border:1px solid black;margin-left:auto;margin-right:auto;">
         <thead>
           <tr>
                 <th style="text-align: center;">Usuario1</th>
@@ -76,22 +142,82 @@
           </tr>
         </thead>
 
-      <tbody>
+      <tbody> -->
+          
           <% @meetings.each do |meeting| %>
-          <tr>
+          
             <%if meeting.check == 1 and (meeting.usuario2.to_i == current_user.id or meeting.usuario1.to_i == current_user.id or current_user.tipo == "Administrador" )%>
-            <td style="text-align: center;"><%= meeting.usuario1 %></td>
-            <td style="text-align: center;"><%= meeting.usuario2 %></td>
-            <td style="text-align: center;"><%= meeting.restaurant_id%></td>
-            <%if current_user.tipo == "Administrador"%>
-              <td style="text-align: center;"> <%= link_to 'Ver detalles', meeting_path(meeting.id)%></td>
+            <hr>
+            <div class="cardcita">
+              <% @users = User.all %>
+              <% @users.each do |user|%>
+              
+              <%if Integer(user.id) == Integer(meeting.usuario1)%>
+              <div class="container1">
+                <div class="card" style="width:100%;height:100%">
+                  <%if user.foto.attached?%>
+                    <%= image_tag user.foto,class: "card-img-top", alt: "Card image", style: "width:100%;height:70%"%>
+                  <%else%>
+                    <%= image_tag 'user.jpg',class: "card-img-top", alt: "Card image", style: "width:100%;height:70%"%>
+                  <%end%>
+                  <div class="card-body">
+                    <h4 class="card-title"><%= user.nombre%></h4>
+                    <p class="card-text"><%= user.descripcion%></p>
+                  </div>
+                </div>
+              </div>
+              <%end%>
+              <%end%>
+              <% @restaurant = Restaurant.all %>
+              <% @restaurant.each do |restaurant|%>
+              <%if Integer(restaurant.id) == Integer(meeting.restaurant_id)%>
+              <div class="container2">
+                <div class="card" style="width:100%; height:80%">
+                  <%if restaurant.foto.attached?%>
+                    <%= image_tag restaurant.foto,class: "card-img-top", alt: "Card image", style: "width:100%; height:70%"%>
+                  <%else%>
+                    <%= image_tag 'user.jpg',class: "card-img-top", alt: "Card image", style: "width:100%; height:70%"%>
+                  <%end%>
+                  <div class="card-body">
+                    <h4 class="card-title"><%= restaurant.nombre%></h4>
+                    <p class="card-text"><%= restaurant.descripcion%></p>
+                  </div>
+                </div>
+              </div>
+              <%end%>
+              <%end%>
+              <% @users = User.all %>
+              <% @users.each do |user|%>
+              <%if Integer(user.id) == Integer(meeting.usuario2)%>
+              <div class="container3">
+                <div class="card" style="width:100%; height:100%">
+                  <%if user.foto.attached?%>
+                    <%= image_tag user.foto,class: "card-img-top", alt: "Card image", style: "width:100%; height:70%"%>
+                  <%else%>
+                    <%= image_tag 'user.jpg',class: "card-img-top", alt: "Card image", style: "width:100%; height:70%"%>
+                  <%end%>
+                  <div class="card-body">
+                    <h4 class="card-title"><%= user.nombre%></h4>
+                    <p class="card-text"><%= user.descripcion%></p>
+                  </div>
+                </div>
+              </div>
+              <%end%>
+              <%end%>
+            
+              <!-- <td style="text-align: center;"><%= meeting.usuario1 %></td>
+              <td style="text-align: center;"><%= meeting.usuario2 %></td>
+              <td style="text-align: center;"><%= meeting.restaurant_id%></td>
+              <%if current_user.tipo == "Administrador"%>
+                <td style="text-align: center;"> <%= link_to 'Ver detalles', meeting_path(meeting.id)%></td>
+              <%end%> -->
+              
+            </div>
             <%end%>
-            <%end%>
-          </tr>
+          
           <%end%>
           
-      </tbody>
-    </table>
+     
 
     <br>
     
