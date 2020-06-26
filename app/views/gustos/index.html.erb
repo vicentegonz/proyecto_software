@@ -21,16 +21,21 @@
         border: black;
           background-color: #dddddd;
         }
-        body{
-            padding: 0;
-            margin: 0;
-            background-image: url("<%= asset_path('fondo_gustos.jpg') %>");
-            background-attachment: fixed;
-            background-size: cover;
-            font-family: 'Lato', sans-serif;
-            display: block;
+        body {
+      padding: 0;
+      margin: 0;
+      background-image: linear-gradient(
+      rgba(0, 0, 0, 0.2),
+      rgba(0, 0, 0, 0.2)
+    ), url("<%= asset_path('fondo_orange.jpg') %>");
+      
             
-        }
+      background-color: whitesmoke;
+      background-attachment: fixed;
+      background-size: cover;
+      font-family: 'Lato', sans-serif;
+      display: block;
+  }
         .button {
           background-color: white;
           color: black;
@@ -60,6 +65,10 @@
     border-radius: 50%;
     height: 150px;
     width: 150px;
+      }
+      .card{
+        
+        background-color:rgb(202, 200, 200)
       }
 
 </style>
