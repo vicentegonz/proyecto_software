@@ -46,17 +46,31 @@ class RestaurantsController < ApplicationController
   end
   def sum
     puts "hohohoho"
-    restaurant_params = params.require(:restaurant).permit(:nombre, :valoracion, :comentar, :descripcion, :aceptado, :foto, :address, :especialidad, :cvaloracion)
-    $valoracion = params[:valoracion]
     $cvaloracion = params[:cvaloracion]
-    puts $valoracion
+    $valoracion = params[:valoracion]
+    #$restaurant_id = params[:id]
     puts $cvaloracion
-    # @restaurant = Restaurant.find(params[:id])
-    # if @restaurant.update(restaurant_params)
-    #   redirect_to comuna_restaurant_path(@restaurant.comuna.id, @restaurant), notice:'Se ha creado correctamente'
-    # else
-    #   redirect_to comuna_restaurant_path(@restaurant.comuna.id, @restaurant), notice:'Ocurrio un error'
-    # end
+    puts $valoracion
+    puts $restaurant_id
+    #restaurant = params.require(:restaurant).permit(:valoracion, :cvaloracion)
+    @restaurant = Restaurant.find(params[:id])
+    puts @restaurant.valoracion
+    puts @restaurant.cvaloracion
+    $valoracion_final = Integer(@restaurant.valoracion) + Integer($valoracion)
+    if @restaurant.cvaloracion.nil?
+      $cvaloracion_final =  Integer($cvaloracion)
+    else
+      $cvaloracion_final = Integer(@restaurant.cvaloracion) + Integer($cvaloracion)
+    end
+    
+    #puts $restaurant_params
+    
+    if @restaurant.update(valoracion: $valoracion_final, cvaloracion: $cvaloracion_final)
+    
+       redirect_to comuna_restaurant_path(@restaurant.comuna.id, @restaurant), notice:'Se ha creado correctamente'
+    else
+       redirect_to comuna_restaurant_path(@restaurant.comuna.id, @restaurant), notice:'Ocurrio un error'
+    end
   end
 
   def destroy
