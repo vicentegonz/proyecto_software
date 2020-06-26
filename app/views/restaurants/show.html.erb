@@ -1,234 +1,344 @@
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
-   integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-   crossorigin=""/>
-   
-   <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
-   integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
-   crossorigin=""></script>
-    <style>
-      table {
-        font-family: arial, sans-serif;
-        border-collapse: collapse;
-        width: 50%;
-        margin-left:auto; 
-    margin-right:auto;
-        
-      }
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+ integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+ crossorigin=""/>
+ <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+ <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+ integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+ crossorigin=""></script>
+  <style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 50%;
+      margin-left:auto; 
+  margin-right:auto;
       
-      
-      td, th {
-        border: 3px solid black;
-        text-align: left;
-        padding: 8px;
-      }
-      
-      tr{
-      border: black;
-        background-color: #dddddd;
-      }
-      body {
-        padding: 0;
-        margin: 0;
-        background-image: linear-gradient(
-      rgba(0, 0, 0, 0.2),
-      rgba(0, 0, 0, 0.2)
-    ), url("<%= asset_path('fondo_orange.jpg') %>");
-        background-attachment: fixed;
-        background-size: cover;
-        font-family: 'Lato', sans-serif;
-        display: block;
-        
-        
     }
-    .button {
-      background-color: white;
-      color: black;
-      border: none;
-      padding: 10px 20px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      border-radius: 5px;
-      font-size: 15px;
-      margin: 4px 2px;
-      transition-duration: 0.8s;
-      border: 2px solid black;
-  }
-    .button:hover{
-        background-color: rgb(110, 42, 3);
-        color: white;
-    }
-    .photo{
-      width: 150px;
-      height: 150px;
-      margin: auto;
-  
-  }
-   
-  .img_preview{
-    border-radius: 50%;
-    height: 150px;
-    width: 150px;
-  }
-  .container-fluid{
-    background-color: #333333;
     
+    
+    td, th {
+      border: 3px solid black;
+      text-align: left;
+      padding: 8px;
+    }
+    
+    tr{
+    border: black;
+      background-color: #dddddd;
+    }
+    body {
+      padding: 0;
+      margin: 0;
+      background-image: linear-gradient(
+    rgba(0, 0, 0, 0.2),
+    rgba(0, 0, 0, 0.2)
+  ), url("<%= asset_path('fondo_orange.jpg') %>");
+      background-attachment: fixed;
+      background-size: cover;
+      font-family: 'Lato', sans-serif;
+      display: block;
+      
+      
   }
-  #mapid { height: 300px;
-          width: 300px;
-          margin: auto;
-          position: absolute;
-          margin-left: 10px; 
-          border-color: black;
-          border-style: solid;
-          }
-    .section1{
-        width:70%;
-        
-        float:left;
-        text-align: center;
-        
-        box-sizing: border-box; 
-        background-color: darkgray;
-        word-wrap:break-word;
+  .button {
+    background-color: white;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 5px;
+    font-size: 15px;
+    margin: 4px 2px;
+    transition-duration: 0.8s;
+    border: 2px solid black;
+}
+  .button:hover{
+      background-color: rgb(110, 42, 3);
+      color: white;
+  }
+  .photo{
+    width: 150px;
+    height: 150px;
+    margin: auto;
+
+}
+ 
+.img_preview{
+  border-radius: 50%;
+  height: 150px;
+  width: 150px;
+}
+.container-fluid{
+  background-color: #333333;
+  
+}
+#mapid { height: 300px;
+        width: 300px;
+        margin: auto;
+        position: absolute;
+        margin-left: 10px; 
         border-color: black;
         border-style: solid;
-        padding: 0px;
+        }
+  .section1{
+      width:70%;
       
-      }
-      .subsection{
-        box-sizing: border-box; 
-        background-color: darkgray;
-        word-wrap:break-word;
-        width: 100%;
-        height: 100%;
-        border-color: black;
-        border-style:groove;
-        
-      }
-      .section2{
-        width:30%;
-        float: right;
-        text-align: center;
-        height:100vh;
-        box-sizing: border-box;
-        	
+      float:left;
+      text-align: center;
       
-      }
-      .header1{
-        padding: 20px;
-        
-        
-      }
-      hr { display: block; height: 1px;
-    border: 0; border-top: 1px solid black;
-    margin: 1em 0; padding: 0; }
+      box-sizing: border-box; 
+      background-color: bisque;
+      word-wrap:break-word;
+      border-color: black;
+      border-style: solid;
+      padding: 0px;
     
-    </style>
+    }
+    .subsection1{
+      box-sizing: border-box; 
+      background-color: bisque;
+      word-wrap:break-word;
+      width: 100%;
+      height: 100%;
+      
+      
+    }
+    .subsection{
+      box-sizing: border-box; 
+      background-color: darkgray;
+      word-wrap:break-word;
+      width: 100%;
+      height: 100%;
+      border-color: black;
+      border-style:solid;
+      
+    }
+    .section2{
+      width:30%;
+      float: right;
+      text-align: center;
+      height:100vh;
+      box-sizing: border-box;
+        
+    
+    }
+    .header1{
+      padding: 20px;
+      
+      
+    }
+    hr { display: block; height: 1px;
+  border: 0; border-top: 1px solid black;
+  margin: 1em 0; padding: 0; }
+  .rating-box .ratings .fa{
+    font-size: 40px;
+    color: yellow;
+    cursor: pointer;
+  }
+  .rating-value{
+    visibility: hidden;
+  }
+
+  
+  </style>
 </head>
 <body>
 
-  <%= render :template => "header.html.erb"%>
-    
+<%= render :template => "header.html.erb"%>
+  
 <div class="header1">
 <p id="notice" style="color: white;"><%= notice %></p>
 
 <div style="text-align: center;margin:auto">
 <h1 style="color:black;"><strong><%= @restaurant.nombre%></strong></h1>
 
-  <br>
+<br>
 <div class="section1">
-  <div class="subsection">
-  
-  <div class="card mb-3" style="width: 100%;height: 100%;background-color:bisque;">
-    <div class="row no-gutters">
-      <div class="col-md-4">
-        <div class="photo" >
-          <%if @restaurant.foto.attached?%>
-            <%= image_tag(@restaurant.foto, :class => "img_preview") %>
-          <%else%>
-            <%= image_tag 'user.jpg',class: "img_preview"%>
-          <%end%>
+<div class="subsection1">
+
+<div class="card mb-3" style="width: 100%;height: 100%;background-color:bisque;">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <div class="photo" >
+        <%if @restaurant.foto.attached?%>
+          <%= image_tag(@restaurant.foto, :class => "img_preview") %>
+        <%else%>
+          <%= image_tag 'user.jpg',class: "img_preview"%>
+        <%end%>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h4 class="card-title"><%=@restaurant.comentar%></h4>
+        <p class="card-text">Valoración: <%= @restaurant.valoracion%></p>
+        <p class="card-text">Descripción: <%= @restaurant.descripcion%></p>
+        <p class="card-text">Dirección: <%= @restaurant.address%></p>
+        <p class="card-text">Especialidad: <%= @restaurant.especialidad%></p>
+        <p class="card-text">Dueño: <%= @restaurant.user_id%></p>
         </div>
-      </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h4 class="card-title"><%=@restaurant.comentar%></h4>
-          <p class="card-text">Valoración: <%= @restaurant.valoracion%></p>
-          <p class="card-text">Descripción: <%= @restaurant.descripcion%></p>
-          <p class="card-text">Dirección: <%= @restaurant.address%></p>
-          <p class="card-text">Especialidad: <%= @restaurant.especialidad%></p>
-          <p class="card-text">Dueño: <%= @restaurant.user_id%></p>
-          </div>
-      </div>
     </div>
   </div>
 </div>
 
- 
-  <div class="subsection">
-  <% @restaurant.comentarios.each do |comentario| %>
-  <div class="card mb-3" style="max-width: 510px;margin:auto">
-    <div class="row no-gutters">
-      <div class="col-md-4">
-        <div class="photo" >
-          <%if comentario.user.foto.attached?%>
-            <%= image_tag(comentario.user.foto, :class => "img_preview") %>
-          <%else%>
-            <%= image_tag 'user.jpg',class: "img_preview"%>
-          <%end%>
-        </div>
-      </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h4 class="card-title">Usuario: <%=comentario.user.username%></h4>
-          <p class="card-text">Comentario: <%= comentario.contenido %></p>
-          
-          <%if comentario.user_id == current_user.id or current_user.tipo == "Administrador"%>
-            <%= link_to 'Editar', edit_comuna_restaurant_comentario_path(comentario.restaurant.comuna_id , comentario.restaurant_id, comentario), :method => :get%>   
-            <%= link_to 'Destroy', comuna_restaurant_comentario_path(@restaurant.comuna, @restaurant, comentario), method: :delete, data: { confirm: 'Are you sure?' }%></td>
-          <%end%>
-          </div>
+<%if @restaurant.cvaloracion.nil?%>
+<%@restaurant.cvaloracion = 0 %>
+<%end%>
+<%if @restaurant.valoracion.nil?%>
+<%@restaurant.valoracion = 0 %>
+<%end%>
+
+<div class="rating-box">
+
+<div class="ratings">
+  <span class="fa fa-star-o"></span>
+  <span class="fa fa-star-o"></span>
+  <span class="fa fa-star-o"></span>
+  <span class="fa fa-star-o"></span>
+  <span class="fa fa-star-o"></span>
+</div>
+<input type="text" id="rating-value" class="rating-value">
+
+<%@meeting = Meeting.all%>
+<% @meeting.each do |meeting| %>
+
+
+<%if Integer(@restaurant.id) == Integer(meeting.restaurant_id) and Integer(meeting.check) == 1 and (Integer(meeting.usuario1) == Integer(current_user.id) or Integer(meeting.usuario2) == Integer(current_user.id))%>
+<script>
+  var stars=document.querySelector(".ratings").children;
+  var ratingValue = document.querySelector("#rating-value");
+  let index;
+  console.log(stars)
+  for(let i=0;i<stars.length; i++){
+   stars[i].addEventListener("mouseover", function(){
+       console.log(i)
+       for(let j=0; j<stars.length;j++){
+         stars[j].classList.remove("fa-star")
+         stars[j].classList.add("fa-star-o")
+       }
+       for(let j=0; j<=i; j++){
+         stars[j].classList.remove("fa-star-o")
+         stars[j].classList.add("fa-star")
+       }
+   })
+   stars[i].addEventListener("click", function(){
+      ratingValue.value = i+1;
+      index = i;
+     if (ratingValue.value == 1){
+       console.log("hola")
+       $.get('<%= Rails.application.routes.url_helpers.changedata_path(:comuna_id => @restaurant.comuna_id, :id => @restaurant.id , :valoracion => 1, :cvaloracion => 1) %>')
+      
+     };
+     if(ratingValue.value == 2){
+      $.get('<%= Rails.application.routes.url_helpers.changedata_path(:comuna_id => @restaurant.comuna_id, :id => @restaurant.id , :valoracion => 2, :cvaloracion => 1) %>')
+     };
+     if(ratingValue.value == 3){
+      $.get('<%= Rails.application.routes.url_helpers.changedata_path(:comuna_id => @restaurant.comuna_id, :id => @restaurant.id , :valoracion => 3, :cvaloracion => 1) %>')
+     };
+     if(ratingValue.value == 4){
+      $.get('<%= Rails.application.routes.url_helpers.changedata_path(:comuna_id => @restaurant.comuna_id, :id => @restaurant.id , :valoracion => 4, :cvaloracion => 1) %>')
+     };
+     if(ratingValue.value == 5){
+      $.get('<%= Rails.application.routes.url_helpers.changedata_path(:comuna_id => @restaurant.comuna_id, :id => @restaurant.id , :valoracion => 5, :cvaloracion => 1) %>')
+     };
+     
+    
+
+   })
+   stars[i].addEventListener("mouseout", function(){
+       console.log(i)
+       for(let j=0; j<stars.length;j++){
+         stars[j].classList.remove("fa-star")
+         stars[j].classList.add("fa-star-o")
+       }
+       for(let j=0; j<=index; j++){
+         stars[j].classList.remove("fa-star-o")
+         stars[j].classList.add("fa-star")
+       }
+   })
+}
+</script>
+<%end%>
+<%end%>
+</div>
+</div>
+
+
+
+
+
+
+<div class="subsection">
+<% @restaurant.comentarios.each do |comentario| %>
+<div class="card mb-3" style="max-width: 510px;margin:auto">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <div class="photo" >
+        <%if comentario.user.foto.attached?%>
+          <%= image_tag(comentario.user.foto, :class => "img_preview") %>
+        <%else%>
+          <%= image_tag 'user.jpg',class: "img_preview"%>
+        <%end%>
       </div>
     </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h4 class="card-title">Usuario: <%=comentario.user.username%></h4>
+        <p class="card-text">Comentario: <%= comentario.contenido %></p>
+        
+        <%if comentario.user_id == current_user.id or current_user.tipo == "Administrador"%>
+          <%= link_to 'Editar', edit_comuna_restaurant_comentario_path(comentario.restaurant.comuna_id , comentario.restaurant_id, comentario), :method => :get%>   
+          <%= link_to 'Destroy', comuna_restaurant_comentario_path(@restaurant.comuna, @restaurant, comentario), method: :delete, data: { confirm: 'Are you sure?' }%></td>
+        <%end%>
+        </div>
+    </div>
   </div>
- <%end%>
+</div>
+<%end%>
 </div>
 </div>
 
 <div class="section2">
-  <div id="mapid"></div>
-  
- 
-  <script >
-    
-    var mymap = L.map('mapid').setView([<%= @restaurant.latitude%>, <%= @restaurant.longitude%>], 14);
-    var attribution = '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors';
-    var tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
-    var tiles = L.tileLayer(tileUrl, {attribution}); 
-    tiles.addTo(mymap)
-    var api_url = 'https://api.wheretheiss.at/v1/satellites/25544' ;
-    L.marker([<%= @restaurant.latitude%>, <%= @restaurant.longitude%>]).addTo(mymap);
+<div id="mapid"></div>
 
-  </script>
+
+<script >
+  
+  var mymap = L.map('mapid').setView([<%= @restaurant.latitude%>, <%= @restaurant.longitude%>], 14);
+  var attribution = '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors';
+  var tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+  var tiles = L.tileLayer(tileUrl, {attribution}); 
+  tiles.addTo(mymap)
+  var api_url = 'https://api.wheretheiss.at/v1/satellites/25544' ;
+  L.marker([<%= @restaurant.latitude%>, <%= @restaurant.longitude%>]).addTo(mymap);
+
+</script>
 
 </div>
+<br><br>
 <%= link_to 'Listado de restaurants', comuna_path(@restaurant.comuna_id), :method => :get, :class => "button" %>
 <%if current_user.tipo == "Administrador" or current_user.tipo == "Dueño"%>
-  <%= link_to 'Editar restaurant', edit_comuna_restaurant_path(@restaurant.comuna, @restaurant.id), :method => :get, :class => "button" %>
-  <%if current_user.tipo == "Administrador"%>
-    <%= link_to 'Eliminar restaurant', comuna_restaurant_path(@restaurant.comuna, @restaurant.id), method: :delete, data: {confirm: 'Estas seguro?'}, :class => "button" %>
-  <%end%>
+<%= link_to 'Editar restaurant', edit_comuna_restaurant_path(@restaurant.comuna, @restaurant.id), :method => :get, :class => "button" %>
+<%if current_user.tipo == "Administrador"%>
+  <%= link_to 'Eliminar restaurant', comuna_restaurant_path(@restaurant.comuna, @restaurant.id), method: :delete, data: {confirm: 'Estas seguro?'}, :class => "button" %>
+<%end%>
 <%end%>
 <%if current_user.tipo == "Cliente"%>
-  <%= link_to 'Agregar comentario ', new_comuna_restaurant_comentario_path(@restaurant.comuna, @restaurant.id), :method => :get, :class => "button" %>
+<%@meeting = Meeting.all%>
+<% @meeting.each do |meeting| %>
+  <%if Integer(@restaurant.id) == Integer(meeting.restaurant_id) and Integer(meeting.check) == 1 and (Integer(meeting.usuario1) == Integer(current_user.id) or Integer(meeting.usuario2) == Integer(current_user.id))%>
+    <%= link_to 'Agregar comentario ', new_comuna_restaurant_comentario_path(@restaurant.comuna, @restaurant.id), :method => :get, :class => "button" %>
+  <%end%>
 <%end%>
-    
+<%end%>
+  
 </div>
 </body>
