@@ -25,14 +25,20 @@
           margin: 10px 200px;
           background-color: whitesmoke;
         }
-        body{
-            padding: 0;
-            margin: 0;
-            background-color: whitesmoke;
-            background-attachment: fixed;
-            background-size: cover;
-            font-family: 'Lato', sans-serif;
-            display: block;
+        body {
+      padding: 0;
+      margin: 0;
+      background-image: linear-gradient(
+      rgba(0, 0, 0, 0.2),
+      rgba(0, 0, 0, 0.2)
+        ), url("<%= asset_path('fondo_orange.jpg') %>");
+        padding: 0;
+        margin: 0;
+        background-color: whitesmoke;
+        background-attachment: fixed;
+        background-size: cover;
+        font-family: 'Lato', sans-serif;
+        display: block;
         }
         .button {
           background-color: white;
@@ -53,9 +59,13 @@
             color: black;
         }
         .card{
-        margin: 10px 250px;
-        background-color:wheat
+        margin: 10px 350px;
+        background-color:rgb(202, 200, 200)
       }
+        .carta{
+          margin: 10px 200px;
+          
+        }
  
     
         </style>
@@ -69,9 +79,9 @@
     <h1><strong>Comunas</strong></h1>
     
     <br>
-  <div class="comuna">
+  <div class="carta">
     <% @comunas.each do |comuna|%>
-      <div class="card mb-3" style="max-width: 540px;">
+      <div class="card mb-3" style="max-width: 510px;margin:auto">
         <div class="row no-gutters">
           <div class="col-md-8">
             <div class="card-body">

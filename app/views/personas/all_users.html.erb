@@ -34,15 +34,23 @@
         
     }
     h1{
-      color: darkorange;
+      color: black;
     }
-    body{
-            background-color: whitesmoke;
-            background-attachment: fixed;
-            background-size: cover;
-            font-family: 'Lato', sans-serif;
-            display: block;
-    }
+    body {
+      padding: 0;
+      margin: 0;
+      background-image: linear-gradient(
+      rgba(0, 0, 0, 0.2),
+      rgba(0, 0, 0, 0.2)
+    ), url("<%= asset_path('fondo_orange.jpg') %>");
+      
+            
+      background-color: whitesmoke;
+      background-attachment: fixed;
+      background-size: cover;
+      font-family: 'Lato', sans-serif;
+      display: block;
+  }
     circle{
         border-radius: 50%;
 
@@ -207,6 +215,14 @@ nav ul li ul li a:hover{
 .titulo{
   text-align: center;
 }
+.card{
+        margin: 10px 350px;
+        background-color:rgb(202, 200, 200)
+      }
+  .carta{
+    margin: 10px 200px;
+    
+  }
 
 
 
@@ -221,10 +237,10 @@ nav ul li ul li a:hover{
 
 <%= render :template => "header.html.erb"%>
 
-<br><br><br>
+<br>
 
-<h1>Listado usuarios</h1>
-<div class="section1">  
+<h1><strong>Listado usuarios</strong></h1>
+<div class="carta">  
   <br><br><br>
 
   
@@ -233,7 +249,7 @@ nav ul li ul li a:hover{
   <% @users = User.all %>
   
   <% @users.each do |user| %>
-          <div class="card mb-3" style="max-width: 540px;">
+          <div class="card mb-3" style="max-width: 510px;margin:auto">
         <div class="row no-gutters">
           <div class="col-md-4">
             <div class="photo" >
@@ -259,7 +275,7 @@ nav ul li ul li a:hover{
       </div>
 
 
-    <br><br><br>
+    <br>
   
   <%end%>
 

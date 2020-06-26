@@ -21,7 +21,7 @@ class RestaurantsController < ApplicationController
   
 
   def create
-    restaurant_params = params.require(:restaurant).permit(:nombre, :valoracion, :comentar, :descripcion, :aceptado, :foto, :address, :especialidad)
+    restaurant_params = params.require(:restaurant).permit(:nombre, :valoracion, :comentar, :descripcion, :aceptado, :foto, :address, :especialidad, :cvaloracion)
     @restaurant = Restaurant.new(restaurant_params.merge(user_id: current_user.id, comuna_id: @comuna.id))
     @restaurant.comuna = @comuna
     respond_to do |format|
@@ -35,12 +35,12 @@ class RestaurantsController < ApplicationController
   end
 
   def update
-    restaurant_params = params.require(:restaurant).permit(:nombre, :valoracion, :comentar, :descripcion, :aceptado, :foto, :address, :especialidad)
+    restaurant_params = params.require(:restaurant).permit(:nombre, :valoracion, :comentar, :descripcion, :aceptado, :foto, :address, :especialidad, :cvaloracion)
     @restaurant = Restaurant.find(params[:id])
     if @restaurant.update(restaurant_params)
-      redirect_to restauran_path(@restaurant.id), notice:'Se ha creado correctamente'
+      redirect_to comuna_restaurant_path(@restaurant.comuna.id, @restaurant), notice:'Se ha creado correctamente'
     else
-      redirect_to restauran_path(@restaurant.id), notice:'Ocurrio un error'
+      redirect_to comuna_restaurant_path(@restaurant.comuna.id, @restaurant), notice:'Ocurrio un error'
     end
   end
 

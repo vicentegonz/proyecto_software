@@ -24,7 +24,11 @@
         body{
             padding: 0;
             margin: 0;
-            background-color: whitesmoke;
+            
+      background-image: linear-gradient(
+      rgba(0, 0, 0, 0.2),
+      rgba(0, 0, 0, 0.2)
+    ), url("<%= asset_path('fondo_orange.jpg') %>");
             background-attachment: fixed;
             background-size: cover;
             font-family: 'Lato', sans-serif;
@@ -49,13 +53,17 @@
             color: white;
         }
         .card{
+        margin: 10px 350px;
+        background-color:rgb(202, 200, 200)
+      }
+        .carta{
           margin: 10px 200px;
-          background-color: whitesmoke;
+          
         }
 
         .alignright { float: right; }
         h1{
-          color: darkorange;
+          color: black;
         }
         .photo{
             width: 150px;
@@ -80,11 +88,11 @@
     <h1><strong>Restaurants</strong> &#128523;</h1>
     
 
-      <div class="card">
+      <div class="carta">
         <%if current_user.tipo == "Cliente"%>
           <% @restaurants.each do |restaurant|%>
             <%if restaurant.aceptado == 1%> 
-              <div class="card mb-3" style="max-width: 540px;">
+              <div class="card mb-3" style="max-width: 510px;margin:auto">
                 <div class="row no-gutters">
                   <div class="col-md-4">
                     <div class="photo" >
@@ -103,7 +111,7 @@
                       <p class="card-text">Dirección: <%= restaurant.address%></p>
                       <p class="card-text">Dueño: <%= restaurant.user_id%></p>
                       <p class="card-text">Estado: <%= restaurant.aceptado%></p>
-                      <p class="card-text">Estado: <%= link_to 'Ver detalles', comuna_restaurant_path(restaurant.comuna.id, restaurant)%></p>  
+                      <p class="card-text">Estado: <%= link_to 'Ver detalles', comuna_restaurant_path(restaurant.comuna.id, restaurant), data: { turbolinks: false }%></p>  
                     </div>
                   </div>
                 </div>
@@ -115,7 +123,7 @@
         <%if current_user.tipo == "Dueño"%>
           <% @restaurants.each do |restaurant|%>
             <%if current_user.id == restaurant.user_id %>
-              <div class="card mb-3" style="max-width: 540px;">
+              <div class="card mb-3" style="max-width: 510px;margin:auto">
                 <div class="row no-gutters">
                   <div class="col-md-4">
                     <div class="photo" >
@@ -134,7 +142,7 @@
                       <p class="card-text">Dirección: <%= restaurant.address%></p>
                       <p class="card-text">Dueño: <%= restaurant.user_id%></p>
                       <p class="card-text">Estado: <%= restaurant.aceptado%></p>
-                      <p class="card-text"><%= link_to 'Ver detalles', comuna_restaurant_path(restaurant.comuna.id, restaurant)%></p>  
+                      <p class="card-text"><%= link_to 'Ver detalles', comuna_restaurant_path(restaurant.comuna.id, restaurant), data: { turbolinks: false }%></p>  
                     </div>
                   </div>
                 </div>
@@ -145,7 +153,7 @@
 
       <%if current_user.tipo == "Administrador"%>
         <% @restaurants.each do |restaurant|%>
-          <div class="card mb-3" style="max-width: 540px;">
+          <div class="card mb-3" style="max-width: 510px;margin:auto">
             <div class="row no-gutters">
               <div class="col-md-4">
                 <div class="photo" >
@@ -164,7 +172,7 @@
                   <p class="card-text">Dirección: <%= restaurant.address%></p>
                   <p class="card-text">Dueño: <%= restaurant.user_id%></p>
                   <p class="card-text">Estado: <%= restaurant.aceptado%></p>
-                  <p class="card-text"><%= link_to 'Ver detalles', comuna_restaurant_path(restaurant.comuna.id, restaurant)%></p>  
+                  <p class="card-text"><%= link_to 'Ver detalles', comuna_restaurant_path(restaurant.comuna.id, restaurant), data: { turbolinks: false }%></p>  
                 </div>
               </div>
             </div>
