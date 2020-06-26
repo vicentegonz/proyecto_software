@@ -23,6 +23,7 @@ class RestaurantsController < ApplicationController
   def create
     restaurant_params = params.require(:restaurant).permit(:nombre, :valoracion, :comentar, :descripcion, :aceptado, :foto, :address, :especialidad, :cvaloracion)
     @restaurant = Restaurant.new(restaurant_params.merge(user_id: current_user.id, comuna_id: @comuna.id))
+
     @restaurant.comuna = @comuna
     respond_to do |format|
       if @restaurant.save
@@ -42,6 +43,20 @@ class RestaurantsController < ApplicationController
     else
       redirect_to comuna_restaurant_path(@restaurant.comuna.id, @restaurant), notice:'Ocurrio un error'
     end
+  end
+  def sum
+    puts "hohohoho"
+    restaurant_params = params.require(:restaurant).permit(:nombre, :valoracion, :comentar, :descripcion, :aceptado, :foto, :address, :especialidad, :cvaloracion)
+    $valoracion = params[:valoracion]
+    $cvaloracion = params[:cvaloracion]
+    puts $valoracion
+    puts $cvaloracion
+    # @restaurant = Restaurant.find(params[:id])
+    # if @restaurant.update(restaurant_params)
+    #   redirect_to comuna_restaurant_path(@restaurant.comuna.id, @restaurant), notice:'Se ha creado correctamente'
+    # else
+    #   redirect_to comuna_restaurant_path(@restaurant.comuna.id, @restaurant), notice:'Ocurrio un error'
+    # end
   end
 
   def destroy
