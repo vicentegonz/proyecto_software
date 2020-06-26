@@ -31,6 +31,8 @@ Rails.application.routes.draw do
   get 'user', to: 'cuenta#show'
   patch 'user', to: 'cuenta#update'
   delete 'users/:id_user', to: 'cuenta#destroy', as: 'delete'
+
+  get 'comuna/:comuna_id/restaurants/:id/edit', to: 'restaurants#edit', as: 'changedata'
   #create
   #get 'comunas/new', to: 'comunas#new'
   #post 'comunas', to: 'comunas#create'
