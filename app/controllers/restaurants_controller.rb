@@ -56,7 +56,11 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.find(params[:id])
     puts @restaurant.valoracion
     puts @restaurant.cvaloracion
-    $valoracion_final = Integer(@restaurant.valoracion) + Integer($valoracion)
+    if @restaurant.valoracion.nil?
+      $valoracion_final =  Integer($valoracion)
+    else
+      $valoracion_final = Integer(@restaurant.valoracion) + Integer($valoracion)
+    end
     if @restaurant.cvaloracion.nil?
       $cvaloracion_final =  Integer($cvaloracion)
     else
