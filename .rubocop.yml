@@ -112,7 +112,7 @@ Style/HashTransformValues:
 Style/MixinUsage:
     Enabled: false
 Metrics/BlockLength:
-  Max: 100
+  Max: 105
 Bundler/OrderedGems:
   Enabled: false
 Style/NumericLiterals:
@@ -126,4 +126,8 @@ Style/GlobalVars:
 Style/ConditionalAssignment:
   Enabled: false
 Style/IdenticalConditionalBranches:
+  Enabled: false
+Style/HashSyntax:
+  Enabled: false
+Layout/HashAlignment:
   Enabled: false

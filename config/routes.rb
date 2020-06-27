@@ -32,7 +32,6 @@ Rails.application.routes.draw do
   patch 'user', to: 'cuenta#update'
   delete 'users/:id_user', to: 'cuenta#destroy', as: 'delete'
 
-
   get 'comuna/:comuna_id/restaurants/:id/:cvaloracion/:valoracion', to: 'restaurants#sum', as: 'changedata'
 
   #create
