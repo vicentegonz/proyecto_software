@@ -36,9 +36,9 @@ class GustosController < ApplicationController
     gusto_params = params.require(:gusto).permit(:nombre, :descripcion)
     @gusto = Gusto.find(params[:id])
     if @gusto.update(gusto_params)
-      redirect_to gusto_path(@gusto.id), notice: 'Gusto editado con éxito'
+      redirect_to gustos_path(@gusto.id), notice: 'Gusto editado con éxito'
     else
-      redirecto_to gusto_path(@gusto.id), notice: 'Ocurrió un error al editar el gusto'
+      redirecto_to gustos_path(@gusto.id), notice: 'Ocurrió un error al editar el gusto'
     end
   end
 

@@ -100,7 +100,10 @@
               <h4 class="card-title">Usuario: <%=gusto.user.username%></h4>
               <p class="card-text">Gusto: <%= gusto.nombre %></p>
               <p class="card-text">Descripción: <%= gusto.descripcion %></p>
-              <p class="card-text"><%= link_to 'Ver detalles', gusto_path(gusto.id)%></p>
+              <p><%= link_to 'Editar gusto', gustos_edit_path(gusto.id), :method => :get%></p>
+
+              <p><%= link_to 'Eliminar gusto', gusto_path(gusto.id), method: :delete, data: { confirm: 'Está seguro que desea borrar el gusto?'  } %></p>
+              
               </div>
           </div>
         </div>
