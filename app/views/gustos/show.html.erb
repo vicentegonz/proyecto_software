@@ -28,7 +28,10 @@
       body {
         padding: 0;
         margin: 0;
-        background-image: url("<%= asset_path('pancakes.jpg') %>");
+        background-image: linear-gradient(
+    rgba(0, 0, 0, 0.2),
+    rgba(0, 0, 0, 0.2)
+  ), url("<%= asset_path('fondo_orange.jpg') %>");
         background-attachment: fixed;
         background-size: cover;
         font-family: 'Lato', sans-serif;
@@ -62,7 +65,7 @@
 
 
 <div style="text-align: center;">
-  <h2 style="color: white;"><strong>Gustos</strong></h2>
+  <h2 style="color: black;"><strong>Gustos</strong></h2>
   <table style="border:1px solid black;margin-left:auto;margin-right:auto;">
   <thead>
     <tr>
