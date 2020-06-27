@@ -99,8 +99,13 @@
   <%= render :template => "header.html.erb"%>
  
       <br><br>
-          
-        
+<%@contador = 0%>       
+ <%@meeting = Meeting.all%>
+ <%@meeting.each do |meeting|%>
+  <%if Integer(meeting.check) == 1 and (Integer(meeting.usuario1) == Integer(current_user.id) or Integer(meeting.usuario2) == Integer(current_user.id))%>  
+    <%@contador +=1%>     
+  <%end%>
+<%end%>
 
   
   <div class="section1">
@@ -123,6 +128,7 @@
       <p><strong>Comuna: </strong><%= current_user.comuna %></p>
       <p><strong>Edad: </strong><%= current_user.edad %></p>
       <p><strong>Descripcion: </strong><%= current_user.descripcion %></p>
+      <p><strong>Cantidad citas: </strong><%= @contador%></p>
       <%= link_to 'Editar', cuenta_gustos_path, :method => :get, :class => "button"%>
       
     
