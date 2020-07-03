@@ -14,12 +14,15 @@
             margin-left: auto;
             margin-right: auto;
             border-radius: 20px;
-            background-color: burlywood;
+            background-color: darkgray;
         }
         body {
             padding: 0;
             margin: 0;
-            background-image: url("<%= asset_path('lights.jpg') %>");
+            background-image: linear-gradient(
+      rgba(0, 0, 0, 0.2),
+      rgba(0, 0, 0, 0.2)
+    ), url("<%= asset_path('fondo_orange.jpg') %>");
             background-attachment: fixed;
             background-size: cover;
             font-family: 'Lato', sans-serif;
@@ -52,26 +55,23 @@
 
     <p id="notice"><%= notice %></p>
 
-
+<%= @tipo = params[:tipo]%>
 <div class="parte1" style="text-align: center;">
 <h1>Editar Citas</h1>
 <div class="form">
 <%= form_with(model: @meeting, method: :patch) do |form|%>
-
+  <%if @tipo == 'usuario1'%>
     <div class = 'field'>
-        <%= form.label :usuario1 %>
-        <%= form.text_field :usuario1 %>
+        <%= form.label :date1 %>
+        <%= form.datetime_field :date1 %>
     </div>
-    <br>
+  <%else%>
     <div class = 'field'>
-        <%= form.label :usuario2 %>
-        <%= form.text_field :usuario2 %>
-    </div>
-    <br>
-    <div class = 'field'>
-      <%= form.label :restaurant_id %>
-      <%= form.number_field :restaurant_id %>
-    </div>
+        <%= form.label :date2 %>
+        <%= form.datetime_field :date2 %>
+    </div> 
+   <%end%>
+    
     <br>
     <div class='actions'>
         <%= form.submit %>

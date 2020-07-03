@@ -35,12 +35,12 @@ class MeetingsController < ApplicationController
   end
 
   def update
-    meeting_params = params.require(:meeting).permit(:usuario1, :usuario2, :rid)
+    meeting_params = params.require(:meeting).permit(:date1, :date2)
     @meeting = Meeting.find(params[:id])
     if @meeting.update(meeting_params)
-      redirect_to meeting_path(@meeting.id), notice: 'Cita editada con éxito'
+      redirect_to meetings_path, notice: 'Cita editada con éxito'
     else
-      redirecto_to meeting_path(@meeting.id), notice: 'Ocurrió un error al editar la cita'
+      redirecto_to meetings_path, notice: 'Ocurrió un error al editar la cita'
     end
   end
 
