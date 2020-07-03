@@ -51,6 +51,8 @@ Rails.application.routes.draw do
   get 'meetings/new', to: 'meetings#new'
   post 'meetings', to: 'meetings#create'
 
+  get 'meetings/:id/:tipo/edit', to: 'meetings#edit', as: 'meetings_edit'
+
   #Read
   #get 'comunas', to: 'comunas#index'
   #get 'comunas/:id', to: 'comunas#show', as: 'comuna'
@@ -74,7 +76,7 @@ Rails.application.routes.draw do
   #get 'comentarios/:id/edit', to: 'comentarios#edit', as: :comentarios_edit
   #patch 'comentarios/:id', to: 'comentarios#update'
 
-  get 'meetings/:id/edit', to: 'meetings#edit', as: :meetings_edit
+  #get 'meetings/:id/edit', to: 'meetings#edit', as: :meetings_edit
   patch 'meetings/:id', to: 'meetings#update'
 
   #delete
