@@ -103,7 +103,7 @@
         margin: auto;
         background-color: darkgray;
         width: 700px;
-        height: 390px;
+        height: 450px;
         padding: 20px;
         border-radius: 10%;
         border-color: black;
@@ -166,6 +166,7 @@
                     <p class="card-text"><%= user.descripcion%></p>
                   </div>
                 </div>
+                <br><br>
                 <h3><%= meeting.date1%></h3>
                 <%if Integer(current_user.id) == Integer(meeting.usuario1)%>
                 <h3><%= link_to 'Editar fecha', meetings_edit_path(meeting.id, "usuario1")%></h3>
@@ -208,6 +209,7 @@
                     <p class="card-text"><%= user.descripcion%></p>
                   </div>
                 </div>
+                <br><br>
                 <h3><%= meeting.date2%></h3>
                 <%if Integer(current_user.id) == Integer(meeting.usuario2)%>
                 <h3><%= link_to 'Editar fecha', meetings_edit_path(meeting.id, "usuario2")%></h3>
